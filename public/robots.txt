@@ -1,0 +1,7 @@
+# Knight Division Tactical
+# https://knightdivisiontactical.com
+
+User-agent: *
+Allow: /
+
+Sitemap: https://knightdivisiontactical.com/sitemap.xml

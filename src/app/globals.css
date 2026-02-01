@@ -1,26 +1,281 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* KDT Deep Orange-Gold / Byzantine Empire palette */
+  --kdt-orange-50: #fff7ed;
+  --kdt-orange-100: #ffedd5;
+  --kdt-orange-200: #fed7aa;
+  --kdt-orange-300: #fdba74;
+  --kdt-orange-400: #fb923c;
+  --kdt-orange-500: #f97316;
+  --kdt-orange-600: #ea580c;
+  --kdt-orange-700: #c2410c;
+  --kdt-orange-800: #9a3412;
+  --kdt-orange-900: #7c2d12;
+  
+  /* Imperial Gold accents */
+  --imperial-gold: #c9a227;
+  --gold-light: #fbbf24;
+  --gold-dark: #b8860b;
+  --copper: #b87333;
+  --bronze: #cd7f32;
+  
+  /* Primary accent */
+  --primary: #f97316;
+  --primary-glow: rgba(249, 115, 22, 0.4);
+  --gold-glow: rgba(201, 162, 39, 0.4);
+  
+  /* Dark backgrounds - warm undertones */
+  --bg-primary: #0c0a09;
+  --bg-secondary: #1c1917;
+  --bg-tertiary: #292524;
+  --bg-card: rgba(26, 22, 20, 0.8);
+  
+  /* Glassmorphism */
+  --glass-bg: rgba(28, 25, 23, 0.7);
+  --glass-border: rgba(249, 115, 22, 0.15);
+  --glass-blur: 12px;
+  
+  /* Text */
+  --text-primary: #fafaf9;
+  --text-secondary: #a8a29e;
+  --text-muted: #78716c;
+  
+  /* VOC Green - reserved for VOC page only */
+  --voc-green: #00ff41;
+  --voc-green-glow: rgba(0, 255, 65, 0.4);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Smooth page transitions */
+main {
+  animation: fadeIn 0.4s ease-out;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
+
+/* Scrollbar styling - orange/gold */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--kdt-orange-700);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Selection styling */
+::selection {
+  background: var(--primary);
+  color: var(--bg-primary);
+}
+
+/* Glow effect utilities - Orange */
+.glow-orange {
+  box-shadow: 0 0 20px var(--primary-glow),
+              0 0 40px rgba(249, 115, 22, 0.2),
+              0 0 60px rgba(249, 115, 22, 0.1);
+}
+
+/* Glow effect utilities - Gold */
+.glow-gold {
+  box-shadow: 0 0 20px var(--gold-glow),
+              0 0 40px rgba(201, 162, 39, 0.2),
+              0 0 60px rgba(201, 162, 39, 0.1);
+}
+
+.text-glow {
+  text-shadow: 0 0 10px var(--primary-glow),
+               0 0 20px rgba(249, 115, 22, 0.3);
+}
+
+.text-glow-gold {
+  text-shadow: 0 0 10px var(--gold-glow),
+               0 0 20px rgba(201, 162, 39, 0.3);
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+}
+
+/* Byzantine / Imperial styling */
+.imperial-border {
+  border: 2px solid var(--imperial-gold);
+  box-shadow: inset 0 0 20px rgba(201, 162, 39, 0.1);
+}
+
+.byzantine-gradient {
+  background: linear-gradient(135deg, var(--kdt-orange-600) 0%, var(--imperial-gold) 50%, var(--kdt-orange-700) 100%);
+}
+
+.warm-gradient {
+  background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+}
+
+/* Grid overlay effect */
+.grid-overlay {
+  background-image: 
+    linear-gradient(rgba(249, 115, 22, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(249, 115, 22, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Glitch effects */
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-3px, 3px); }
+  40% { transform: translate(-3px, -3px); }
+  60% { transform: translate(3px, 3px); }
+  80% { transform: translate(3px, -3px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes glitchColor {
+  0% { opacity: 0.3; transform: translate(-2px, -1px); }
+  50% { opacity: 0.5; transform: translate(2px, 1px); }
+  100% { opacity: 0.3; transform: translate(-2px, -1px); }
+}
+
+@keyframes glitchBar {
+  0%, 100% { transform: translateX(-100%); opacity: 0; }
+  10%, 30% { transform: translateX(0); opacity: 0.5; }
+  50% { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes glitchBar2 {
+  0%, 100% { transform: translateX(100%); opacity: 0; }
+  20%, 40% { transform: translateX(0); opacity: 0.3; }
+  60% { transform: translateX(-100%); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translate(0, 0) rotate(0deg); 
+    opacity: 0.1;
+  }
+  25% { 
+    transform: translate(10px, -20px) rotate(2deg); 
+    opacity: 0.2;
+  }
+  50% { 
+    transform: translate(-5px, -10px) rotate(-1deg); 
+    opacity: 0.15;
+  }
+  75% { 
+    transform: translate(15px, 5px) rotate(1deg); 
+    opacity: 0.25;
+  }
+}
+
+.animate-glitchBar {
+  animation: glitchBar 2s ease-in-out infinite;
+}
+
+.animate-glitchBar2 {
+  animation: glitchBar2 2.5s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* Liquid metal / glass reflection */
+.liquid-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  transition: transform 0.6s ease;
+}
+
+.liquid-shine:hover::after {
+  transform: rotate(30deg) translateX(100%);
+}
+
+/* VOC specific styles - Green theme reserved */
+.voc-theme {
+  --primary: var(--voc-green);
+  --primary-glow: var(--voc-green-glow);
+}
+
+.voc-theme .glow-primary {
+  box-shadow: 0 0 20px var(--voc-green-glow),
+              0 0 40px rgba(0, 255, 65, 0.2),
+              0 0 60px rgba(0, 255, 65, 0.1);
+}
+
+/* Utility classes for the new theme */
+.text-kdt-orange { color: var(--primary); }
+.text-kdt-gold { color: var(--imperial-gold); }
+.bg-kdt-orange { background-color: var(--primary); }
+.bg-kdt-gold { background-color: var(--imperial-gold); }
+.border-kdt-orange { border-color: var(--primary); }
+.border-kdt-gold { border-color: var(--imperial-gold); }
