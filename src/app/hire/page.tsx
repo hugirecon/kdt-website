@@ -6,12 +6,21 @@ import Link from "next/link";
 // ============ NAV ============
 function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const navItems = [
+    { label: "About", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "Careers", href: "/careers" },
+    { label: "Training", href: "/training" },
+    { label: "Contact", href: "/contact" },
+  ];
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#0a0a0a]/95 backdrop-blur-xl ${scrolled ? 'border-b border-white/5' : ''}`}>
@@ -22,13 +31,9 @@ function Nav() {
           <span className="text-white font-semibold text-lg tracking-tight">KDT</span>
         </Link>
         
+        {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-1">
-          {[
-            { label: "About", href: "/about" },
-            { label: "Services", href: "/services" },
-            { label: "Careers", href: "/careers" },
-            { label: "Training", href: "/training" },
-          ].map((item) => (
+          {navItems.slice(0, 4).map((item) => (
             <Link 
               key={item.href}
               href={item.href}
@@ -40,14 +45,56 @@ function Nav() {
         </nav>
         
         <div className="flex items-center gap-3">
-          <Link href="/contact" className="text-[15px] text-gray-400 hover:text-white transition-colors hidden sm:block">
+          <Link href="/contact" className="text-[15px] text-gray-400 hover:text-white transition-colors hidden md:block">
             Contact
           </Link>
-          <Link href="/careers" className="px-4 py-2 bg-[#f97316] text-black text-[15px] font-medium rounded-lg hover:bg-[#f97316]/90 transition-all">
+          <Link href="/careers" className="px-4 py-2 bg-[#f97316] text-black text-[15px] font-medium rounded-lg hover:bg-[#f97316]/90 transition-all hidden sm:block">
             Join KDT
           </Link>
+          
+          {/* Mobile hamburger */}
+          <button 
+            className="md:hidden p-2 text-white"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
         </div>
       </div>
+      
+      {/* Mobile menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-[#0a0a0a]/98 backdrop-blur-xl border-t border-white/5">
+          <nav className="flex flex-col px-6 py-4">
+            {navItems.map((item) => (
+              <Link 
+                key={item.href}
+                href={item.href}
+                className="py-3 text-[16px] text-gray-300 hover:text-white transition-colors border-b border-white/5 last:border-0"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <Link 
+              href="/careers" 
+              className="mt-4 py-3 bg-[#f97316] text-black text-[15px] font-medium rounded-lg text-center"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Join KDT
+            </Link>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
