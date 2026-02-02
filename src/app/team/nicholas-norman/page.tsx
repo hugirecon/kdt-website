@@ -233,12 +233,14 @@ function Footer() {
 
 export default function NicholasNormanPage() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a]">
-      <Nav />
-      <ProfileHero />
-      <OtherTeam />
-      <CTA />
-      <Footer />
-    </main>
+    <div style={{ background: '#030305' }}>
+      <main className="min-h-screen bg-[#0a0a0a]">
+        <Nav />
+        <ProfileHero />
+        <OtherTeam />
+        <CTA />
+        <Footer />
+      </main>
+    </div>
   );
 }

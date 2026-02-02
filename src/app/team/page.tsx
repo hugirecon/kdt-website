@@ -243,12 +243,14 @@ function Footer() {
 // ============ PAGE ============
 export default function TeamPage() {
   return (
-    <main className="min-h-screen">
-      <Nav />
-      <Hero />
-      <TeamGrid />
-      <CTA />
-      <Footer />
-    </main>
+    <div style={{ background: '#030305' }}>
+      <main className="min-h-screen">
+        <Nav />
+        <Hero />
+        <TeamGrid />
+        <CTA />
+        <Footer />
+      </main>
+    </div>
   );
 }
