@@ -3,8 +3,11 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import dynamic from "next/dynamic";
 import Nav from "@/components/Nav";
 import EncryptButton from "@/components/EncryptButton";
+
+const LaserFlow = dynamic(() => import("@/components/LaserFlow"), { ssr: false });
 
 // Magnetic Scramble Button Component
 function MagneticScrambleButton({ children, href }: { children: string; href: string }) {
@@ -207,26 +210,48 @@ export default function VOCPage() {
       
       {/* Hero Section */}
       <section className="relative pb-20 px-6" style={{ paddingTop: '8rem' }}>
-        <div className="max-w-6xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-5xl md:text-7xl font-bold mb-8">
-              <span className="text-white">Join the </span>
-              <span className="text-[#00ff41] text-glow">VOC</span>
-            </h1>
-            <p className="text-xl text-gray-400 mb-6" style={{ maxWidth: '42rem', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
-              The Virtual Operations Command — a pre-cursor to a major new technology.
-            </p>
-            <p className="text-lg text-gray-500 mb-12" style={{ maxWidth: '32rem', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
-              What we're launching now will focus on you, the Contractor. Right now it's a server. 
-              Later it will evolve. Your place in it will remain.
-            </p>
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left - Text Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-left"
+            >
+              <h1 className="text-5xl md:text-7xl font-bold mb-8">
+                <span className="text-white">Join the </span>
+                <span className="text-[#00ff41] text-glow">VOC</span>
+              </h1>
+              <p className="text-xl text-gray-400 mb-6" style={{ maxWidth: '42rem' }}>
+                The Virtual Operations Command — a pre-cursor to a major new technology.
+              </p>
+              <p className="text-lg text-gray-500 mb-12" style={{ maxWidth: '32rem' }}>
+                What we're launching now will focus on you, the Contractor. Right now it's a server. 
+                Later it will evolve. Your place in it will remain.
+              </p>
+              
+              <EncryptButton />
+            </motion.div>
             
-            <EncryptButton />
-          </motion.div>
+            {/* Right - Laser Flow */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative h-[500px] lg:h-[600px]"
+            >
+              <LaserFlow 
+                color="#00ff41"
+                verticalSizing={2.5}
+                horizontalSizing={0.6}
+                fogIntensity={0.5}
+                wispIntensity={6}
+                horizontalBeamOffset={0.0}
+                verticalBeamOffset={-0.1}
+              />
+            </motion.div>
+          </div>
         </div>
       </section>
 
