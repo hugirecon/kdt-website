@@ -492,7 +492,7 @@ function Footer() {
 // ============ PAGE ============
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-[#050510] text-white overflow-hidden">
+    <main className="min-h-screen bg-[#050510] text-white">
       <ParticleBackground />
       <Nav />
       <Hero />
