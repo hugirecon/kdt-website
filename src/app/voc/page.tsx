@@ -252,42 +252,42 @@ export default function VOCPage() {
               {
                 title: "Intel Reports",
                 description: "Access intel reports on global events, conflicts and more",
-                icon: "🌍"
+                icon: "🛰️"
               },
               {
                 title: "Direct Communication",
                 description: "Direct communication with the entire KDT team",
-                icon: "💬"
+                icon: "📡"
               },
               {
                 title: "Early Access",
                 description: "Early access to KDT Training, technology, gear & merch",
-                icon: "⚡"
+                icon: "🔓"
               },
               {
                 title: "KDT Events",
                 description: "Access to exclusive Knight Division Tactical events",
-                icon: "🎖️"
+                icon: "🏴"
               },
               {
                 title: "Special Pricing",
                 description: "Special pricing & discounts on products and services",
-                icon: "💰"
+                icon: "💎"
               },
               {
                 title: "Behind the Scenes",
                 description: "Exclusive media from our ops & behind the scenes",
-                icon: "🎬"
+                icon: "🎯"
               },
               {
                 title: "Insights & Updates",
                 description: "Knight Division Tactical insights & exclusive updates",
-                icon: "📊"
+                icon: "📋"
               },
               {
                 title: "Brotherhood",
                 description: "Professional, Capable & Virtuous Brotherhood",
-                icon: "⚔️"
+                icon: "🛡️"
               },
             ].map((feature, idx) => (
               <motion.div
