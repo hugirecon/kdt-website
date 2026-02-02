@@ -1,56 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-
-// ============ NAV ============
-function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-  
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#0a0a0a]/95 backdrop-blur-xl ${scrolled ? 'border-b border-white/5' : ''}`}>
-      <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="KDT" className="w-8 h-8 object-contain" />
-          <span className="text-white font-semibold text-lg tracking-tight">KDT</span>
-        </Link>
-        
-        <nav className="hidden md:flex items-center gap-1">
-          {[
-            { label: "About", href: "/about" },
-            { label: "Services", href: "/services" },
-            { label: "Careers", href: "/careers" },
-            { label: "Training", href: "/training" },
-          ].map((item) => (
-            <Link 
-              key={item.href}
-              href={item.href}
-              className="px-4 py-2 text-[15px] text-gray-400 hover:text-white transition-colors"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-        
-        <div className="flex items-center gap-3">
-          <Link href="/contact" className="text-[15px] text-gray-400 hover:text-white transition-colors hidden sm:block">
-            Contact
-          </Link>
-          <Link href="/careers" className="px-4 py-2 bg-[#f97316] text-black text-[15px] font-medium rounded-lg hover:bg-[#f97316]/90 transition-all">
-            Join KDT
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-}
+import Nav from "@/components/Nav";
 
 // ============ HERO (DARK) ============
 function Hero() {
