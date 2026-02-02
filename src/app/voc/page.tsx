@@ -234,8 +234,8 @@ export default function VOCPage() {
       <section className="px-4 py-20">
         <div className="max-w-4xl mx-auto">
           <GlitchImage 
-            src="/images/voc-hero.jpg" 
-            alt="VOC Training"
+            src="/images/voc-operator.jpg" 
+            alt="VOC Operator"
           />
         </div>
       </section>
