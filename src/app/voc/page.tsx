@@ -217,10 +217,10 @@ export default function VOCPage() {
               <span className="text-white">Join the </span>
               <span className="text-[#00ff41] text-glow">VOC</span>
             </h1>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-4">
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-4 text-center">
               The Vanguard Operations Collective — a pre-cursor to a major new technology.
             </p>
-            <p className="text-lg text-gray-500 max-w-xl mx-auto mb-12">
+            <p className="text-lg text-gray-500 max-w-xl mx-auto mb-12 text-center">
               What we're launching now will focus on you, the Contractor. Right now it's a server. 
               Later it will evolve. Your place in it will remain.
             </p>
