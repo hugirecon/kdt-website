@@ -121,6 +121,19 @@ export default function LandingPage() {
     { href: "/contact", label: "Contact", desc: "Get in touch" },
   ];
 
+  // Add liquid shine animation
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes liquidShine {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+      }
+    `;
+    document.head.appendChild(style);
+    return () => { document.head.removeChild(style); };
+  }, []);
+
   return (
     <main className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#030305]">
       {/* Gradient background */}
@@ -151,11 +164,11 @@ export default function LandingPage() {
         
         {/* Logo */}
         <div 
-          className={`transition-all duration-1000 ease-out ${
+          className={`transition-all duration-1000 ease-out mb-16 ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
           }`}
         >
-          <div className="relative w-24 h-24 md:w-32 md:h-32 mb-8">
+          <div className="relative w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48">
             <Image
               src="/logo.png"
               alt="Knight Division Tactical"
@@ -164,36 +177,13 @@ export default function LandingPage() {
               priority
             />
             {/* Glow behind logo */}
-            <div className="absolute inset-0 bg-[#f97316]/20 blur-2xl scale-150 -z-10" />
+            <div className="absolute inset-0 bg-[#f97316]/20 blur-3xl scale-150 -z-10" />
           </div>
         </div>
 
-        {/* Title */}
+        {/* Buttons - Liquid Metal Style */}
         <div 
-          className={`text-center mb-4 transition-all duration-1000 delay-200 ease-out ${
-            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white">
-            Knight Division
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#f97316] to-[#fb923c]">
-              Tactical
-            </span>
-          </h1>
-        </div>
-
-        {/* Tagline */}
-        <p 
-          className={`text-gray-500 text-sm md:text-base tracking-[0.2em] uppercase mb-16 transition-all duration-1000 delay-300 ease-out ${
-            mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          Professional • Capable • Virtuous
-        </p>
-
-        {/* Buttons */}
-        <div 
-          className={`grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full max-w-4xl mb-16 transition-all duration-1000 delay-500 ease-out ${
+          className={`grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full max-w-4xl mb-16 transition-all duration-1000 delay-300 ease-out ${
             mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
@@ -204,43 +194,56 @@ export default function LandingPage() {
               onMouseEnter={() => setHoveredButton(btn.href)}
               onMouseLeave={() => setHoveredButton(null)}
               className="group relative"
-              style={{ transitionDelay: `${600 + i * 100}ms` }}
+              style={{ transitionDelay: `${400 + i * 100}ms` }}
             >
+              {/* Liquid Metal Button */}
               <div 
                 className={`
-                  relative overflow-hidden rounded-xl p-6 md:p-8
-                  bg-white/[0.02] backdrop-blur-sm
-                  border border-white/[0.05]
+                  relative overflow-hidden rounded-2xl p-6 md:p-8
                   transition-all duration-500 ease-out
                   ${hoveredButton === btn.href 
-                    ? 'bg-white/[0.05] border-[#f97316]/30 shadow-[0_0_40px_rgba(249,115,22,0.15)]' 
-                    : 'hover:bg-white/[0.04] hover:border-white/[0.1]'
+                    ? 'scale-[1.02] shadow-[0_0_50px_rgba(200,200,200,0.15)]' 
+                    : 'hover:scale-[1.01]'
                   }
                 `}
+                style={{
+                  background: hoveredButton === btn.href
+                    ? 'linear-gradient(145deg, rgba(255,255,255,0.15) 0%, rgba(180,180,180,0.08) 50%, rgba(255,255,255,0.12) 100%)'
+                    : 'linear-gradient(145deg, rgba(255,255,255,0.08) 0%, rgba(120,120,120,0.04) 50%, rgba(255,255,255,0.06) 100%)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  boxShadow: hoveredButton === btn.href
+                    ? 'inset 0 1px 1px rgba(255,255,255,0.2), inset 0 -1px 1px rgba(0,0,0,0.1), 0 8px 32px rgba(0,0,0,0.3)'
+                    : 'inset 0 1px 1px rgba(255,255,255,0.1), inset 0 -1px 1px rgba(0,0,0,0.05), 0 4px 16px rgba(0,0,0,0.2)',
+                }}
               >
-                {/* Top accent line */}
+                {/* Liquid shine effect */}
                 <div 
-                  className={`
-                    absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#f97316] to-transparent
-                    transition-opacity duration-500
-                    ${hoveredButton === btn.href ? 'opacity-100' : 'opacity-0'}
-                  `}
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                  style={{
+                    background: 'linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.1) 45%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 55%, transparent 80%)',
+                    transform: 'translateX(-100%)',
+                    animation: hoveredButton === btn.href ? 'liquidShine 1.5s ease-in-out' : 'none',
+                  }}
                 />
 
-                <div className="text-center">
-                  <div className="text-white font-semibold text-lg md:text-xl mb-2 group-hover:text-[#f97316] transition-colors duration-300">
+                <div className="text-center relative z-10">
+                  <div 
+                    className="font-semibold text-lg md:text-xl mb-2 transition-all duration-300"
+                    style={{
+                      background: hoveredButton === btn.href 
+                        ? 'linear-gradient(180deg, #ffffff 0%, #c0c0c0 100%)'
+                        : 'linear-gradient(180deg, #e0e0e0 0%, #a0a0a0 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}
+                  >
                     {btn.label}
                   </div>
-                  <div className="text-gray-500 text-xs md:text-sm">
+                  <div className="text-gray-500 text-xs md:text-sm group-hover:text-gray-400 transition-colors">
                     {btn.desc}
                   </div>
                 </div>
-
-                {/* Corner accents */}
-                <div className="absolute top-2 left-2 w-2 h-2 border-t border-l border-white/10 group-hover:border-[#f97316]/40 transition-colors duration-300" />
-                <div className="absolute top-2 right-2 w-2 h-2 border-t border-r border-white/10 group-hover:border-[#f97316]/40 transition-colors duration-300" />
-                <div className="absolute bottom-2 left-2 w-2 h-2 border-b border-l border-white/10 group-hover:border-[#f97316]/40 transition-colors duration-300" />
-                <div className="absolute bottom-2 right-2 w-2 h-2 border-b border-r border-white/10 group-hover:border-[#f97316]/40 transition-colors duration-300" />
               </div>
             </Link>
           ))}
