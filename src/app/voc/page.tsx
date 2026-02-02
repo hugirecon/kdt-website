@@ -206,7 +206,7 @@ export default function VOCPage() {
       <ShaderLines />
       
       {/* Hero Section */}
-      <section className="relative pb-20 px-4" style={{ paddingTop: '8rem' }}
+      <section className="relative pb-20 px-4" style={{ paddingTop: '8rem' }}>
         <div className="max-w-6xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
