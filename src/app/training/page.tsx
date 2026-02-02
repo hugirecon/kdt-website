@@ -323,6 +323,11 @@ function Testimonials() {
       author: "Clark Donaldson",
       role: "Google Review"
     },
+    {
+      quote: "This is a group of men that take security to a level I have not seen with other outfits. I had the opportunity to work with a few of them and you will not find a more qualified crew.",
+      author: "Ken White",
+      role: "Google Review"
+    },
   ];
 
   return (
