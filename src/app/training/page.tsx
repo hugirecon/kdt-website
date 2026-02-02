@@ -328,6 +328,11 @@ function Testimonials() {
       author: "Ken White",
       role: "Google Review"
     },
+    {
+      quote: "Matt and his team offer outstanding service and only employ the best people. If you're looking to hire a company that is made up of genuinely good guys, KDT is unmatched.",
+      author: "John Lambert",
+      role: "Google Review"
+    },
   ];
 
   return (

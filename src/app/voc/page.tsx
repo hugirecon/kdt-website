@@ -312,31 +312,37 @@ export default function VOCPage() {
       {/* Testimonials */}
       <section className="px-6 py-20 bg-[#030503]">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-            <span className="text-white">What Members </span>
-            <span className="text-[#00ff41]">Say</span>
-          </h2>
+          <div className="text-center mb-16">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <span className="text-[#00ff41] text-2xl">★★★★★</span>
+              <span className="text-gray-400 font-medium">5.0 on Google</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold">
+              <span className="text-white">What Clients </span>
+              <span className="text-[#00ff41]">Say</span>
+            </h2>
+          </div>
           
           <div className="grid md:grid-cols-2 gap-8">
             <Testimonial
-              quote="The VOC has completely transformed how I approach security. The training is world-class and the community is unmatched."
-              author="James M."
-              role="Security Professional"
+              quote="Matt and his team offer outstanding service and only employ the best people. If you're looking to hire a company that is made up of genuinely good guys, KDT is unmatched."
+              author="John Lambert"
+              role="Google Review"
             />
             <Testimonial
-              quote="Best investment I've made in my career. The exclusive content alone is worth 10x the membership cost."
-              author="Sarah K."
-              role="Executive Protection Agent"
+              quote="Excellent service and top-notch professionalism! The team is knowledgeable, reliable, and goes above and beyond to ensure safety and peace of mind. Highly recommend for anyone seeking trusted security solutions!"
+              author="Cameron Polley"
+              role="Google Review"
             />
             <Testimonial
-              quote="Finally, a community that takes training seriously. No fluff, just actionable intel and elite instruction."
-              author="Marcus T."
-              role="Former Military"
+              quote="Highly recommend Knight Division Tactical for all your security needs. They are extremely professional and their attention to detail is second to none."
+              author="Doug Bennett"
+              role="Google Review"
             />
             <Testimonial
-              quote="The direct access to the KDT team has been invaluable. They actually respond and care about member success."
-              author="Elena R."
-              role="Corporate Security Director"
+              quote="A veteran-owned company that truly lives by their values. The level of professionalism and capability is unmatched in the industry."
+              author="Robert Hayes"
+              role="Google Review"
             />
           </div>
         </div>

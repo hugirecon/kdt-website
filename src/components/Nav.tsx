@@ -79,10 +79,10 @@ const NAV_ITEMS: NavItemWithDropdown[] = [
     label: "Services", 
     href: "/services",
     dropdown: [
-      { title: "Executive Protection", description: "Elite security details for high-profile indi\u00ADviduals and corpo\u00ADrate execu\u00ADtives.", href: "/services#executive", image: "/images/tactical-1.jpg" },
-      { title: "Event Security", description: "Compre\u00ADhensive coverage for events of any scale, from intimate gather\u00ADings to major venues.", href: "/services#events", image: "/images/tactical-2.jpg" },
-      { title: "Risk Consulting", description: "Profes\u00ADsional assess\u00ADment and strategic planning to identify and mitigate threats.", href: "/services#consulting", image: "/images/tactical-3.jpg" },
-      { title: "Global Operations", description: "World\u00ADwide deploy\u00ADment capabil\u00ADities with local expertise in key regions.", href: "/services#global", image: "/images/tactical-4.jpg" },
+      { title: "Executive Protection", description: "Discreet, profes\u00ADsional protec\u00ADtion for diplo\u00ADmats, execu\u00ADtives, and high-profile indi\u00ADviduals.", href: "/services/executive-protection", image: "/images/tactical-1.jpg" },
+      { title: "Tactical Operations", description: "Elite capabil\u00ADities for high-threat environ\u00ADments and contested zones.", href: "/services/tactical-operations", image: "/images/tactical-2.jpg" },
+      { title: "Intelligence Support", description: "Full-spectrum intelli\u00ADgence from collec\u00ADtion through dissem\u00ADination.", href: "/services/intelligence-support", image: "/images/tactical-3.jpg" },
+      { title: "All Services", description: "Explore our complete range of security and opera\u00ADtional capabil\u00ADities.", href: "/services", image: "/images/tactical-4.jpg" },
     ]
   },
   { 
