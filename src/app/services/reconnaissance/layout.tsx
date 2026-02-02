@@ -1,10 +1,10 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Intelligence & Reconnaissance Support | Knight Division Tactical",
+  title: "Reconnaissance | Knight Division Tactical",
   description: "Full-spectrum intelligence support from collection through dissemination. All-source analysis, ISR support, GEOINT, ground reconnaissance, and TSCM services.",
   openGraph: {
-    title: "Intelligence & Reconnaissance Support | Knight Division Tactical",
+    title: "Reconnaissance | Knight Division Tactical",
     description: "Information dominance through superior collection and analysis.",
   },
 };

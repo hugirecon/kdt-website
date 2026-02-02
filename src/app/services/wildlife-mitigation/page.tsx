@@ -13,15 +13,15 @@ function Hero() {
       
       <div className="relative z-10 max-w-[1200px] mx-auto text-center">
         <div className="inline-block px-4 py-1.5 mb-6 text-[13px] font-medium text-[#f97316] bg-[#f97316]/10 rounded-full border border-[#f97316]/20">
-          High-Threat Operations
+          Specialized Operations
         </div>
         <h1 className="text-[clamp(40px,5vw,56px)] font-bold text-white leading-[1.1] mb-6">
-          Tactical
+          Wildlife
           <br />
-          <span className="text-[#f97316]">Operations</span>
+          <span className="text-[#f97316]">Mitigation</span>
         </h1>
         <p className="text-[18px] text-gray-400 leading-relaxed max-w-[42rem] mx-auto">
-          When the mission demands more. Elite capabilities for high-threat environments where the margin for error is zero.
+          Where infrastructure meets wilderness. Specialized protection for personnel operating in environments where nature itself is the threat.
         </p>
       </div>
     </section>
@@ -36,25 +36,25 @@ function Overview() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="text-[clamp(28px,3.5vw,40px)] font-bold text-gray-900 leading-tight mb-6">
-              Kinetic Capability
+              Beyond the Perimeter
             </h2>
             <p className="text-[17px] text-gray-600 leading-relaxed mb-6">
-              Some environments are beyond the reach of conventional security. Hostile territories. Active conflict zones. Operations where diplomatic solutions have been exhausted and the only remaining option is direct action.
+              Some of the world's most critical infrastructure exists in the planet's most unforgiving environments. Pipeline corridors through predator territory. Research stations in polar regions. Extraction operations where the nearest support is hours away.
             </p>
             <p className="text-[17px] text-gray-600 leading-relaxed mb-6">
-              KDT maintains a cadre of operators with backgrounds in tier-one special operations units, prepared for deployment to the world's most dangerous operating environments.
+              KDT provides specialized security for personnel operating in remote and hazardous environments where traditional security measures fall short and the threat matrix includes apex predators, extreme weather, and isolation.
             </p>
             <p className="text-[17px] text-gray-600 leading-relaxed">
-              We do not discuss the specifics of our tactical capabilities publicly. Clients requiring this level of service understand why.
+              Our teams are trained for extended deployment in austere conditions, equipped to neutralize wildlife threats while maintaining the safety protocols required for high-risk industrial operations.
             </p>
           </div>
           
           <div className="grid grid-cols-2 gap-4">
             {[
-              { stat: "Tier-1", label: "Personnel" },
-              { stat: "Global", label: "Deployment" },
-              { stat: "Full", label: "Spectrum" },
-              { stat: "Mission", label: "Success" },
+              { stat: "Arctic", label: "Capable" },
+              { stat: "24/7", label: "Overwatch" },
+              { stat: "Rapid", label: "Response" },
+              { stat: "Zero", label: "Tolerance" },
             ].map((item, i) => (
               <div key={i} className="p-6 rounded-xl bg-gray-50 border border-gray-100 text-center">
                 <div className="text-[28px] font-bold text-[#f97316] mb-1">{item.stat}</div>
@@ -72,28 +72,28 @@ function Overview() {
 function Capabilities() {
   const capabilities = [
     {
-      title: "High-Threat Protection",
-      description: "Protective operations in active conflict zones and hostile environments requiring armed response capability.",
+      title: "Predator Deterrence",
+      description: "Lethal and non-lethal deterrence capabilities for predator management in active work zones.",
     },
     {
-      title: "Diplomatic Security Augmentation",
-      description: "Supporting official diplomatic security operations with specialized tactical expertise.",
+      title: "Polar Operations",
+      description: "Specialized training and equipment for extreme cold weather deployment and extended arctic operations.",
     },
     {
-      title: "Contingency Response",
-      description: "Rapid deployment for crisis situations requiring immediate intervention.",
+      title: "Pipeline & Corridor Security",
+      description: "Mobile security for linear infrastructure projects spanning hundreds of miles through remote terrain.",
     },
     {
-      title: "Site Security — Hostile",
-      description: "Defending fixed sites and infrastructure in contested or hostile environments.",
+      title: "Extraction Site Protection",
+      description: "Comprehensive security for mining, drilling, and resource extraction operations in isolated locations.",
     },
     {
-      title: "Movement Security",
-      description: "Secure transportation and convoy operations through high-risk corridors.",
+      title: "Emergency Medical Integration",
+      description: "Trauma-capable personnel prepared for medical emergencies when evacuation isn't immediately possible.",
     },
     {
-      title: "Training Cadre",
-      description: "Developing tactical capabilities for partner forces and allied organizations.",
+      title: "Environmental Awareness",
+      description: "Deep understanding of terrain, weather patterns, and wildlife behavior in operational planning.",
     },
   ];
 
@@ -105,7 +105,7 @@ function Capabilities() {
             Capabilities
           </h2>
           <p className="text-[18px] text-gray-400 max-w-[42rem] mx-auto">
-            Full-spectrum tactical support for the most demanding operational environments.
+            Purpose-built solutions for environments that demand more than conventional security.
           </p>
         </div>
         
@@ -122,43 +122,21 @@ function Capabilities() {
   );
 }
 
-// ============ QUALIFICATION ============
-function Qualification() {
-  return (
-    <section className="py-24 px-6 bg-[#111]">
-      <div className="max-w-[800px] mx-auto text-center">
-        <h2 className="text-[28px] font-bold text-white mb-6">
-          Access Requirements
-        </h2>
-        <p className="text-[17px] text-gray-400 leading-relaxed mb-8">
-          Tactical operations services are available exclusively to government agencies, authorized diplomatic missions, and pre-qualified commercial clients operating under appropriate legal frameworks. Initial engagement requires verification of authorization and operational legitimacy.
-        </p>
-        <div className="inline-flex items-center gap-2 text-[14px] text-[#f97316]">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-          </svg>
-          Inquiry subject to verification
-        </div>
-      </div>
-    </section>
-  );
-}
-
 // ============ CTA ============
 function CTA() {
   return (
     <section className="py-24 px-6 bg-white">
       <div className="max-w-[600px] mx-auto text-center">
         <h2 className="text-[36px] md:text-[44px] font-bold text-gray-900 mb-4 leading-tight">
-          When It<br />
-          <span className="text-[#f97316]">Matters</span>
+          Operations Beyond<br />
+          <span className="text-[#f97316]">The Edge</span>
         </h2>
         <p className="text-[16px] text-gray-600 mb-8">
-          Authorized inquiries only.
+          Discuss your remote operations security requirements with our specialized team.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link href="/contact/services" className="px-6 py-3 bg-[#0a0a0a] text-white text-[15px] font-medium rounded-lg hover:bg-black transition-all">
-            Submit Inquiry
+            Request Consultation
           </Link>
           <Link href="/services" className="px-6 py-3 bg-gray-100 text-gray-900 text-[15px] font-medium rounded-lg hover:bg-gray-200 transition-all">
             All Services
@@ -188,14 +166,13 @@ function Footer() {
   );
 }
 
-export default function TacticalOperationsPage() {
+export default function WildlifeMitigationPage() {
   return (
     <main className="min-h-screen">
       <Nav activePath="/services" />
       <Hero />
       <Overview />
       <Capabilities />
-      <Qualification />
       <CTA />
       <Footer />
     </main>

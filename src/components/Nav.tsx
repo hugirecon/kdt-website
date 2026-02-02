@@ -79,10 +79,10 @@ const NAV_ITEMS: NavItemWithDropdown[] = [
     label: "Services", 
     href: "/services",
     dropdown: [
-      { title: "Executive Protection", description: "Discreet, profes\u00ADsional protec\u00ADtion for diplo\u00ADmats, execu\u00ADtives, and high-profile indi\u00ADviduals.", href: "/services/executive-protection", image: "/images/tactical-1.jpg" },
-      { title: "Tactical Operations", description: "Elite capabil\u00ADities for high-threat environ\u00ADments and contested zones.", href: "/services/tactical-operations", image: "/images/tactical-2.jpg" },
-      { title: "Intelligence Support", description: "Full-spectrum intelli\u00ADgence from collec\u00ADtion through dissem\u00ADination.", href: "/services/intelligence-support", image: "/images/tactical-3.jpg" },
-      { title: "All Services", description: "Explore our complete range of security and opera\u00ADtional capabil\u00ADities.", href: "/services", image: "/images/tactical-4.jpg" },
+      { title: "Direct Action", description: "Elite capabil\u00ADities for high-threat environ\u00ADments and contested zones.", href: "/services/direct-action", image: "/images/tactical-1.jpg" },
+      { title: "Reconnaissance", description: "Full-spectrum intelli\u00ADgence from collec\u00ADtion through dissem\u00ADination.", href: "/services/reconnaissance", image: "/images/tactical-2.jpg" },
+      { title: "Counter-Trafficking", description: "Disrupt\u00ADing networks that profit from exploit\u00ADation.", href: "/services/counter-trafficking", image: "/images/tactical-3.jpg" },
+      { title: "All Services", description: "Wild\u00ADlife Miti\u00ADgation, Mari\u00ADtime, and more.", href: "/services", image: "/images/tactical-4.jpg" },
     ]
   },
   { 

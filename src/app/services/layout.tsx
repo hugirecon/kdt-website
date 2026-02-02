@@ -2,10 +2,10 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Services | Knight Division Tactical",
-  description: "Elite security services: Executive Protection, Tactical Operations, Critical Infrastructure, Intelligence Support, Counter-Trafficking, Remote Operations, and Maritime Security.",
+  description: "Elite security services: Wildlife Mitigation, Direct Action, Counter-Trafficking, Reconnaissance, and Maritime Operations.",
   openGraph: {
     title: "Security Services | Knight Division Tactical",
-    description: "From executive protection to tactical operations in contested environments. Elite security capabilities tailored to your mission requirements.",
+    description: "Elite security and operational capabilities for government and authorized clients worldwide.",
   },
 };
 
