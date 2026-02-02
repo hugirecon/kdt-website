@@ -79,10 +79,11 @@ const NAV_ITEMS: NavItemWithDropdown[] = [
     label: "Services", 
     href: "/services",
     dropdown: [
-      { title: "Direct Action", description: "Elite capabil\u00ADities for high-threat environ\u00ADments and contested zones.", href: "/services/direct-action", image: "/images/tactical-1.jpg" },
-      { title: "Reconnaissance", description: "Full-spectrum intelli\u00ADgence from collec\u00ADtion through dissem\u00ADination.", href: "/services/reconnaissance", image: "/images/tactical-2.jpg" },
+      { title: "Wildlife Mitigation", description: "Special\u00ADized protec\u00ADtion in remote and hazard\u00ADous environ\u00ADments.", href: "/services/wildlife-mitigation", image: "/images/tactical-1.jpg" },
+      { title: "Direct Action", description: "Elite capabil\u00ADities for high-threat environ\u00ADments and contested zones.", href: "/services/direct-action", image: "/images/tactical-2.jpg" },
       { title: "Counter-Trafficking", description: "Disrupt\u00ADing networks that profit from exploit\u00ADation.", href: "/services/counter-trafficking", image: "/images/tactical-3.jpg" },
-      { title: "All Services", description: "Wild\u00ADlife Miti\u00ADgation, Mari\u00ADtime, and more.", href: "/services", image: "/images/tactical-4.jpg" },
+      { title: "Reconnaissance", description: "Full-spectrum intelli\u00ADgence from collec\u00ADtion through dissem\u00ADination.", href: "/services/reconnaissance", image: "/images/tactical-4.jpg" },
+      { title: "Maritime", description: "Vessel protec\u00ADtion, anti-piracy, and port security.", href: "/services/maritime-operations", image: "/images/tactical-5.jpg" },
     ]
   },
   { 
