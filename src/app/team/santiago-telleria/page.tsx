@@ -71,20 +71,20 @@ function ProfileHero() {
           <div className="lg:w-80 flex-shrink-0">
             {/* Avatar */}
             <div className="w-48 h-48 rounded-2xl bg-gradient-to-br from-[#f97316]/20 via-[#f97316]/10 to-transparent flex items-center justify-center mb-6 border border-[#f97316]/20">
-              <span className="text-[#f97316] font-bold text-6xl">DM</span>
+              <span className="text-[#f97316] font-bold text-6xl">ST</span>
             </div>
             
             {/* Role Badge */}
-            <span className="inline-block px-3 py-1 rounded-md bg-blue-500/10 text-blue-400 text-[13px] font-medium mb-4">
-              OLS
+            <span className="inline-block px-3 py-1 rounded-md bg-purple-500/10 text-purple-400 text-[13px] font-medium mb-4">
+              MC
             </span>
             
             {/* Name */}
             <h1 className="text-[32px] font-bold text-white mb-2 leading-tight">
-              Devin Medrano
+              Santiago Telleria
             </h1>
             <p className="text-[16px] text-gray-400 mb-6">
-              Onboarding Logistics Specialist
+              Management Consultant
             </p>
             
             {/* Contact */}
@@ -101,7 +101,7 @@ function ProfileHero() {
             {/* Focus */}
             <div className="mt-8 pt-6 border-t border-white/10">
               <span className="text-[13px] text-gray-500 uppercase tracking-wider">Focus</span>
-              <p className="text-[15px] text-white mt-1">Personnel integration, support, logistics</p>
+              <p className="text-[15px] text-white mt-1">Strategy, operations, international business</p>
             </div>
           </div>
           
@@ -110,46 +110,35 @@ function ProfileHero() {
             <h2 className="text-[13px] text-gray-500 uppercase tracking-wider mb-4">About</h2>
             <div className="space-y-6 text-[16px] text-gray-300 leading-relaxed">
               <p>
-                Devin Medrano serves as the Onboarding Logistics Specialist at Knight Division Tactical, bringing a wealth of leadership and experience to the team. A native of rural East Texas, Devin enlisted in the Army during high school.
+                Santiago Telleria is a strategist shaped by operational successes across borders. After earning his degree in International Business Administration from Universidad de las Américas Puebla, he began consulting for companies in Mexico, helping them grow and attract investment.
               </p>
               
               <div className="pt-4">
-                <h3 className="text-[20px] font-semibold text-white mb-4">Military Service</h3>
+                <h3 className="text-[20px] font-semibold text-white mb-4">Professional Background</h3>
                 <p className="mb-4">
-                  Devin deployed to Iraq and Afghanistan on three GWOT operations with the 3rd Infantry Division. Rising to Sergeant (E5), he served as an M240 gunner, dismount, and driver for personal security detachments and graduated from Air Assault School at Fort Drum, NY.
-                </p>
-              </div>
-              
-              <div className="pt-4">
-                <h3 className="text-[20px] font-semibold text-white mb-4">Post-Service Career</h3>
-                <p className="mb-4">
-                  After his service, Devin earned a double major in Wildlife Ecology and Entomology from Oklahoma State University, where he excelled as a Southwest Regional Champion judoka and president of The Wildlife Society chapter. He also served as a wildland firefighter with the U.S. Fish and Wildlife Service.
+                  He later served as COO of Aleph Integrated, a firm connecting Mexican professionals with U.S. companies in high-demand industries. This cross-border experience has given him unique insight into international operations and workforce integration.
                 </p>
               </div>
               
               <p className="text-white font-medium">
-                An outdoorsman, martial artist, and devout Christian, Devin ensures every new KDT Agent is seamlessly integrated into the team, embodying excellence and commitment in his role.
+                Santiago brings a sharp logistical mind, calm under pressure, and a commitment to precision in every Mission he supports.
               </p>
               
               {/* Credentials Box */}
               <div className="p-6 rounded-xl bg-white/[0.02] border border-white/5 mt-6">
-                <h4 className="text-[13px] text-gray-500 uppercase tracking-wider mb-4">Military Credentials</h4>
+                <h4 className="text-[13px] text-gray-500 uppercase tracking-wider mb-4">Credentials</h4>
                 <ul className="space-y-2 text-[15px] text-white">
                   <li className="flex items-center gap-3">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#f97316]" />
-                    US Army Sergeant (E5)
+                    International Business Administration – Universidad de las Américas Puebla
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#f97316]" />
-                    3rd Infantry Division
+                    Former COO – Aleph Integrated
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#f97316]" />
-                    3x GWOT Deployments (Iraq & Afghanistan)
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#f97316]" />
-                    Air Assault School Graduate
+                    Cross-border business consulting experience
                   </li>
                 </ul>
               </div>
@@ -251,7 +240,7 @@ function Footer() {
   );
 }
 
-export default function DevinMedranoPage() {
+export default function SantiagoTelleriaPage() {
   return (
     <main className="min-h-screen bg-[#0a0a0a]">
       <Nav />

@@ -111,11 +111,11 @@ function TeamGrid() {
       badge: "bg-amber-500/10 text-amber-400"
     },
     { 
-      name: "Devin Medrano", 
-      role: "OLS", 
+      name: "Santiago Telleria", 
+      role: "MC", 
       title: "Personnel integration, support, logistics", 
-      href: "/team/devin-medrano", 
-      initials: "DM",
+      href: "/team/santiago-telleria", 
+      initials: "ST",
       badge: "bg-blue-500/10 text-blue-400"
     },
   ];
