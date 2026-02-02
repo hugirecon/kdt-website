@@ -81,6 +81,7 @@ function TeamGrid() {
       title: "Chief Executive Officer, Head of SPEAR Branch", 
       href: "/team/michael-schulz", 
       initials: "MS",
+      image: "/images/team/michael-schulz.png",
       badge: "bg-[#f97316]/10 text-[#f97316]"
     },
     { 
@@ -89,6 +90,7 @@ function TeamGrid() {
       title: "Chief Operating Officer, Head of PSC Branch", 
       href: "/team/matthew-mccalla", 
       initials: "MM",
+      image: "/images/team/matthew-mccalla.jpg",
       badge: "bg-[#f97316]/10 text-[#f97316]"
     },
   ];
@@ -135,9 +137,16 @@ function TeamGrid() {
                 href={member.href}
                 className="flex items-center gap-6 p-6 rounded-xl bg-gray-50 border border-gray-100 hover:border-[#f97316]/30 hover:shadow-lg transition-all group"
               >
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#f97316]/20 to-[#f97316]/5 flex items-center justify-center flex-shrink-0">
-                  <span className="text-[#f97316] font-bold text-2xl">{member.initials}</span>
-                </div>
+                {member.image ? (
+                  <div className="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={member.image} alt={member.name} className="w-full h-full object-cover object-top" />
+                  </div>
+                ) : (
+                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#f97316]/20 to-[#f97316]/5 flex items-center justify-center flex-shrink-0">
+                    <span className="text-[#f97316] font-bold text-2xl">{member.initials}</span>
+                  </div>
+                )}
                 <div className="flex-1">
                   <span className={`inline-block px-2 py-0.5 rounded text-[11px] font-medium mb-1 ${member.badge}`}>
                     {member.role}
@@ -168,7 +177,7 @@ function TeamGrid() {
                 {member.image ? (
                   <div className="w-16 h-16 rounded-xl overflow-hidden mb-4">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                    <img src={member.image} alt={member.name} className="w-full h-full object-cover object-top" style={{ transform: 'scale(1.5)', transformOrigin: 'top center' }} />
                   </div>
                 ) : (
                   <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#f97316]/20 to-[#f97316]/5 flex items-center justify-center mb-4">
