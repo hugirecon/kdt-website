@@ -213,11 +213,11 @@ export default function VOCPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            <h1 className="text-5xl md:text-7xl font-bold mb-8">
               <span className="text-white">Join the </span>
               <span className="text-[#00ff41] text-glow">VOC</span>
             </h1>
-            <p className="text-xl text-gray-400 mb-4" style={{ maxWidth: '42rem', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
+            <p className="text-xl text-gray-400 mb-6" style={{ maxWidth: '42rem', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
               The Virtual Operations Command — a pre-cursor to a major new technology.
             </p>
             <p className="text-lg text-gray-500 mb-12" style={{ maxWidth: '32rem', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
