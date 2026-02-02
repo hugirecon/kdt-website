@@ -193,14 +193,14 @@ export default function LandingPage() {
               href={btn.href}
               onMouseEnter={() => setHoveredButton(btn.href)}
               onMouseLeave={() => setHoveredButton(null)}
-              className="group relative"
+              className="group relative select-none"
               style={{ transitionDelay: `${400 + i * 100}ms` }}
             >
               {/* Liquid Metal Button */}
               <div 
                 className={`
                   relative overflow-hidden rounded-2xl p-6 md:p-8
-                  transition-all duration-500 ease-out
+                  transition-all duration-500 ease-out select-none
                   ${hoveredButton === btn.href 
                     ? 'scale-[1.02] shadow-[0_0_50px_rgba(200,200,200,0.15)]' 
                     : 'hover:scale-[1.01]'
