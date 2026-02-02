@@ -109,6 +109,27 @@ export default function Nav(_props: NavProps = {}) {
 
   return (
     <>
+      {/* User Account Icon - Top Right */}
+      <Link 
+        href="/account" 
+        className="fixed top-4 right-6 z-50 p-2 rounded-full hover:bg-white/10 transition-colors group"
+        title="Account"
+      >
+        <svg 
+          className="w-6 h-6 text-gray-400 group-hover:text-white transition-colors" 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            strokeWidth={1.5} 
+            d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" 
+          />
+        </svg>
+      </Link>
+
       {/* Google Font: Inria Sans & Inria Serif */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
