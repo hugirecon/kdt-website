@@ -52,6 +52,21 @@
   margin: 0;
 }
 
+/* Ensure consistent horizontal padding on larger screens */
+@media (min-width: 1024px) {
+  .px-6 {
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .px-6 {
+    padding-left: 4rem !important;
+    padding-right: 4rem !important;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
