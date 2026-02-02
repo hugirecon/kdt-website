@@ -206,7 +206,7 @@ export default function VOCPage() {
       <ShaderLines />
       
       {/* Hero Section */}
-      <section className="relative pb-20 px-4" style={{ paddingTop: '8rem' }}>
+      <section className="relative pb-20 px-6" style={{ paddingTop: '8rem' }}>
         <div className="max-w-6xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -231,7 +231,7 @@ export default function VOCPage() {
       </section>
 
       {/* Main Image with Glitch */}
-      <section className="px-4 py-20">
+      <section className="px-6 py-20">
         <div className="max-w-4xl mx-auto">
           <GlitchImage 
             src="/images/voc-operator.jpg" 
@@ -241,7 +241,7 @@ export default function VOCPage() {
       </section>
 
       {/* Features */}
-      <section className="px-4 py-20">
+      <section className="px-6 py-20">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
             <span className="text-[#00ff41]">What You Get</span>
@@ -310,7 +310,7 @@ export default function VOCPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="px-4 py-20 bg-[#030503]">
+      <section className="px-6 py-20 bg-[#030503]">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
             <span className="text-white">What Members </span>
@@ -343,7 +343,7 @@ export default function VOCPage() {
       </section>
 
       {/* CTA Section */}
-      <section id="subscribe" className="px-4 py-32 relative overflow-hidden">
+      <section id="subscribe" className="px-6 py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-[#00ff41]/5 to-transparent" />
         
         <div className="max-w-2xl mx-auto text-center relative z-10">
