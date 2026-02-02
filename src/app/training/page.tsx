@@ -304,24 +304,24 @@ function Instructors() {
 function Testimonials() {
   const testimonials = [
     {
-      quote: "KDT Training transformed my approach to tactical operations. The instructors are the real deal — their experience is unmatched.",
-      author: "Alex K.",
-      role: "Former Military, Now KDT Agent"
+      quote: "Honest, reliable, and most importantly, extremely competent. The team at Knight Division Tactical share a clear mission, driven by integrity, virtue, and high standards of excellence. I truly and genuinely appreciate all that KDT does!",
+      author: "Mark Anthony Good",
+      role: "Google Review"
     },
     {
-      quote: "Best training investment I've ever made. Went from civilian to confident in 2 days. Now working with KDT on active contracts.",
-      author: "Marcus T.",
-      role: "KDT Agent"
+      quote: "This past year I contracted with KDT covering four events in three different states. Their logistical ability to move men and equipment to remote locations on a moments notice is second to none. One phone call, a gentleman's handshake, and KDT will take it from there.",
+      author: "Chet",
+      role: "Google Review"
     },
     {
-      quote: "The attention to detail and personalized feedback sets KDT apart. They don't just teach — they develop operators.",
-      author: "Ryan M.",
-      role: "Executive Protection Professional"
+      quote: "These are the most professional men I have had the pleasure of working with. They by all means set the standard and exceeded expectations in every aspect. I trust my life with these gentlemen and recommend them to anyone out there needing dynamic security solutions.",
+      author: "Blaise Brunson",
+      role: "Google Review"
     },
     {
-      quote: "I've trained with many organizations worldwide. KDT is on another level. Their methods are innovative and the results speak for themselves.",
-      author: "David S.",
-      role: "Security Consultant"
+      quote: "I've been blown away by KDT's professionalism, reliability, and expertise. They know how to run a security outfit like few others do. These are your guys. Elite.",
+      author: "Clark Donaldson",
+      role: "Google Review"
     },
   ];
 
@@ -329,11 +329,15 @@ function Testimonials() {
     <section className="py-24 px-6 bg-white">
       <div className="max-w-[1200px] mx-auto">
         <div className="text-center mb-16">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <span className="text-[#f97316] text-2xl">★★★★★</span>
+            <span className="text-gray-600 font-medium">5.0 on Google</span>
+          </div>
           <h2 className="text-[clamp(32px,4vw,44px)] font-bold text-gray-900 leading-tight mb-4">
-            What Our Graduates Say
+            What Our Clients Say
           </h2>
           <p className="text-[18px] text-gray-600">
-            Real results from real operators.
+            Real reviews from real clients.
           </p>
         </div>
         
