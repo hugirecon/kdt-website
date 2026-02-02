@@ -66,6 +66,7 @@ interface NavItemWithDropdown {
 }
 
 const NAV_ITEMS: NavItemWithDropdown[] = [
+  { label: "Home", href: "/home" },
   { 
     label: "About", 
     href: "/about",
