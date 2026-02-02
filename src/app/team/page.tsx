@@ -100,6 +100,7 @@ function TeamGrid() {
       title: "Sales, outreach, acquisition, account management", 
       href: "/team/nicholas-norman", 
       initials: "NN",
+      image: "/images/team/nic-norman.jpg",
       badge: "bg-purple-500/10 text-purple-400"
     },
     { 
@@ -116,6 +117,7 @@ function TeamGrid() {
       title: "Personnel integration, support, logistics", 
       href: "/team/santiago-telleria", 
       initials: "ST",
+      image: "/images/team/santiago-telleria.jpg",
       badge: "bg-blue-500/10 text-blue-400"
     },
   ];
@@ -163,9 +165,16 @@ function TeamGrid() {
                 href={member.href}
                 className="p-6 rounded-xl bg-gray-50 border border-gray-100 hover:border-[#f97316]/30 hover:shadow-lg transition-all group"
               >
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#f97316]/20 to-[#f97316]/5 flex items-center justify-center mb-4">
-                  <span className="text-[#f97316] font-bold text-xl">{member.initials}</span>
-                </div>
+                {member.image ? (
+                  <div className="w-16 h-16 rounded-xl overflow-hidden mb-4">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                  </div>
+                ) : (
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#f97316]/20 to-[#f97316]/5 flex items-center justify-center mb-4">
+                    <span className="text-[#f97316] font-bold text-xl">{member.initials}</span>
+                  </div>
+                )}
                 <span className={`inline-block px-2 py-0.5 rounded text-[11px] font-medium mb-2 ${member.badge}`}>
                   {member.role}
                 </span>
