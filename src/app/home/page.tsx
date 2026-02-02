@@ -432,7 +432,7 @@ function CTA() {
 // ============ FOOTER ============
 function Footer() {
   return (
-    <footer className="py-12 px-6 border-t border-white/5">
+    <footer className="relative z-10 py-12 px-6 border-t border-white/10 bg-[#050510]">
       <div className="max-w-[1200px] mx-auto">
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           <div>
