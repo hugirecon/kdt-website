@@ -91,7 +91,7 @@ function TeamGrid() {
                 {member.image ? (
                   <div className="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={member.image} alt={member.name} className="w-full h-full object-cover object-top" />
+                    <img src={member.image} alt={member.name} className="w-full h-full object-cover object-top" style={{ transform: 'scale(2)', transformOrigin: 'top center' }} />
                   </div>
                 ) : (
                   <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#f97316]/20 to-[#f97316]/5 flex items-center justify-center flex-shrink-0">
@@ -128,7 +128,7 @@ function TeamGrid() {
                 {member.image ? (
                   <div className="w-16 h-16 rounded-xl overflow-hidden mb-4">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={member.image} alt={member.name} className="w-full h-full object-cover object-top" style={{ transform: 'scale(1.5)', transformOrigin: 'top center' }} />
+                    <img src={member.image} alt={member.name} className="w-full h-full object-cover object-top" style={{ transform: 'scale(2.5)', transformOrigin: 'top center' }} />
                   </div>
                 ) : (
                   <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#f97316]/20 to-[#f97316]/5 flex items-center justify-center mb-4">
