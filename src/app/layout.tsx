@@ -1,6 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  themeColor: '#030305',
+  width: 'device-width',
+  initialScale: 1,
+};
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -56,6 +62,10 @@ export const metadata: Metadata = {
   icons: {
     icon: "/logo.png",
     apple: "/logo.png",
+  },
+  other: {
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "black-translucent",
   },
 };
 
