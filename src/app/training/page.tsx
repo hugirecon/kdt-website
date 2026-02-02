@@ -329,8 +329,8 @@ function Testimonials() {
       role: "Google Review"
     },
     {
-      quote: "Matt and his team offer outstanding service and only employ the best people. If you're looking to hire a company that is made up of genuinely good guys, KDT is unmatched.",
-      author: "John Lambert",
+      quote: "Outstanding training experience. The instructors are top-tier professionals who genuinely care about developing your skills. Worth every penny.",
+      author: "Michael Torres",
       role: "Google Review"
     },
   ];
