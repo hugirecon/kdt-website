@@ -243,7 +243,7 @@ export default function VOCPage() {
       {/* Features */}
       <section className="px-6 py-20">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center" style={{ marginBottom: '2.5rem' }}>
+          <h2 className="text-3xl md:text-4xl font-bold text-center" style={{ marginBottom: '35px' }}>
             <span className="text-[#00ff41]">What You Get</span>
           </h2>
           
