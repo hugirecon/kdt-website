@@ -20,7 +20,7 @@ function Hero() {
           <br />
           <span className="text-[#f97316]">Operations</span>
         </h1>
-        <p className="text-[18px] text-gray-400 leading-relaxed max-w-[42rem] mx-auto">
+        <p className="text-[18px] text-gray-400 leading-relaxed" style={{ maxWidth: '42rem', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
           Disrupting the networks that profit from exploitation. Intelligence-driven support for organizations combating transnational criminal enterprises.
         </p>
       </div>

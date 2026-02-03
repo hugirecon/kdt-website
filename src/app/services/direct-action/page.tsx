@@ -20,7 +20,7 @@ function Hero() {
           <br />
           <span className="text-[#f97316]">Action</span>
         </h1>
-        <p className="text-[18px] text-gray-400 leading-relaxed max-w-[42rem] mx-auto">
+        <p className="text-[18px] text-gray-400 leading-relaxed" style={{ maxWidth: '42rem', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
           When the mission demands more. Elite capabilities for high-threat environments where the margin for error is zero.
         </p>
       </div>

@@ -18,7 +18,7 @@ function Hero() {
         <h1 className="text-[clamp(40px,5vw,56px)] font-bold text-white leading-[1.1] mb-6">
           Reconnaissance
         </h1>
-        <p className="text-[18px] text-gray-400 leading-relaxed max-w-[42rem] mx-auto">
+        <p className="text-[18px] text-gray-400 leading-relaxed" style={{ maxWidth: '42rem', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
           Information dominance through superior collection, analysis, and operational intelligence. Seeing the battlefield before the battle.
         </p>
       </div>
