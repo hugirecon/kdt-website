@@ -121,13 +121,16 @@ export default function LandingPage() {
     { href: "/contact", label: "Contact", desc: "Get in touch" },
   ];
 
-  // Add liquid shine animation
+  // Add liquid shine animation and disable tap highlight
   useEffect(() => {
     const style = document.createElement('style');
     style.textContent = `
       @keyframes liquidShine {
         0% { transform: translateX(-100%); }
         100% { transform: translateX(100%); }
+      }
+      * {
+        -webkit-tap-highlight-color: transparent;
       }
     `;
     document.head.appendChild(style);
@@ -194,7 +197,13 @@ export default function LandingPage() {
               onMouseEnter={() => setHoveredButton(btn.href)}
               onMouseLeave={() => setHoveredButton(null)}
               className="group relative select-none"
-              style={{ transitionDelay: `${400 + i * 100}ms` }}
+              style={{ 
+                transitionDelay: `${400 + i * 100}ms`,
+                WebkitTapHighlightColor: 'transparent',
+                WebkitTouchCallout: 'none',
+                WebkitUserSelect: 'none',
+                userSelect: 'none',
+              }}
             >
               {/* Liquid Metal Button */}
               <div 
@@ -226,9 +235,9 @@ export default function LandingPage() {
                   }}
                 />
 
-                <div className="text-center relative z-10">
+                <div className="text-center relative z-10 select-none" style={{ WebkitUserSelect: 'none', userSelect: 'none' }}>
                   <div 
-                    className="font-semibold text-lg md:text-xl mb-2 transition-all duration-300"
+                    className="font-semibold text-lg md:text-xl mb-2 transition-all duration-300 select-none"
                     style={{
                       background: hoveredButton === btn.href 
                         ? 'linear-gradient(180deg, #ffffff 0%, #c0c0c0 100%)'
@@ -236,11 +245,13 @@ export default function LandingPage() {
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       backgroundClip: 'text',
+                      WebkitUserSelect: 'none',
+                      userSelect: 'none',
                     }}
                   >
                     {btn.label}
                   </div>
-                  <div className="text-gray-500 text-xs md:text-sm group-hover:text-gray-400 transition-colors">
+                  <div className="text-gray-500 text-xs md:text-sm group-hover:text-gray-400 transition-colors select-none" style={{ WebkitUserSelect: 'none', userSelect: 'none' }}>
                     {btn.desc}
                   </div>
                 </div>
