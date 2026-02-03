@@ -254,14 +254,8 @@ export default function LandingPage() {
 
                 <div className="text-center relative z-10 select-none" style={{ WebkitUserSelect: 'none', userSelect: 'none' }}>
                   <div 
-                    className="font-semibold text-lg md:text-xl mb-2 transition-all duration-300 select-none"
+                    className="font-semibold text-lg md:text-xl mb-2 select-none text-gray-200 group-hover:text-white transition-colors duration-300"
                     style={{
-                      background: hoveredButton === btn.href 
-                        ? 'linear-gradient(180deg, #ffffff 0%, #c0c0c0 100%)'
-                        : 'linear-gradient(180deg, #e0e0e0 0%, #a0a0a0 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
                       WebkitUserSelect: 'none',
                       userSelect: 'none',
                     }}
