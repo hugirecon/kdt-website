@@ -130,7 +130,22 @@ export default function LandingPage() {
         100% { transform: translateX(100%); }
       }
       * {
-        -webkit-tap-highlight-color: transparent;
+        -webkit-tap-highlight-color: transparent !important;
+        -webkit-touch-callout: none !important;
+      }
+      *:focus {
+        outline: none !important;
+      }
+      *::selection {
+        background: transparent !important;
+      }
+      *::-moz-selection {
+        background: transparent !important;
+      }
+      a, button {
+        -webkit-user-select: none !important;
+        user-select: none !important;
+        -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
       }
     `;
     document.head.appendChild(style);
@@ -196,14 +211,16 @@ export default function LandingPage() {
               href={btn.href}
               onMouseEnter={() => setHoveredButton(btn.href)}
               onMouseLeave={() => setHoveredButton(null)}
-              className="group relative select-none"
+              className="group relative select-none outline-none focus:outline-none focus-visible:outline-none"
               style={{ 
                 transitionDelay: `${400 + i * 100}ms`,
                 WebkitTapHighlightColor: 'transparent',
                 WebkitTouchCallout: 'none',
                 WebkitUserSelect: 'none',
                 userSelect: 'none',
+                outline: 'none',
               }}
+              draggable={false}
             >
               {/* Liquid Metal Button */}
               <div 
