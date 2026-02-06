@@ -8,7 +8,7 @@ import Nav from "@/components/Nav";
 import EncryptButton from "@/components/EncryptButton";
 import QuoteTestimonial from "@/components/QuoteTestimonial";
 
-const LaserFlow = dynamic(() => import("@/components/LaserFlow"), { ssr: false });
+const BeamGridBackground = dynamic(() => import("@/components/BeamGridBackground"), { ssr: false });
 
 // Magnetic Scramble Button Component
 function MagneticScrambleButton({ children, href }: { children: string; href: string }) {
@@ -173,34 +173,31 @@ const kdtTestimonials = [
   }
 ];
 
-// Shader Lines Background
-function ShaderLines() {
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
-      <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
-            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#00ff41" strokeWidth="0.5" />
-          </pattern>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#grid)" />
-      </svg>
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-b from-transparent via-[#00ff41]/5 to-transparent"
-        animate={{ y: ["-100%", "100%"] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-      />
-    </div>
-  );
-}
-
 export default function VOCPage() {
   return (
     <div className="min-h-screen bg-[#050a05] voc-theme relative">
       <Nav />
-      <ShaderLines />
       
-      {/* Mobile: Simplified glow (LaserFlow is heavy on mobile) */}
+      {/* BeamGridBackground - full page animated grid background */}
+      <div className="fixed inset-0 z-0 hidden md:block">
+        <BeamGridBackground 
+          gridSize={50}
+          gridColor="#0a150a"
+          darkGridColor="#0a150a"
+          beamColor="rgba(0, 255, 65, 0.8)"
+          darkBeamColor="rgba(0, 255, 65, 0.8)"
+          beamCount={10}
+          extraBeamCount={4}
+          beamThickness={2}
+          beamGlow={true}
+          glowIntensity={40}
+          beamSpeed={0.08}
+          showFade={true}
+          fadeIntensity={30}
+        />
+      </div>
+      
+      {/* Mobile: Simplified glow (BeamGrid is heavy on mobile) */}
       <div className="fixed inset-0 pointer-events-none z-0 md:hidden">
         <div className="absolute top-[-15%] left-1/2 w-[200vw] h-[80vh] bg-gradient-radial from-[#00ff41]/15 via-[#00ff41]/6 to-transparent rounded-full blur-[200px] -translate-x-1/2" />
       </div>
@@ -231,50 +228,18 @@ export default function VOCPage() {
               <EncryptButton />
             </motion.div>
             
-            {/* Right - Visual anchor with LaserFlow pouring onto it */}
+            {/* Right - Visual anchor */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative"
             >
-              {/* LaserFlow positioned so beam flows down ONTO the image - container overlaps image */}
-              <div 
-                className="absolute pointer-events-none z-20 hidden md:block"
-                style={{
-                  top: '-50%',
-                  left: '-30%',
-                  right: '-30%',
-                  bottom: '-20%',
-                }}
-              >
-                <LaserFlow 
-                  color="#00ff41"
-                  horizontalBeamOffset={0.0}
-                  verticalBeamOffset={0.1}
-                  horizontalSizing={0.5}
-                  verticalSizing={2.0}
-                  wispDensity={1}
-                  wispSpeed={15}
-                  wispIntensity={5}
-                  flowSpeed={0.35}
-                  flowStrength={0.25}
-                  fogIntensity={0.5}
-                  fogScale={0.3}
-                  fogFallSpeed={0.6}
-                  decay={1.1}
-                  falloffStart={1.2}
-                  mouseTiltStrength={0.01}
-                  mouseSmoothTime={0.0}
-                />
-              </div>
-              
-              {/* The image - laser pours onto the top of this */}
               <div className="relative z-10">
                 <img 
                   src="/images/operations.jpg" 
                   alt="VOC Operations"
-                  className="w-full h-auto rounded-2xl"
+                  className="w-full h-auto rounded-2xl border border-[#00ff41]/20"
                 />
               </div>
             </motion.div>
