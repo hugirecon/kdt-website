@@ -208,31 +208,31 @@ export default function VOCPage() {
       <Nav />
       <ShaderLines />
       
-      {/* LASER FLOW - Page level, more nebula/atmospheric like huly.io */}
-      {/* Desktop: Full laser effect - wider, more diffuse, centered */}
+      {/* LASER FLOW - Positioned to wrap around hero visual (right side) like huly.io */}
+      {/* Desktop: Anchored to right where the hero image sits */}
       <div 
-        className="fixed top-0 left-1/2 w-[100vw] h-[200vh] pointer-events-none z-0 hidden md:block"
+        className="fixed top-0 right-0 w-[65vw] h-[170vh] pointer-events-none z-0 hidden md:block"
         style={{ 
-          transform: 'translateX(-40%) translateY(-10%)',
+          transform: 'translateX(5%) translateY(-8%)',
         }}
       >
         <LaserFlow 
           color="#00ff41"
-          horizontalBeamOffset={0.08}
-          verticalBeamOffset={-0.05}
-          horizontalSizing={1.15}
-          verticalSizing={2.2}
-          wispDensity={0.75}
-          wispSpeed={9}
-          wispIntensity={2.8}
-          flowSpeed={0.22}
-          flowStrength={0.32}
-          fogIntensity={0.82}
-          fogScale={0.4}
-          fogFallSpeed={0.38}
-          decay={1.5}
-          falloffStart={1.55}
-          mouseTiltStrength={0.01}
+          horizontalBeamOffset={-0.05}
+          verticalBeamOffset={-0.1}
+          horizontalSizing={0.85}
+          verticalSizing={1.8}
+          wispDensity={0.6}
+          wispSpeed={7}
+          wispIntensity={2}
+          flowSpeed={0.18}
+          flowStrength={0.4}
+          fogIntensity={0.85}
+          fogScale={0.45}
+          fogFallSpeed={0.3}
+          decay={1.6}
+          falloffStart={1.7}
+          mouseTiltStrength={0.006}
           mouseSmoothTime={0.0}
         />
       </div>
@@ -243,17 +243,17 @@ export default function VOCPage() {
         <div className="absolute top-[20%] left-1/2 w-[4px] h-[55vh] bg-gradient-to-b from-[#00ff41] via-[#00ff41]/50 to-transparent blur-[4px] -translate-x-1/2" />
       </div>
       
-      {/* Atmospheric fog effects (green tones) - more diffuse like huly */}
+      {/* Atmospheric fog effects - concentrated around hero visual on right */}
       <div className="fixed inset-0 pointer-events-none z-0 hidden md:block">
-        <div className="absolute top-[-10%] left-1/3 w-[1400px] h-[1400px] bg-[#00ff41]/20 rounded-full blur-[300px]" />
-        <div className="absolute top-[15%] right-[0%] w-[1000px] h-[1000px] bg-[#00ff41]/15 rounded-full blur-[200px]" />
-        <div className="absolute top-[50%] left-[20%] w-[600px] h-[600px] bg-emerald-500/15 rounded-full blur-[150px]" />
+        <div className="absolute top-[5%] right-[10%] w-[1000px] h-[1000px] bg-[#00ff41]/25 rounded-full blur-[250px]" />
+        <div className="absolute top-[25%] right-[-5%] w-[800px] h-[800px] bg-[#00ff41]/20 rounded-full blur-[200px]" />
+        <div className="absolute top-[60%] right-[15%] w-[600px] h-[600px] bg-emerald-500/15 rounded-full blur-[180px]" />
       </div>
       
-      {/* Hero Section */}
-      <section className="relative min-h-screen px-6" style={{ paddingTop: '8rem' }}>
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="max-w-xl">
+      {/* Hero Section - Split layout like huly.io: text left, visual right */}
+      <section className="relative min-h-screen px-6 flex items-center" style={{ paddingTop: '6rem', paddingBottom: '4rem' }}>
+        <div className="max-w-7xl mx-auto relative z-10 w-full">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left - Text Content */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -261,7 +261,7 @@ export default function VOCPage() {
               transition={{ duration: 0.6 }}
               className="text-left"
             >
-              <h1 className="text-5xl md:text-7xl font-bold mb-8">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8">
                 <span className="text-white">Join the </span>
                 <span className="text-[#00ff41] text-glow">VOC</span>
               </h1>
@@ -275,17 +275,24 @@ export default function VOCPage() {
               
               <EncryptButton />
             </motion.div>
+            
+            {/* Right - Visual anchor (like huly's product screenshot) */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative"
+            >
+              {/* Glow behind image to blend with laser */}
+              <div className="absolute inset-0 bg-[#00ff41]/20 rounded-2xl blur-[60px] scale-110" />
+              <div className="relative">
+                <GlitchImage 
+                  src="/images/voc-operator.jpg" 
+                  alt="VOC Operator"
+                />
+              </div>
+            </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* Main Image with Glitch */}
-      <section className="px-6 py-20 relative z-10">
-        <div className="max-w-4xl mx-auto">
-          <GlitchImage 
-            src="/images/voc-operator.jpg" 
-            alt="VOC Operator"
-          />
         </div>
       </section>
 
