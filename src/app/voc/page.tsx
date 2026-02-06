@@ -229,80 +229,83 @@ export default function VOCPage() {
               <EncryptButton />
             </motion.div>
             
-            {/* Right - Visual anchor with LaserFlow Box effect */}
+            {/* Right - LaserFlow Box with image inside */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative hidden md:block"
             >
-              {/* LaserFlow Box Container - matches ReactBits "Box" variant */}
-              <div className="relative">
-                {/* LaserFlow - positioned to pour into the box */}
+              {/* The Box - container that laser pours into */}
+              <div 
+                className="relative rounded-xl overflow-hidden"
+                style={{
+                  border: '1px solid rgba(0, 255, 65, 0.25)',
+                  boxShadow: '0 0 60px rgba(0, 255, 65, 0.1), inset 0 0 80px rgba(0, 255, 65, 0.03)',
+                }}
+              >
+                {/* LaserFlow - fills the box, pours in from top */}
                 <div 
-                  className="absolute pointer-events-none"
-                  style={{
-                    top: '-80%',
-                    left: '0',
-                    right: '0',
-                    height: '200%',
-                    zIndex: 20,
-                  }}
+                  className="absolute inset-0 pointer-events-none"
+                  style={{ zIndex: 10 }}
                 >
                   <LaserFlow 
                     color="#00ff41"
                     horizontalBeamOffset={0.0}
-                    verticalBeamOffset={0.0}
-                    horizontalSizing={0.5}
-                    verticalSizing={1.8}
-                    wispDensity={1.5}
-                    wispSpeed={10}
-                    wispIntensity={5}
-                    flowSpeed={0.25}
-                    flowStrength={0.15}
-                    fogIntensity={0.6}
-                    fogScale={0.4}
-                    fogFallSpeed={0.4}
-                    decay={0.8}
-                    falloffStart={1.2}
-                    mouseTiltStrength={0.005}
+                    verticalBeamOffset={-0.3}
+                    horizontalSizing={0.4}
+                    verticalSizing={1.2}
+                    wispDensity={1.8}
+                    wispSpeed={8}
+                    wispIntensity={6}
+                    flowSpeed={0.2}
+                    flowStrength={0.12}
+                    fogIntensity={0.7}
+                    fogScale={0.5}
+                    fogFallSpeed={0.3}
+                    decay={0.6}
+                    falloffStart={1.0}
+                    mouseTiltStrength={0.003}
                     mouseSmoothTime={0.0}
                   />
                 </div>
                 
-                {/* Image container - laser pours onto it */}
-                <div className="relative z-10">
-                  {/* Top edge glow - where laser hits */}
-                  <div 
-                    className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-6 rounded-full"
-                    style={{
-                      background: 'radial-gradient(ellipse, rgba(0, 255, 65, 0.7) 0%, transparent 70%)',
-                      filter: 'blur(12px)',
-                    }}
-                  />
-                  
-                  {/* Image */}
-                  <img 
-                    src="/images/operations.jpg" 
-                    alt="VOC Operations"
-                    className="w-full h-auto rounded-2xl border border-[#00ff41]/20"
-                  />
-                </div>
+                {/* Top glow where laser enters */}
+                <div 
+                  className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-8"
+                  style={{
+                    background: 'radial-gradient(ellipse at center top, rgba(0, 255, 65, 0.5) 0%, transparent 70%)',
+                    filter: 'blur(10px)',
+                    zIndex: 5,
+                  }}
+                />
+                
+                {/* Image inside the box */}
+                <img 
+                  src="/images/operations.jpg" 
+                  alt="VOC Operations"
+                  className="w-full h-auto relative z-0"
+                />
               </div>
             </motion.div>
             
-            {/* Mobile fallback - just the image without heavy effects */}
+            {/* Mobile fallback */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative md:hidden"
             >
-              <img 
-                src="/images/operations.jpg" 
-                alt="VOC Operations"
-                className="w-full h-auto rounded-2xl border border-[#00ff41]/20"
-              />
+              <div 
+                className="rounded-xl overflow-hidden"
+                style={{ border: '1px solid rgba(0, 255, 65, 0.25)' }}
+              >
+                <img 
+                  src="/images/operations.jpg" 
+                  alt="VOC Operations"
+                  className="w-full h-auto"
+                />
+              </div>
             </motion.div>
           </div>
         </div>
