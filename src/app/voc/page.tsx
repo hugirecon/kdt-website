@@ -235,41 +235,42 @@ export default function VOCPage() {
               <EncryptButton />
             </motion.div>
             
-            {/* Right - Visual anchor with LaserFlow pouring over it */}
+            {/* Right - Visual anchor with LaserFlow as background behind it */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative"
             >
-              {/* LaserFlow container - positioned to pour over the image */}
-              <div className="absolute inset-0 -top-[100%] -bottom-[50%] -left-[25%] -right-[25%] pointer-events-none z-10 hidden md:block">
+              {/* LaserFlow - BEHIND the image as atmospheric background */}
+              <div className="absolute inset-0 -top-[80%] -bottom-[30%] -left-[50%] -right-[50%] pointer-events-none z-0 hidden md:block">
                 <LaserFlow 
                   color="#00ff41"
                   horizontalBeamOffset={0.0}
-                  verticalBeamOffset={-0.15}
-                  horizontalSizing={0.6}
-                  verticalSizing={1.8}
-                  wispDensity={0.8}
-                  wispSpeed={8}
-                  wispIntensity={3}
-                  flowSpeed={0.2}
-                  flowStrength={0.3}
-                  fogIntensity={0.7}
-                  fogScale={0.4}
-                  fogFallSpeed={0.25}
-                  decay={1.4}
-                  falloffStart={1.5}
-                  mouseTiltStrength={0.005}
+                  verticalBeamOffset={-0.1}
+                  horizontalSizing={0.5}
+                  verticalSizing={2.0}
+                  wispDensity={1}
+                  wispSpeed={15}
+                  wispIntensity={5}
+                  flowSpeed={0.35}
+                  flowStrength={0.25}
+                  fogIntensity={0.45}
+                  fogScale={0.3}
+                  fogFallSpeed={0.6}
+                  decay={1.1}
+                  falloffStart={1.2}
+                  mouseTiltStrength={0.01}
                   mouseSmoothTime={0.0}
                 />
               </div>
               
-              {/* The image the laser pours over */}
-              <div className="relative z-0">
-                <GlitchImage 
+              {/* The image - sits IN FRONT of the laser */}
+              <div className="relative z-10">
+                <img 
                   src="/images/voc-operator.jpg" 
                   alt="VOC Operator"
+                  className="w-full h-auto rounded-2xl"
                 />
               </div>
             </motion.div>

@@ -316,7 +316,7 @@ export const LaserFlow = ({
 
     const renderer = new THREE.WebGLRenderer({
       antialias: false,
-      alpha: true,
+      alpha: false,
       depth: false,
       stencil: false,
       powerPreference: 'high-performance',
@@ -330,7 +330,7 @@ export const LaserFlow = ({
     currentDprRef.current = baseDprRef.current;
 
     renderer.setPixelRatio(currentDprRef.current);
-    renderer.setClearColor(0x000000, 0);
+    renderer.setClearColor(0x000000, 1);
     const canvas = renderer.domElement;
     canvas.style.width = '100%';
     canvas.style.height = '100%';
@@ -373,10 +373,10 @@ export const LaserFlow = ({
       vertexShader: VERT,
       fragmentShader: FRAG,
       uniforms,
-      transparent: true,
+      transparent: false,
       depthTest: false,
       depthWrite: false,
-      blending: THREE.AdditiveBlending
+      blending: THREE.NormalBlending
     });
 
     const mesh = new THREE.Mesh(geometry, material);
