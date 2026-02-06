@@ -208,10 +208,17 @@ export default function VOCPage() {
       <Nav />
       <ShaderLines />
       
-      {/* Hero Section */}
-      <section className="relative pb-20 px-6" style={{ paddingTop: '8rem' }}>
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* Hero Section - huly.io style */}
+      <section className="relative min-h-screen px-6 overflow-hidden" style={{ paddingTop: '8rem' }}>
+        {/* Atmospheric fog effects (green tones) */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#00ff41]/15 rounded-full blur-[150px] translate-x-1/4 -translate-y-1/4" />
+          <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-[#00ff41]/10 rounded-full blur-[120px]" />
+          <div className="absolute bottom-1/4 right-1/3 w-[500px] h-[500px] bg-emerald-500/8 rounded-full blur-[100px]" />
+        </div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid lg:grid-cols-2 gap-8 items-center min-h-[85vh]">
             {/* Left - Text Content */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -234,21 +241,31 @@ export default function VOCPage() {
               <EncryptButton />
             </motion.div>
             
-            {/* Right - Laser Flow */}
+            {/* Right - Laser Flow (bigger, huly.io style) */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative h-[500px] lg:h-[600px]"
+              className="relative h-[700px] lg:h-[850px]"
             >
               <LaserFlow 
                 color="#00ff41"
-                verticalSizing={2.5}
-                horizontalSizing={0.6}
-                fogIntensity={0.5}
-                wispIntensity={6}
-                horizontalBeamOffset={0.0}
-                verticalBeamOffset={-0.1}
+                horizontalBeamOffset={0.1}
+                verticalBeamOffset={0.0}
+                horizontalSizing={0.5}
+                verticalSizing={2.0}
+                wispDensity={1}
+                wispSpeed={15}
+                wispIntensity={5}
+                flowSpeed={0.35}
+                flowStrength={0.25}
+                fogIntensity={0.45}
+                fogScale={0.3}
+                fogFallSpeed={0.6}
+                decay={1.1}
+                falloffStart={1.2}
+                mouseTiltStrength={0.01}
+                mouseSmoothTime={0.0}
               />
             </motion.div>
           </div>
