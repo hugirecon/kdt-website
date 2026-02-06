@@ -204,46 +204,51 @@ export default function VOCPage() {
       <Nav />
       <ShaderLines />
       
-      {/* LASER FLOW - Positioned to wrap around hero visual (right side) like huly.io */}
-      {/* Desktop: Anchored to right where the hero image sits */}
+      {/* LASER FLOW - Soft atmospheric glow centered like huly.io's nebula */}
+      {/* Desktop: Centered with diffuse, ethereal quality */}
       <div 
-        className="fixed top-0 right-0 w-[65vw] h-[170vh] pointer-events-none z-0 hidden md:block"
+        className="fixed top-0 left-1/2 w-[90vw] h-[140vh] pointer-events-none z-0 hidden md:block"
         style={{ 
-          transform: 'translateX(5%) translateY(-8%)',
+          transform: 'translateX(-50%) translateY(-15%)',
         }}
       >
         <LaserFlow 
           color="#00ff41"
-          horizontalBeamOffset={-0.05}
-          verticalBeamOffset={-0.1}
-          horizontalSizing={0.85}
-          verticalSizing={1.8}
-          wispDensity={0.6}
-          wispSpeed={7}
-          wispIntensity={2}
-          flowSpeed={0.18}
-          flowStrength={0.4}
-          fogIntensity={0.85}
-          fogScale={0.45}
-          fogFallSpeed={0.3}
-          decay={1.6}
-          falloffStart={1.7}
-          mouseTiltStrength={0.006}
+          horizontalBeamOffset={0.0}
+          verticalBeamOffset={-0.15}
+          horizontalSizing={1.2}
+          verticalSizing={2.2}
+          wispDensity={0.3}
+          wispSpeed={4}
+          wispIntensity={0.8}
+          flowSpeed={0.12}
+          flowStrength={0.25}
+          fogIntensity={1.4}
+          fogScale={0.28}
+          fogFallSpeed={0.18}
+          decay={2.2}
+          falloffStart={2.0}
+          mouseTiltStrength={0.003}
           mouseSmoothTime={0.0}
         />
       </div>
       
-      {/* Mobile: Simplified static glow (LaserFlow is heavy on mobile) */}
+      {/* Mobile: Simplified diffuse glow (LaserFlow is heavy on mobile) */}
       <div className="fixed inset-0 pointer-events-none z-0 md:hidden">
-        <div className="absolute top-0 left-1/2 w-[200vw] h-[90vh] bg-gradient-radial from-[#00ff41]/30 via-[#00ff41]/15 to-transparent rounded-full blur-[150px] -translate-y-1/3 -translate-x-1/2" />
-        <div className="absolute top-[20%] left-1/2 w-[4px] h-[55vh] bg-gradient-to-b from-[#00ff41] via-[#00ff41]/50 to-transparent blur-[4px] -translate-x-1/2" />
+        <div className="absolute top-[-10%] left-1/2 w-[200vw] h-[80vh] bg-gradient-radial from-[#00ff41]/25 via-[#00ff41]/10 to-transparent rounded-full blur-[180px] -translate-x-1/2" />
+        <div className="absolute top-[15%] left-1/2 w-[150vw] h-[50vh] bg-[#00ff41]/12 rounded-full blur-[150px] -translate-x-1/2" />
       </div>
       
-      {/* Atmospheric fog effects - concentrated around hero visual on right */}
+      {/* Atmospheric fog effects - diffuse floating clouds like huly.io */}
       <div className="fixed inset-0 pointer-events-none z-0 hidden md:block">
-        <div className="absolute top-[5%] right-[10%] w-[1000px] h-[1000px] bg-[#00ff41]/25 rounded-full blur-[250px]" />
-        <div className="absolute top-[25%] right-[-5%] w-[800px] h-[800px] bg-[#00ff41]/20 rounded-full blur-[200px]" />
-        <div className="absolute top-[60%] right-[15%] w-[600px] h-[600px] bg-emerald-500/15 rounded-full blur-[180px]" />
+        {/* Primary central nebula */}
+        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1400px] h-[1200px] bg-[#00ff41]/18 rounded-full blur-[300px]" />
+        {/* Secondary floating layer - slightly offset */}
+        <div className="absolute top-[8%] left-[40%] w-[900px] h-[900px] bg-[#00ff41]/12 rounded-full blur-[250px]" />
+        {/* Tertiary subtle atmosphere */}
+        <div className="absolute top-[20%] left-[55%] w-[700px] h-[700px] bg-emerald-400/8 rounded-full blur-[220px]" />
+        {/* Lower diffuse glow */}
+        <div className="absolute top-[45%] left-1/2 -translate-x-1/2 w-[1100px] h-[600px] bg-[#00ff41]/10 rounded-full blur-[280px]" />
       </div>
       
       {/* Hero Section - Split layout like huly.io: text left, visual right */}
