@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
 import Nav from "@/components/Nav";
 import EncryptButton from "@/components/EncryptButton";
@@ -148,36 +148,101 @@ function GlitchImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
-// Testimonial Component
-function Testimonial({ quote, author, role, image }: { quote: string; author: string; role: string; image?: string }) {
+// Quote Testimonial Component (Framer-style)
+const testimonials = [
+  {
+    quote: "Matt and his team offer outstanding service and only employ the best people. If you're looking to hire a company that is made up of genuinely good guys, KDT is unmatched.",
+    author: "John Lambert",
+    initials: "JL"
+  },
+  {
+    quote: "Excellent service and top-notch professionalism! The team is knowledgeable, reliable, and goes above and beyond to ensure safety and peace of mind.",
+    author: "Cameron Polley",
+    initials: "CP"
+  },
+  {
+    quote: "Highly recommend Knight Division Tactical for all your security needs. They are extremely professional and their attention to detail is second to none.",
+    author: "Doug Bennett",
+    initials: "DB"
+  },
+  {
+    quote: "A veteran-owned company that truly lives by their values. The level of professionalism and capability is unmatched in the industry.",
+    author: "Robert Hayes",
+    initials: "RH"
+  }
+];
+
+function QuoteTestimonial() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState<number | null>(null);
+  
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="bg-[#0d1a0d] border border-[#00ff41]/20 rounded-2xl p-8 relative overflow-hidden"
-    >
-      {/* Quote mark */}
-      <div className="absolute top-4 left-4 text-[#00ff41]/10 text-8xl font-serif leading-none">"</div>
-      
-      <div className="relative z-10">
-        <p className="text-lg text-gray-300 mb-6 italic">"{quote}"</p>
-        <div className="flex items-center gap-4">
-          {image && (
-            <div className="w-12 h-12 rounded-full bg-[#00ff41]/20 overflow-hidden">
-              <img src={image} alt={author} className="w-full h-full object-cover" />
-            </div>
-          )}
-          <div>
-            <div className="font-semibold text-white">{author}</div>
-            <div className="text-sm text-[#00ff41]">{role}</div>
-          </div>
-        </div>
+    <div className="relative py-16">
+      {/* Quote content */}
+      <div className="text-center max-w-4xl mx-auto px-6 relative">
+        {/* Subtle quotation marks */}
+        <span className="absolute -left-4 md:left-0 top-0 text-[#00ff41]/10 text-[120px] md:text-[180px] font-serif leading-none select-none">"</span>
+        <span className="absolute -right-4 md:right-0 bottom-0 text-[#00ff41]/10 text-[120px] md:text-[180px] font-serif leading-none select-none rotate-180">"</span>
+        
+        {/* Main quote */}
+        <motion.p
+          key={activeIndex}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.5 }}
+          className="text-2xl md:text-4xl lg:text-5xl font-light text-white leading-relaxed tracking-tight"
+        >
+          {testimonials[activeIndex].quote}
+        </motion.p>
+        
+        {/* Caption */}
+        <motion.p
+          key={`caption-${activeIndex}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-8 text-xs tracking-[0.2em] text-gray-500 uppercase"
+        >
+          Google Review
+        </motion.p>
       </div>
       
-      {/* Glow effect */}
-      <div className="absolute -bottom-20 -right-20 w-40 h-40 bg-[#00ff41]/10 rounded-full blur-3xl" />
-    </motion.div>
+      {/* Avatar navigation */}
+      <div className="flex justify-center items-center gap-3 mt-10">
+        {testimonials.map((testimonial, idx) => (
+          <motion.button
+            key={idx}
+            onClick={() => setActiveIndex(idx)}
+            onMouseEnter={() => setIsHovered(idx)}
+            onMouseLeave={() => setIsHovered(null)}
+            className={`relative w-12 h-12 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-300 ${
+              activeIndex === idx 
+                ? 'bg-[#00ff41] text-black scale-110' 
+                : 'bg-[#00ff41]/20 text-[#00ff41] hover:bg-[#00ff41]/40'
+            }`}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {testimonial.initials}
+            
+            {/* Hover tooltip with name */}
+            <AnimatePresence>
+              {isHovered === idx && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs text-gray-400"
+                >
+                  {testimonial.author}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.button>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -399,10 +464,11 @@ export default function VOCPage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="px-6 py-20 bg-[#030503] relative z-10">
+      {/* Testimonials - Framer Quote Testimonial style */}
+      <section className="py-24 bg-[#030503] relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+          {/* Header */}
+          <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-2 mb-4">
               <span className="text-[#00ff41] text-2xl">★★★★★</span>
               <span className="text-gray-400 font-medium">5.0 on Google</span>
@@ -413,28 +479,8 @@ export default function VOCPage() {
             </h2>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8">
-            <Testimonial
-              quote="Matt and his team offer outstanding service and only employ the best people. If you're looking to hire a company that is made up of genuinely good guys, KDT is unmatched."
-              author="John Lambert"
-              role="Google Review"
-            />
-            <Testimonial
-              quote="Excellent service and top-notch professionalism! The team is knowledgeable, reliable, and goes above and beyond to ensure safety and peace of mind. Highly recommend for anyone seeking trusted security solutions!"
-              author="Cameron Polley"
-              role="Google Review"
-            />
-            <Testimonial
-              quote="Highly recommend Knight Division Tactical for all your security needs. They are extremely professional and their attention to detail is second to none."
-              author="Doug Bennett"
-              role="Google Review"
-            />
-            <Testimonial
-              quote="A veteran-owned company that truly lives by their values. The level of professionalism and capability is unmatched in the industry."
-              author="Robert Hayes"
-              role="Google Review"
-            />
-          </div>
+          {/* Quote Testimonial Component */}
+          <QuoteTestimonial />
         </div>
       </section>
 
