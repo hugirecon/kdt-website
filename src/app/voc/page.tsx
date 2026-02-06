@@ -205,50 +205,52 @@ export default function VOCPage() {
       <ShaderLines />
       
       {/* LASER FLOW - Soft atmospheric glow centered like huly.io's nebula */}
-      {/* Desktop: Centered with diffuse, ethereal quality */}
+      {/* Desktop: Ethereal diffuse quality - softer, more misty than direct beam */}
       <div 
-        className="fixed top-0 left-1/2 w-[90vw] h-[140vh] pointer-events-none z-0 hidden md:block"
+        className="fixed top-0 left-1/2 w-[100vw] h-[150vh] pointer-events-none z-0 hidden md:block"
         style={{ 
-          transform: 'translateX(-50%) translateY(-15%)',
+          transform: 'translateX(-50%) translateY(-18%)',
         }}
       >
         <LaserFlow 
           color="#00ff41"
           horizontalBeamOffset={0.0}
-          verticalBeamOffset={-0.15}
-          horizontalSizing={1.2}
-          verticalSizing={2.2}
-          wispDensity={0.3}
-          wispSpeed={4}
-          wispIntensity={0.8}
-          flowSpeed={0.12}
-          flowStrength={0.25}
-          fogIntensity={1.4}
-          fogScale={0.28}
-          fogFallSpeed={0.18}
-          decay={2.2}
-          falloffStart={2.0}
-          mouseTiltStrength={0.003}
+          verticalBeamOffset={-0.12}
+          horizontalSizing={1.6}
+          verticalSizing={2.6}
+          wispDensity={0.15}
+          wispSpeed={2.5}
+          wispIntensity={0.4}
+          flowSpeed={0.08}
+          flowStrength={0.15}
+          fogIntensity={0.9}
+          fogScale={0.38}
+          fogFallSpeed={0.12}
+          decay={2.8}
+          falloffStart={2.4}
+          mouseTiltStrength={0.002}
           mouseSmoothTime={0.0}
         />
       </div>
       
       {/* Mobile: Simplified diffuse glow (LaserFlow is heavy on mobile) */}
       <div className="fixed inset-0 pointer-events-none z-0 md:hidden">
-        <div className="absolute top-[-10%] left-1/2 w-[200vw] h-[80vh] bg-gradient-radial from-[#00ff41]/25 via-[#00ff41]/10 to-transparent rounded-full blur-[180px] -translate-x-1/2" />
-        <div className="absolute top-[15%] left-1/2 w-[150vw] h-[50vh] bg-[#00ff41]/12 rounded-full blur-[150px] -translate-x-1/2" />
+        <div className="absolute top-[-15%] left-1/2 w-[200vw] h-[80vh] bg-gradient-radial from-[#00ff41]/15 via-[#00ff41]/6 to-transparent rounded-full blur-[200px] -translate-x-1/2" />
+        <div className="absolute top-[12%] left-1/2 w-[150vw] h-[50vh] bg-[#00ff41]/8 rounded-full blur-[180px] -translate-x-1/2" />
       </div>
       
-      {/* Atmospheric fog effects - diffuse floating clouds like huly.io */}
+      {/* Atmospheric fog effects - soft, layered mist like huly.io */}
       <div className="fixed inset-0 pointer-events-none z-0 hidden md:block">
-        {/* Primary central nebula */}
-        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1400px] h-[1200px] bg-[#00ff41]/18 rounded-full blur-[300px]" />
-        {/* Secondary floating layer - slightly offset */}
-        <div className="absolute top-[8%] left-[40%] w-[900px] h-[900px] bg-[#00ff41]/12 rounded-full blur-[250px]" />
-        {/* Tertiary subtle atmosphere */}
-        <div className="absolute top-[20%] left-[55%] w-[700px] h-[700px] bg-emerald-400/8 rounded-full blur-[220px]" />
-        {/* Lower diffuse glow */}
-        <div className="absolute top-[45%] left-1/2 -translate-x-1/2 w-[1100px] h-[600px] bg-[#00ff41]/10 rounded-full blur-[280px]" />
+        {/* Primary central nebula - very soft and diffuse */}
+        <div className="absolute top-[-15%] left-1/2 -translate-x-1/2 w-[1600px] h-[1400px] bg-[#00ff41]/10 rounded-full blur-[400px]" />
+        {/* Secondary layer - offset for depth */}
+        <div className="absolute top-[5%] left-[38%] w-[1000px] h-[1000px] bg-[#00ff41]/7 rounded-full blur-[350px]" />
+        {/* Tertiary subtle atmosphere - cooler tint for depth */}
+        <div className="absolute top-[18%] left-[55%] w-[800px] h-[800px] bg-emerald-500/5 rounded-full blur-[300px]" />
+        {/* Lower ambient glow - very subtle */}
+        <div className="absolute top-[40%] left-1/2 -translate-x-1/2 w-[1200px] h-[700px] bg-[#00ff41]/6 rounded-full blur-[350px]" />
+        {/* Edge vignette for depth */}
+        <div className="absolute top-[25%] left-[20%] w-[600px] h-[600px] bg-emerald-400/4 rounded-full blur-[280px]" />
       </div>
       
       {/* Hero Section - Split layout like huly.io: text left, visual right */}
@@ -284,8 +286,9 @@ export default function VOCPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative"
             >
-              {/* Glow behind image to blend with laser */}
-              <div className="absolute inset-0 bg-[#00ff41]/20 rounded-2xl blur-[60px] scale-110" />
+              {/* Softer glow behind image - subtle halo effect */}
+              <div className="absolute inset-0 bg-[#00ff41]/12 rounded-2xl blur-[80px] scale-125" />
+              <div className="absolute inset-0 bg-emerald-500/8 rounded-2xl blur-[120px] scale-150" />
               <div className="relative">
                 <GlitchImage 
                   src="/images/voc-operator.jpg" 
