@@ -246,16 +246,16 @@ export default function VOCPage() {
               <div 
                 className="absolute pointer-events-none z-20 hidden md:block"
                 style={{
-                  top: '-120%',
+                  top: '-60%',
                   left: '-25%',
                   right: '-25%',
-                  height: '180%',
+                  height: '120%',
                 }}
               >
                 <LaserFlow 
                   color="#00ff41"
                   horizontalBeamOffset={0.0}
-                  verticalBeamOffset={0.0}
+                  verticalBeamOffset={0.15}
                   horizontalSizing={0.5}
                   verticalSizing={2.0}
                   wispDensity={1}
