@@ -267,7 +267,7 @@ export default function VOCPage() {
                 className="w-full rounded-xl overflow-hidden"
                 style={{ 
                   border: '4px solid rgba(0, 255, 65, 0.5)',
-                  marginTop: '-160px',
+                  marginTop: '-180px',
                 }}
               >
                 <img 
