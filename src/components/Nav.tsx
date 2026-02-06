@@ -107,6 +107,8 @@ interface NavProps {
 export default function Nav(_props: NavProps = {}) {
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null);
   const [hoveredItem, setHoveredItem] = useState<number>(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileSubmenu, setMobileSubmenu] = useState<number | null>(null);
 
   return (
     <>
@@ -471,9 +473,166 @@ export default function Nav(_props: NavProps = {}) {
           height: 100%;
           object-fit: cover;
         }
+
+        /* ================================================
+           MOBILE NAV - Only affects mobile, desktop unchanged
+           ================================================ */
+        @media (max-width: 768px) {
+          .framer-nav {
+            display: none !important;
+          }
+        }
+
+        .mobile-nav-toggle {
+          display: none;
+          position: fixed;
+          top: 16px;
+          left: 16px;
+          z-index: 60;
+          padding: 8px;
+          background: rgba(13, 13, 13, 0.9);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 8px;
+          cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+          .mobile-nav-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+
+        .mobile-nav-overlay {
+          display: none;
+          position: fixed;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.5);
+          z-index: 55;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        .mobile-nav-overlay.active {
+          opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+          .mobile-nav-overlay {
+            display: block;
+            pointer-events: none;
+          }
+          .mobile-nav-overlay.active {
+            pointer-events: auto;
+          }
+        }
+
+        .mobile-nav-drawer {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          width: 280px;
+          max-width: 85vw;
+          background: rgb(13, 13, 13);
+          border-right: 1px solid rgba(255, 255, 255, 0.1);
+          z-index: 60;
+          transform: translateX(-100%);
+          transition: transform 0.3s ease;
+          overflow-y: auto;
+        }
+
+        .mobile-nav-drawer.active {
+          transform: translateX(0);
+        }
+
+        @media (max-width: 768px) {
+          .mobile-nav-drawer {
+            display: block;
+          }
+        }
+
+        .mobile-nav-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 16px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav-logo {
+          font-family: 'Inria Sans', sans-serif;
+          font-size: 18px;
+          font-weight: 600;
+          color: white;
+        }
+
+        .mobile-nav-close {
+          padding: 4px;
+          cursor: pointer;
+          color: rgb(170, 172, 171);
+        }
+
+        .mobile-nav-links {
+          padding: 16px 0;
+        }
+
+        .mobile-nav-link {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 14px 20px;
+          font-family: 'Inria Sans', sans-serif;
+          font-size: 16px;
+          color: rgb(170, 172, 171);
+          text-decoration: none;
+          transition: all 0.15s ease;
+        }
+
+        .mobile-nav-link:hover, .mobile-nav-link:active {
+          color: white;
+          background: rgba(255, 255, 255, 0.05);
+        }
+
+        .mobile-submenu {
+          background: rgba(0, 0, 0, 0.3);
+          overflow: hidden;
+          max-height: 0;
+          transition: max-height 0.3s ease;
+        }
+
+        .mobile-submenu.active {
+          max-height: 500px;
+        }
+
+        .mobile-submenu-link {
+          display: block;
+          padding: 12px 20px 12px 36px;
+          font-family: 'Inria Sans', sans-serif;
+          font-size: 14px;
+          color: rgb(140, 142, 141);
+          text-decoration: none;
+          transition: all 0.15s ease;
+        }
+
+        .mobile-submenu-link:hover, .mobile-submenu-link:active {
+          color: white;
+          background: rgba(255, 255, 255, 0.05);
+        }
+
+        .mobile-chevron {
+          transition: transform 0.2s ease;
+        }
+
+        .mobile-chevron.active {
+          transform: rotate(180deg);
+        }
       `}</style>
 
       <nav className="framer-nav">
+        {/* Desktop nav - hidden on mobile via CSS */}
         {NAV_ITEMS.map((item, index) => (
           <div 
             key={item.href}
@@ -601,6 +760,94 @@ export default function Nav(_props: NavProps = {}) {
           </div>
         ))}
       </nav>
+
+      {/* ================================================
+          MOBILE NAV - Only visible on mobile
+          ================================================ */}
+      
+      {/* Hamburger button */}
+      <button 
+        className="mobile-nav-toggle"
+        onClick={() => setMobileMenuOpen(true)}
+        aria-label="Open menu"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+          <path d="M3 12h18M3 6h18M3 18h18" />
+        </svg>
+      </button>
+
+      {/* Overlay */}
+      <div 
+        className={`mobile-nav-overlay ${mobileMenuOpen ? 'active' : ''}`}
+        onClick={() => setMobileMenuOpen(false)}
+      />
+
+      {/* Drawer */}
+      <div className={`mobile-nav-drawer ${mobileMenuOpen ? 'active' : ''}`}>
+        <div className="mobile-nav-header">
+          <span className="mobile-nav-logo">KDT</span>
+          <button 
+            className="mobile-nav-close"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label="Close menu"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="mobile-nav-links">
+          {NAV_ITEMS.map((item, index) => (
+            <div key={item.href}>
+              {item.dropdown ? (
+                <>
+                  <button
+                    className="mobile-nav-link"
+                    onClick={() => setMobileSubmenu(mobileSubmenu === index ? null : index)}
+                    style={{ width: '100%', background: 'none', border: 'none', textAlign: 'left' }}
+                  >
+                    <span>{item.label}</span>
+                    <svg 
+                      className={`mobile-chevron ${mobileSubmenu === index ? 'active' : ''}`}
+                      width="20" 
+                      height="20" 
+                      viewBox="0 0 20 20" 
+                      fill="currentColor"
+                    >
+                      <path 
+                        fillRule="evenodd" 
+                        d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" 
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                  <div className={`mobile-submenu ${mobileSubmenu === index ? 'active' : ''}`}>
+                    {item.dropdown.map((dropItem) => (
+                      <Link
+                        key={dropItem.href}
+                        href={dropItem.href}
+                        className="mobile-submenu-link"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {dropItem.title}
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <Link 
+                  href={item.href} 
+                  className="mobile-nav-link"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <span>{item.label}</span>
+                </Link>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
     </>
   );
 }
