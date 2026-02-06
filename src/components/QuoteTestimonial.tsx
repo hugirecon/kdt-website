@@ -8,7 +8,7 @@ interface Testimonial {
   quote: string;
   author: string;
   role: string;
-  avatar: string;
+  avatar?: string;
 }
 
 interface QuoteTestimonialProps {
@@ -238,24 +238,48 @@ export default function QuoteTestimonial(props: QuoteTestimonialProps) {
                         position: "relative",
                         flexShrink: 0
                       },
-                      children: _jsx(motion.img, {
-                        src: testimonial.avatar,
-                        alt: testimonial.author,
-                        style: {
-                          width: `${avatarSize}px`,
-                          height: `${avatarSize}px`,
-                          borderRadius: "9999px",
-                          objectFit: "cover"
-                        },
-                        animate: {
-                          boxShadow: isActive ? "0 0 0 2px rgba(0, 255, 65, 0.3)" : "0 0 0 0px rgba(255, 255, 255, 0)"
-                        },
-                        transition: {
-                          duration: animationDuration * 1.25,
-                          ease: [0.4, 0, 0.2, 1]
-                        },
-                        whileHover: !isActive ? { scale: 1.05 } : {}
-                      })
+                      children: testimonial.avatar 
+                        ? _jsx(motion.img, {
+                            src: testimonial.avatar,
+                            alt: testimonial.author,
+                            style: {
+                              width: `${avatarSize}px`,
+                              height: `${avatarSize}px`,
+                              borderRadius: "9999px",
+                              objectFit: "cover"
+                            },
+                            animate: {
+                              boxShadow: isActive ? "0 0 0 2px rgba(0, 255, 65, 0.3)" : "0 0 0 0px rgba(255, 255, 255, 0)"
+                            },
+                            transition: {
+                              duration: animationDuration * 1.25,
+                              ease: [0.4, 0, 0.2, 1]
+                            },
+                            whileHover: !isActive ? { scale: 1.05 } : {}
+                          })
+                        : _jsx(motion.div, {
+                            style: {
+                              width: `${avatarSize}px`,
+                              height: `${avatarSize}px`,
+                              borderRadius: "9999px",
+                              backgroundColor: isActive ? "rgba(0, 0, 0, 0.3)" : "rgba(255, 255, 255, 0.1)",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              fontSize: `${avatarSize * 0.4}px`,
+                              fontWeight: 600,
+                              color: isActive ? "#000000" : quoteColor
+                            },
+                            animate: {
+                              boxShadow: isActive ? "0 0 0 2px rgba(0, 255, 65, 0.3)" : "0 0 0 0px rgba(255, 255, 255, 0)"
+                            },
+                            transition: {
+                              duration: animationDuration * 1.25,
+                              ease: [0.4, 0, 0.2, 1]
+                            },
+                            whileHover: !isActive ? { scale: 1.05 } : {},
+                            children: testimonial.author.split(' ').map(n => n[0]).join('').slice(0, 2)
+                          })
                     }),
                     _jsx(motion.div, {
                       style: {

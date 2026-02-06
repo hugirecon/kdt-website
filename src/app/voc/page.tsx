@@ -154,26 +154,22 @@ const kdtTestimonials = [
   {
     quote: "Matt and his team offer outstanding service and only employ the best people. If you're looking to hire a company that is made up of genuinely good guys, KDT is unmatched.",
     author: "John Lambert",
-    role: "Google Review",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
+    role: "Google Review"
   },
   {
     quote: "Excellent service and top-notch professionalism! The team is knowledgeable, reliable, and goes above and beyond to ensure safety and peace of mind.",
     author: "Cameron Polley",
-    role: "Google Review",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop"
+    role: "Google Review"
   },
   {
     quote: "Highly recommend Knight Division Tactical for all your security needs. They are extremely professional and their attention to detail is second to none.",
     author: "Doug Bennett",
-    role: "Google Review",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop"
+    role: "Google Review"
   },
   {
     quote: "A veteran-owned company that truly lives by their values. The level of professionalism and capability is unmatched in the industry.",
     author: "Robert Hayes",
-    role: "Google Review",
-    avatar: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&h=400&fit=crop"
+    role: "Google Review"
   }
 ];
 
