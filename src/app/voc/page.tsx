@@ -235,19 +235,27 @@ export default function VOCPage() {
               <EncryptButton />
             </motion.div>
             
-            {/* Right - Visual anchor with LaserFlow as background behind it */}
+            {/* Right - Visual anchor with LaserFlow pouring onto it */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative"
             >
-              {/* LaserFlow - BEHIND the image as atmospheric background */}
-              <div className="absolute inset-0 -top-[80%] -bottom-[30%] -left-[50%] -right-[50%] pointer-events-none z-0 hidden md:block">
+              {/* LaserFlow positioned so beam flows down ONTO the image */}
+              <div 
+                className="absolute pointer-events-none z-20 hidden md:block"
+                style={{
+                  top: '-120%',
+                  left: '-25%',
+                  right: '-25%',
+                  height: '180%',
+                }}
+              >
                 <LaserFlow 
                   color="#00ff41"
                   horizontalBeamOffset={0.0}
-                  verticalBeamOffset={-0.1}
+                  verticalBeamOffset={0.0}
                   horizontalSizing={0.5}
                   verticalSizing={2.0}
                   wispDensity={1}
@@ -265,12 +273,12 @@ export default function VOCPage() {
                 />
               </div>
               
-              {/* The image - sits IN FRONT of the laser, clean and visible */}
+              {/* The image - laser pours onto the top of this */}
               <div className="relative z-10">
                 <img 
                   src="/images/operations.jpg" 
                   alt="VOC Operations"
-                  className="w-full h-auto rounded-2xl shadow-2xl shadow-[#00ff41]/20"
+                  className="w-full h-auto rounded-2xl"
                 />
               </div>
             </motion.div>
