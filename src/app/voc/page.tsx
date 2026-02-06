@@ -208,39 +208,46 @@ export default function VOCPage() {
       <Nav />
       <ShaderLines />
       
-      {/* LASER FLOW - Page level, spills over sections like huly.io */}
+      {/* LASER FLOW - Page level, more centered like huly.io */}
+      {/* Desktop: Full laser effect */}
       <div 
-        className="fixed top-0 right-0 w-[60vw] h-[150vh] pointer-events-none z-0"
+        className="fixed top-0 left-1/2 w-[80vw] h-[200vh] pointer-events-none z-0 hidden md:block"
         style={{ 
-          transform: 'translateY(-10%)',
+          transform: 'translateX(-30%) translateY(-15%)',
         }}
       >
         <LaserFlow 
           color="#00ff41"
-          horizontalBeamOffset={0.1}
-          verticalBeamOffset={0.0}
-          horizontalSizing={0.5}
-          verticalSizing={2.0}
-          wispDensity={1}
-          wispSpeed={15}
-          wispIntensity={5}
-          flowSpeed={0.35}
-          flowStrength={0.25}
-          fogIntensity={0.45}
-          fogScale={0.3}
-          fogFallSpeed={0.6}
-          decay={1.1}
-          falloffStart={1.2}
-          mouseTiltStrength={0.01}
+          horizontalBeamOffset={0.15}
+          verticalBeamOffset={-0.1}
+          horizontalSizing={0.7}
+          verticalSizing={2.5}
+          wispDensity={1.2}
+          wispSpeed={12}
+          wispIntensity={6}
+          flowSpeed={0.3}
+          flowStrength={0.3}
+          fogIntensity={0.6}
+          fogScale={0.25}
+          fogFallSpeed={0.5}
+          decay={1.2}
+          falloffStart={1.3}
+          mouseTiltStrength={0.015}
           mouseSmoothTime={0.0}
         />
       </div>
       
-      {/* Atmospheric fog effects (green tones) - also page level */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-0 right-0 w-[900px] h-[900px] bg-[#00ff41]/20 rounded-full blur-[200px] translate-x-1/4 -translate-y-1/4" />
-        <div className="absolute top-[30%] right-[10%] w-[700px] h-[700px] bg-[#00ff41]/15 rounded-full blur-[150px]" />
-        <div className="absolute top-[60%] right-[20%] w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px]" />
+      {/* Mobile: Simplified static glow (LaserFlow is heavy on mobile) */}
+      <div className="fixed inset-0 pointer-events-none z-0 md:hidden">
+        <div className="absolute top-0 right-0 w-[150vw] h-[80vh] bg-gradient-radial from-[#00ff41]/30 via-[#00ff41]/10 to-transparent rounded-full blur-[100px] -translate-y-1/4 translate-x-1/4" />
+        <div className="absolute top-[20%] left-1/2 w-[2px] h-[60vh] bg-gradient-to-b from-[#00ff41] via-[#00ff41]/50 to-transparent blur-[2px]" />
+      </div>
+      
+      {/* Atmospheric fog effects (green tones) - enhanced */}
+      <div className="fixed inset-0 pointer-events-none z-0 hidden md:block">
+        <div className="absolute top-0 left-1/2 w-[1200px] h-[1200px] bg-[#00ff41]/25 rounded-full blur-[250px] -translate-x-1/4 -translate-y-1/4" />
+        <div className="absolute top-[20%] right-[5%] w-[800px] h-[800px] bg-[#00ff41]/20 rounded-full blur-[180px]" />
+        <div className="absolute top-[50%] left-[20%] w-[600px] h-[600px] bg-emerald-500/15 rounded-full blur-[150px]" />
       </div>
       
       {/* Hero Section */}
