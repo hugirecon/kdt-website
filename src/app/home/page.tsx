@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
@@ -14,6 +15,18 @@ const ParticleBackground = dynamic(() => import("@/components/ParticleBackground
 const Shadertoy = dynamic(() => import("@/components/Shadertoy"), { ssr: false });
 const Globe = dynamic(() => import("@/components/Globe"), { ssr: false });
 const MetallicDotGrid = dynamic(() => import("@/components/MetallicDotGrid"), { ssr: false });
+
+// Hook for mobile detection
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(true); // Default true to prevent heavy render on SSR
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+  return isMobile;
+}
 
 // ============ HERO ============
 function Hero() {
@@ -492,18 +505,22 @@ function Footer() {
 
 // ============ PAGE ============
 export default function HomePage() {
+  const isMobile = useIsMobile();
+  
   return (
     <main className="min-h-screen bg-[#050510] text-white relative">
-      {/* Metallic Dot Grid Background */}
-      <div className="fixed inset-0 z-0">
-        <MetallicDotGrid 
-          dotSize={10}
-          gap={36}
-          baseColor="#3a3a3a"
-          activeColor="#f97316"
-          proximity={130}
-        />
-      </div>
+      {/* Metallic Dot Grid Background - Desktop only (heavy on mobile) */}
+      {!isMobile && (
+        <div className="fixed inset-0 z-0">
+          <MetallicDotGrid 
+            dotSize={10}
+            gap={36}
+            baseColor="#3a3a3a"
+            activeColor="#f97316"
+            proximity={130}
+          />
+        </div>
+      )}
       <Nav />
       <Hero />
       <Clients />

@@ -2,6 +2,18 @@
 
 import React, { useRef, useEffect, useCallback, useState } from "react";
 
+// Mobile detection hook
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(true);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+  return isMobile;
+}
+
 interface MetallicDotGridProps {
   dotSize?: number;
   gap?: number;
@@ -19,6 +31,10 @@ export default function MetallicDotGrid({
   proximity = 80,
   className = "",
 }: MetallicDotGridProps) {
+  const isMobile = useIsMobile();
+  
+  // Return nothing on mobile (canvas animation is too heavy)
+  if (isMobile) return null;
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const dotsRef = useRef<{ cx: number; cy: number; pressed: number }[]>([]);

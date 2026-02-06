@@ -1,6 +1,18 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
+// Mobile detection hook
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(true);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+  return isMobile;
+}
 
 interface ShadertoyProps {
   className?: string;
@@ -133,9 +145,12 @@ const VERTEX_SHADER = `
 `;
 
 export default function Shadertoy({ className = "", shader = "plasma" }: ShadertoyProps) {
+  const isMobile = useIsMobile();
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    // Don't run WebGL shader on mobile
+    if (isMobile) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -217,7 +232,10 @@ export default function Shadertoy({ className = "", shader = "plasma" }: Shadert
       gl.deleteShader(fragmentShader);
       gl.deleteBuffer(buffer);
     };
-  }, [shader]);
+  }, [shader, isMobile]);
+
+  // Return nothing on mobile (WebGL shaders are too heavy)
+  if (isMobile) return null;
 
   return (
     <canvas

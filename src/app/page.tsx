@@ -4,11 +4,19 @@ import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-// Floating particles background
+// Floating particles background - DESKTOP ONLY (heavy on mobile)
 function ParticleField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [isMobile, setIsMobile] = useState(true); // Default to mobile to prevent flash
 
   useEffect(() => {
+    // Check if mobile on mount
+    const checkMobile = () => window.innerWidth < 768;
+    setIsMobile(checkMobile());
+    
+    // Don't run animation on mobile
+    if (checkMobile()) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -95,6 +103,9 @@ function ParticleField() {
       cancelAnimationFrame(animationId);
     };
   }, []);
+
+  // Don't render canvas on mobile
+  if (isMobile) return null;
 
   return (
     <canvas
