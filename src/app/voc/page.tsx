@@ -280,7 +280,7 @@ export default function VOCPage() {
       </section>
 
       {/* Main Image with Glitch */}
-      <section className="px-6 py-20">
+      <section className="px-6 py-20 relative z-10">
         <div className="max-w-4xl mx-auto">
           <GlitchImage 
             src="/images/voc-operator.jpg" 
@@ -290,7 +290,7 @@ export default function VOCPage() {
       </section>
 
       {/* Features */}
-      <section className="px-6 py-20">
+      <section className="px-6 py-20 relative z-10">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center" style={{ marginBottom: '35px' }}>
             <span className="text-[#00ff41]">What You Get</span>
@@ -393,7 +393,7 @@ export default function VOCPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="px-6 py-20 bg-[#030503]">
+      <section className="px-6 py-20 bg-[#030503] relative z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center gap-2 mb-4">
@@ -432,7 +432,7 @@ export default function VOCPage() {
       </section>
 
       {/* CTA Section */}
-      <section id="subscribe" className="px-6 py-32 relative overflow-hidden">
+      <section id="subscribe" className="px-6 py-32 relative overflow-hidden z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-[#00ff41]/5 to-transparent" />
         
         <div className="max-w-2xl mx-auto text-center relative z-10">
@@ -483,7 +483,7 @@ export default function VOCPage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-[#00ff41]/10 py-8 px-4">
+      <footer className="border-t border-[#00ff41]/10 py-8 px-4 relative z-10 bg-[#050a05]">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-[#00ff41] font-bold text-xl">KDT VOC</div>
           <div className="text-gray-500 text-sm">
