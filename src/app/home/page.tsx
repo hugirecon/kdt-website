@@ -497,11 +497,11 @@ export default function HomePage() {
       {/* Metallic Dot Grid Background */}
       <div className="fixed inset-0 z-0">
         <MetallicDotGrid 
-          dotSize={8}
-          gap={32}
-          baseColor="#2d2d2d"
+          dotSize={10}
+          gap={36}
+          baseColor="#3a3a3a"
           activeColor="#f97316"
-          proximity={120}
+          proximity={130}
         />
       </div>
       <Nav />
