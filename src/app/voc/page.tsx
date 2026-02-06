@@ -246,16 +246,16 @@ export default function VOCPage() {
               <div 
                 className="absolute pointer-events-none z-20 hidden md:block"
                 style={{
-                  top: '-60%',
-                  left: '-25%',
-                  right: '-25%',
-                  height: '120%',
+                  top: '-40%',
+                  left: '-30%',
+                  right: '-30%',
+                  height: '100%',
                 }}
               >
                 <LaserFlow 
                   color="#00ff41"
                   horizontalBeamOffset={0.0}
-                  verticalBeamOffset={0.15}
+                  verticalBeamOffset={0.25}
                   horizontalSizing={0.5}
                   verticalSizing={2.0}
                   wispDensity={1}
@@ -263,8 +263,8 @@ export default function VOCPage() {
                   wispIntensity={5}
                   flowSpeed={0.35}
                   flowStrength={0.25}
-                  fogIntensity={0.45}
-                  fogScale={0.3}
+                  fogIntensity={0.55}
+                  fogScale={0.35}
                   fogFallSpeed={0.6}
                   decay={1.1}
                   falloffStart={1.2}
