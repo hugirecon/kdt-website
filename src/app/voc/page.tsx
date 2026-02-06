@@ -265,12 +265,12 @@ export default function VOCPage() {
                 />
               </div>
               
-              {/* The image - sits IN FRONT of the laser */}
+              {/* The image - sits IN FRONT of the laser, clean and visible */}
               <div className="relative z-10">
                 <img 
                   src="/images/voc-operator.jpg" 
                   alt="VOC Operator"
-                  className="w-full h-auto rounded-2xl"
+                  className="w-full h-auto rounded-2xl shadow-2xl shadow-[#00ff41]/20"
                 />
               </div>
             </motion.div>
