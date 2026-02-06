@@ -7,6 +7,7 @@ import dynamic from "next/dynamic";
 import Nav from "@/components/Nav";
 import EncryptButton from "@/components/EncryptButton";
 import QuoteTestimonial from "@/components/QuoteTestimonial";
+import HulyHero from "@/components/HulyHero";
 
 const BeamGridBackground = dynamic(() => import("@/components/BeamGridBackground"), { ssr: false });
 
@@ -228,9 +229,9 @@ export default function VOCPage() {
               <EncryptButton />
             </motion.div>
             
-            {/* Right - Empty for now */}
-            <div className="hidden md:block">
-              {/* Placeholder */}
+            {/* Right - Huly Hero with laser effect */}
+            <div className="hidden md:block relative">
+              <HulyHero />
             </div>
           </div>
         </div>
