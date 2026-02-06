@@ -115,18 +115,24 @@ export default function MetallicDotGrid({
       const g = Math.round(baseRgb.g + (activeRgb.g - baseRgb.g) * press);
       const b = Math.round(baseRgb.b + (activeRgb.b - baseRgb.b) * press);
 
-      // Draw outer shadow (makes it look pressed in)
+      // Draw outer ring/bezel (button edge)
+      ctx.beginPath();
+      ctx.arc(dot.cx, dot.cy, size / 2 + 1.5, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${Math.max(0, r - 20)}, ${Math.max(0, g - 20)}, ${Math.max(0, b - 20)}, 0.8)`;
+      ctx.fill();
+
+      // Draw inner shadow (pressed in effect)
       if (press > 0.01) {
         ctx.beginPath();
-        ctx.arc(dot.cx, dot.cy, size / 2 + 2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0, 0, 0, ${0.3 * press})`;
+        ctx.arc(dot.cx + 1, dot.cy + 1, size / 2 + 1, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 0, 0, ${0.5 * press})`;
         ctx.fill();
       }
 
       // Draw metallic gradient for the dot
       const gradient = ctx.createRadialGradient(
-        dot.cx - size * 0.2,
-        dot.cy - size * 0.2,
+        dot.cx - size * 0.25,
+        dot.cy - size * 0.25,
         0,
         dot.cx,
         dot.cy,
@@ -134,28 +140,30 @@ export default function MetallicDotGrid({
       );
 
       // Metallic effect - lighter top-left, darker bottom-right
-      const highlightR = Math.min(255, r + 40);
-      const highlightG = Math.min(255, g + 40);
-      const highlightB = Math.min(255, b + 40);
-      const shadowR = Math.max(0, r - 30);
-      const shadowG = Math.max(0, g - 30);
-      const shadowB = Math.max(0, b - 30);
+      const highlightR = Math.min(255, r + 60);
+      const highlightG = Math.min(255, g + 60);
+      const highlightB = Math.min(255, b + 60);
+      const shadowR = Math.max(0, r - 40);
+      const shadowG = Math.max(0, g - 40);
+      const shadowB = Math.max(0, b - 40);
 
       gradient.addColorStop(0, `rgb(${highlightR}, ${highlightG}, ${highlightB})`);
-      gradient.addColorStop(0.5, `rgb(${r}, ${g}, ${b})`);
+      gradient.addColorStop(0.4, `rgb(${r}, ${g}, ${b})`);
       gradient.addColorStop(1, `rgb(${shadowR}, ${shadowG}, ${shadowB})`);
 
-      // Main dot
+      // Main dot body
+      const offsetX = press * 1;
+      const offsetY = press * 1;
       ctx.beginPath();
-      ctx.arc(dot.cx + depth * 0.5, dot.cy + depth * 0.5, size / 2, 0, Math.PI * 2);
+      ctx.arc(dot.cx + offsetX, dot.cy + offsetY, size / 2, 0, Math.PI * 2);
       ctx.fillStyle = gradient;
       ctx.fill();
 
-      // Inner highlight (metallic shine)
-      if (press < 0.5) {
+      // Inner highlight (metallic shine) - only when not pressed
+      if (press < 0.3) {
         ctx.beginPath();
-        ctx.arc(dot.cx - size * 0.15, dot.cy - size * 0.15, size * 0.2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${0.15 * (1 - press * 2)})`;
+        ctx.arc(dot.cx - size * 0.2, dot.cy - size * 0.2, size * 0.25, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${0.25 * (1 - press * 3)})`;
         ctx.fill();
       }
     }
