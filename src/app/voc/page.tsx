@@ -9,7 +9,6 @@ import EncryptButton from "@/components/EncryptButton";
 import QuoteTestimonial from "@/components/QuoteTestimonial";
 
 const BeamGridBackground = dynamic(() => import("@/components/BeamGridBackground"), { ssr: false });
-const LaserFlow = dynamic(() => import("@/components/LaserFlow"), { ssr: false });
 
 // Magnetic Scramble Button Component
 function MagneticScrambleButton({ children, href }: { children: string; href: string }) {
@@ -229,87 +228,10 @@ export default function VOCPage() {
               <EncryptButton />
             </motion.div>
             
-            {/* Right - LaserFlow above, Box below */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative hidden md:block"
-            >
-              {/* LaserFlow - ONLY in the space above the box */}
-              <div 
-                className="w-full overflow-hidden"
-                style={{ height: '280px' }}
-              >
-                <LaserFlow 
-                  color="#00ff41"
-                  horizontalBeamOffset={0.1}
-                  verticalBeamOffset={0.0}
-                  horizontalSizing={0.5}
-                  verticalSizing={2}
-                  wispDensity={1}
-                  wispSpeed={15}
-                  wispIntensity={5}
-                  flowSpeed={0.35}
-                  flowStrength={0.25}
-                  fogIntensity={0.45}
-                  fogScale={0.3}
-                  fogFallSpeed={0.6}
-                  decay={1.1}
-                  falloffStart={1.2}
-                  mouseTiltStrength={0.01}
-                  mouseSmoothTime={0.0}
-                />
-              </div>
-              
-              {/* Connection glow - bridges the gap between laser and box */}
-              <div 
-                className="w-full flex justify-center"
-                style={{ marginTop: '-60px', marginBottom: '-40px', position: 'relative', zIndex: 5 }}
-              >
-                <div 
-                  style={{
-                    width: '200px',
-                    height: '80px',
-                    background: 'radial-gradient(ellipse at center, rgba(0, 255, 65, 0.4) 0%, rgba(0, 255, 65, 0.15) 40%, transparent 70%)',
-                    filter: 'blur(20px)',
-                  }}
-                />
-              </div>
-              
-              {/* The Box with image - sits below the laser */}
-              <div 
-                className="w-full rounded-xl overflow-hidden"
-                style={{ 
-                  border: '4px solid rgba(0, 255, 65, 0.5)',
-                }}
-              >
-                <img 
-                  src="/images/operations.jpg" 
-                  alt="VOC Operations"
-                  className="w-full h-auto"
-                />
-              </div>
-            </motion.div>
-            
-            {/* Mobile fallback */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative md:hidden"
-            >
-              <div 
-                className="rounded-xl overflow-hidden"
-                style={{ border: '2px solid rgba(0, 255, 65, 0.4)' }}
-              >
-                <img 
-                  src="/images/operations.jpg" 
-                  alt="VOC Operations"
-                  className="w-full h-auto"
-                />
-              </div>
-            </motion.div>
+            {/* Right - Empty for now */}
+            <div className="hidden md:block">
+              {/* Placeholder */}
+            </div>
           </div>
         </div>
       </section>
