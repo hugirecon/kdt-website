@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Nav from "@/components/Nav";
+import FlipCalendar from "@/components/FlipCalendar";
 
 // ============ HERO (DARK) ============
 function Hero() {
@@ -466,6 +467,22 @@ export default function TrainingPage() {
       <Nav activePath="/training" />
       <Hero />
       <FeaturedCourse />
+      
+      {/* Training Calendar Section */}
+      <section className="py-24 px-6 bg-[#0a0a0a] border-t border-white/5">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-[clamp(32px,4vw,44px)] font-bold text-white leading-tight mb-4">
+              Upcoming Training Dates
+            </h2>
+            <p className="text-[18px] text-gray-400">
+              Select a date to view available courses.
+            </p>
+          </div>
+          <FlipCalendar accentColor="#f97316" />
+        </div>
+      </section>
+      
       <MoreCourses />
       <WhyTrain />
       <Instructors />
