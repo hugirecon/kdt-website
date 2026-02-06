@@ -242,20 +242,20 @@ export default function VOCPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative"
             >
-              {/* LaserFlow positioned so beam flows down ONTO the image */}
+              {/* LaserFlow positioned so beam flows down ONTO the image - container overlaps image */}
               <div 
                 className="absolute pointer-events-none z-20 hidden md:block"
                 style={{
-                  top: '-40%',
+                  top: '-50%',
                   left: '-30%',
                   right: '-30%',
-                  height: '100%',
+                  bottom: '-20%',
                 }}
               >
                 <LaserFlow 
                   color="#00ff41"
                   horizontalBeamOffset={0.0}
-                  verticalBeamOffset={0.25}
+                  verticalBeamOffset={0.1}
                   horizontalSizing={0.5}
                   verticalSizing={2.0}
                   wispDensity={1}
@@ -263,8 +263,8 @@ export default function VOCPage() {
                   wispIntensity={5}
                   flowSpeed={0.35}
                   flowStrength={0.25}
-                  fogIntensity={0.55}
-                  fogScale={0.35}
+                  fogIntensity={0.5}
+                  fogScale={0.3}
                   fogFallSpeed={0.6}
                   decay={1.1}
                   falloffStart={1.2}
