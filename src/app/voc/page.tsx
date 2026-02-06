@@ -239,7 +239,7 @@ export default function VOCPage() {
               {/* LaserFlow - ONLY in the space above the box */}
               <div 
                 className="w-full overflow-hidden"
-                style={{ height: '220px' }}
+                style={{ height: '280px' }}
               >
                 <LaserFlow 
                   color="#00ff41"
