@@ -270,29 +270,22 @@ export default function VOCPage() {
                   />
                 </div>
                 
-                {/* The Box - dotted border container like ReactBits */}
-                <div 
-                  className="relative z-10 p-4"
-                  style={{
-                    border: '2px dashed rgba(0, 255, 65, 0.3)',
-                    borderRadius: '12px',
-                    boxShadow: '0 0 40px rgba(0, 255, 65, 0.15), inset 0 0 60px rgba(0, 255, 65, 0.05)',
-                  }}
-                >
+                {/* Image container - laser pours onto it */}
+                <div className="relative z-10">
                   {/* Top edge glow - where laser hits */}
                   <div 
-                    className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-4 rounded-full"
+                    className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-6 rounded-full"
                     style={{
-                      background: 'radial-gradient(ellipse, rgba(0, 255, 65, 0.6) 0%, transparent 70%)',
-                      filter: 'blur(8px)',
+                      background: 'radial-gradient(ellipse, rgba(0, 255, 65, 0.7) 0%, transparent 70%)',
+                      filter: 'blur(12px)',
                     }}
                   />
                   
-                  {/* Image inside the box */}
+                  {/* Image */}
                   <img 
                     src="/images/operations.jpg" 
                     alt="VOC Operations"
-                    className="w-full h-auto rounded-lg"
+                    className="w-full h-auto rounded-2xl border border-[#00ff41]/20"
                   />
                 </div>
               </div>
@@ -305,19 +298,11 @@ export default function VOCPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative md:hidden"
             >
-              <div 
-                className="relative p-3"
-                style={{
-                  border: '2px dashed rgba(0, 255, 65, 0.3)',
-                  borderRadius: '12px',
-                }}
-              >
-                <img 
-                  src="/images/operations.jpg" 
-                  alt="VOC Operations"
-                  className="w-full h-auto rounded-lg"
-                />
-              </div>
+              <img 
+                src="/images/operations.jpg" 
+                alt="VOC Operations"
+                className="w-full h-auto rounded-2xl border border-[#00ff41]/20"
+              />
             </motion.div>
           </div>
         </div>
