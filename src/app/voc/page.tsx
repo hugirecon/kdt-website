@@ -246,17 +246,17 @@ export default function VOCPage() {
                   horizontalBeamOffset={0.1}
                   verticalBeamOffset={0.0}
                   horizontalSizing={0.5}
-                  verticalSizing={2}
+                  verticalSizing={3}
                   wispDensity={1}
                   wispSpeed={15}
                   wispIntensity={5}
                   flowSpeed={0.35}
                   flowStrength={0.25}
-                  fogIntensity={0.45}
-                  fogScale={0.3}
+                  fogIntensity={0.5}
+                  fogScale={0.4}
                   fogFallSpeed={0.6}
                   decay={1.1}
-                  falloffStart={1.2}
+                  falloffStart={1.4}
                   mouseTiltStrength={0.01}
                   mouseSmoothTime={0.0}
                 />
