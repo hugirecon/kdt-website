@@ -246,28 +246,42 @@ export default function VOCPage() {
                   horizontalBeamOffset={0.1}
                   verticalBeamOffset={0.0}
                   horizontalSizing={0.5}
-                  verticalSizing={3}
+                  verticalSizing={2}
                   wispDensity={1}
                   wispSpeed={15}
                   wispIntensity={5}
                   flowSpeed={0.35}
                   flowStrength={0.25}
-                  fogIntensity={0.5}
-                  fogScale={0.4}
+                  fogIntensity={0.45}
+                  fogScale={0.3}
                   fogFallSpeed={0.6}
                   decay={1.1}
-                  falloffStart={1.4}
+                  falloffStart={1.2}
                   mouseTiltStrength={0.01}
                   mouseSmoothTime={0.0}
                 />
               </div>
               
-              {/* The Box with image - sits below the laser, laser lands on its top edge */}
+              {/* Connection glow - bridges the gap between laser and box */}
+              <div 
+                className="w-full flex justify-center"
+                style={{ marginTop: '-60px', marginBottom: '-40px', position: 'relative', zIndex: 5 }}
+              >
+                <div 
+                  style={{
+                    width: '200px',
+                    height: '80px',
+                    background: 'radial-gradient(ellipse at center, rgba(0, 255, 65, 0.4) 0%, rgba(0, 255, 65, 0.15) 40%, transparent 70%)',
+                    filter: 'blur(20px)',
+                  }}
+                />
+              </div>
+              
+              {/* The Box with image - sits below the laser */}
               <div 
                 className="w-full rounded-xl overflow-hidden"
                 style={{ 
                   border: '4px solid rgba(0, 255, 65, 0.5)',
-                  marginTop: '-100px',
                 }}
               >
                 <img 
