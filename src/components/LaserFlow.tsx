@@ -376,7 +376,7 @@ export const LaserFlow = ({
       transparent: true,
       depthTest: false,
       depthWrite: false,
-      blending: THREE.NormalBlending
+      blending: THREE.AdditiveBlending
     });
 
     const mesh = new THREE.Mesh(geometry, material);

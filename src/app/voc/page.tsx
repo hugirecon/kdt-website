@@ -9,6 +9,7 @@ import EncryptButton from "@/components/EncryptButton";
 import QuoteTestimonial from "@/components/QuoteTestimonial";
 
 const BeamGridBackground = dynamic(() => import("@/components/BeamGridBackground"), { ssr: false });
+const LaserFlow = dynamic(() => import("@/components/LaserFlow"), { ssr: false });
 
 // Magnetic Scramble Button Component
 function MagneticScrambleButton({ children, href }: { children: string; href: string }) {
@@ -228,13 +229,46 @@ export default function VOCPage() {
               <EncryptButton />
             </motion.div>
             
-            {/* Right - Visual anchor */}
+            {/* Right - Visual anchor with LaserFlow effect */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative"
             >
+              {/* LaserFlow - fog/mist reveals the grid behind it */}
+              <div 
+                className="absolute pointer-events-none hidden md:block"
+                style={{
+                  top: '-60%',
+                  left: '-20%',
+                  right: '-20%',
+                  bottom: '-10%',
+                  zIndex: 20,
+                }}
+              >
+                <LaserFlow 
+                  color="#00ff41"
+                  horizontalBeamOffset={0.0}
+                  verticalBeamOffset={0.05}
+                  horizontalSizing={0.6}
+                  verticalSizing={2.5}
+                  wispDensity={1.2}
+                  wispSpeed={12}
+                  wispIntensity={4}
+                  flowSpeed={0.3}
+                  flowStrength={0.2}
+                  fogIntensity={0.5}
+                  fogScale={0.35}
+                  fogFallSpeed={0.5}
+                  decay={1.0}
+                  falloffStart={1.3}
+                  mouseTiltStrength={0.01}
+                  mouseSmoothTime={0.0}
+                />
+              </div>
+              
+              {/* The image - laser pours onto the top */}
               <div className="relative z-10">
                 <img 
                   src="/images/operations.jpg" 
