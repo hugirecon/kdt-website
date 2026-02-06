@@ -13,6 +13,7 @@ import Nav from "@/components/Nav";
 const ParticleBackground = dynamic(() => import("@/components/ParticleBackground"), { ssr: false });
 const Shadertoy = dynamic(() => import("@/components/Shadertoy"), { ssr: false });
 const Globe = dynamic(() => import("@/components/Globe"), { ssr: false });
+const MetallicDotGrid = dynamic(() => import("@/components/MetallicDotGrid"), { ssr: false });
 
 // ============ HERO ============
 function Hero() {
@@ -492,8 +493,17 @@ function Footer() {
 // ============ PAGE ============
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-[#050510] text-white">
-      <ParticleBackground />
+    <main className="min-h-screen bg-[#050510] text-white relative">
+      {/* Metallic Dot Grid Background */}
+      <div className="fixed inset-0 z-0">
+        <MetallicDotGrid 
+          dotSize={6}
+          gap={28}
+          baseColor="#1a1a1a"
+          activeColor="#f97316"
+          proximity={100}
+        />
+      </div>
       <Nav />
       <Hero />
       <Clients />
