@@ -148,99 +148,125 @@ function GlitchImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
-// Quote Testimonial Component (Framer-style)
+// Quote Testimonial Component - Exact Framer style
 const testimonials = [
   {
     quote: "Matt and his team offer outstanding service and only employ the best people. If you're looking to hire a company that is made up of genuinely good guys, KDT is unmatched.",
     author: "John Lambert",
-    initials: "JL"
+    role: "Google Review"
   },
   {
     quote: "Excellent service and top-notch professionalism! The team is knowledgeable, reliable, and goes above and beyond to ensure safety and peace of mind.",
     author: "Cameron Polley",
-    initials: "CP"
+    role: "Google Review"
   },
   {
     quote: "Highly recommend Knight Division Tactical for all your security needs. They are extremely professional and their attention to detail is second to none.",
     author: "Doug Bennett",
-    initials: "DB"
+    role: "Google Review"
   },
   {
     quote: "A veteran-owned company that truly lives by their values. The level of professionalism and capability is unmatched in the industry.",
     author: "Robert Hayes",
-    initials: "RH"
+    role: "Google Review"
   }
 ];
 
 function QuoteTestimonial() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState<number | null>(null);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   
   return (
-    <div className="relative py-16">
+    <div className="relative py-12">
       {/* Quote content */}
-      <div className="text-center max-w-4xl mx-auto px-6 relative">
-        {/* Subtle quotation marks */}
-        <span className="absolute -left-4 md:left-0 top-0 text-[#00ff41]/10 text-[120px] md:text-[180px] font-serif leading-none select-none">"</span>
-        <span className="absolute -right-4 md:right-0 bottom-0 text-[#00ff41]/10 text-[120px] md:text-[180px] font-serif leading-none select-none rotate-180">"</span>
+      <div className="text-center max-w-4xl mx-auto px-8 relative">
+        {/* Quotation marks - subtle, positioned inline */}
+        <div className="flex items-start justify-center gap-4">
+          <span className="text-[#00ff41]/20 text-6xl md:text-8xl font-serif leading-none select-none mt-2">"</span>
+          
+          <div className="flex-1">
+            {/* Main quote with blur transition */}
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={activeIndex}
+                initial={{ opacity: 0, filter: 'blur(4px)', scale: 0.98 }}
+                animate={{ opacity: 1, filter: 'blur(0px)', scale: 1 }}
+                exit={{ opacity: 0, filter: 'blur(4px)', scale: 0.98 }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
+                className="text-xl md:text-3xl lg:text-4xl font-light text-white leading-relaxed"
+              >
+                {testimonials[activeIndex].quote}
+              </motion.p>
+            </AnimatePresence>
+          </div>
+          
+          <span className="text-[#00ff41]/20 text-6xl md:text-8xl font-serif leading-none select-none mt-2">"</span>
+        </div>
         
-        {/* Main quote */}
-        <motion.p
-          key={activeIndex}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.5 }}
-          className="text-2xl md:text-4xl lg:text-5xl font-light text-white leading-relaxed tracking-tight"
-        >
-          {testimonials[activeIndex].quote}
-        </motion.p>
-        
-        {/* Caption */}
-        <motion.p
-          key={`caption-${activeIndex}`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-8 text-xs tracking-[0.2em] text-gray-500 uppercase"
-        >
-          Google Review
-        </motion.p>
+        {/* Role caption */}
+        <AnimatePresence mode="wait">
+          <motion.p
+            key={`role-${activeIndex}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
+            className="mt-8 text-xs tracking-[0.15em] text-gray-500 uppercase"
+          >
+            {testimonials[activeIndex].role}
+          </motion.p>
+        </AnimatePresence>
       </div>
       
-      {/* Avatar navigation */}
-      <div className="flex justify-center items-center gap-3 mt-10">
-        {testimonials.map((testimonial, idx) => (
-          <motion.button
-            key={idx}
-            onClick={() => setActiveIndex(idx)}
-            onMouseEnter={() => setIsHovered(idx)}
-            onMouseLeave={() => setIsHovered(null)}
-            className={`relative w-12 h-12 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-300 ${
-              activeIndex === idx 
-                ? 'bg-[#00ff41] text-black scale-110' 
-                : 'bg-[#00ff41]/20 text-[#00ff41] hover:bg-[#00ff41]/40'
-            }`}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {testimonial.initials}
-            
-            {/* Hover tooltip with name */}
-            <AnimatePresence>
-              {isHovered === idx && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-xs text-gray-400"
-                >
-                  {testimonial.author}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.button>
-        ))}
+      {/* Avatar pills navigation - expand on hover to reveal name */}
+      <div className="flex justify-center items-center gap-2 mt-10">
+        {testimonials.map((testimonial, idx) => {
+          const isActive = activeIndex === idx;
+          const isHovered = hoveredIndex === idx;
+          const showName = isActive || isHovered;
+          
+          return (
+            <motion.button
+              key={idx}
+              onClick={() => setActiveIndex(idx)}
+              onMouseEnter={() => setHoveredIndex(idx)}
+              onMouseLeave={() => setHoveredIndex(null)}
+              animate={{
+                width: showName ? 'auto' : 40,
+                backgroundColor: isActive ? '#00ff41' : 'rgba(0, 255, 65, 0.15)',
+              }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className={`h-10 rounded-full flex items-center gap-2 overflow-hidden ${
+                showName ? 'px-4' : 'px-0 justify-center'
+              }`}
+              style={{ minWidth: 40 }}
+            >
+              {/* Avatar circle */}
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold flex-shrink-0 ${
+                isActive ? 'bg-black/20 text-black' : 'bg-[#00ff41]/30 text-[#00ff41]'
+              }`}>
+                {testimonial.author.split(' ').map(n => n[0]).join('')}
+              </div>
+              
+              {/* Name - shown on hover/active */}
+              <AnimatePresence>
+                {showName && (
+                  <motion.span
+                    initial={{ opacity: 0, width: 0 }}
+                    animate={{ opacity: 1, width: 'auto' }}
+                    exit={{ opacity: 0, width: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className={`text-sm font-medium whitespace-nowrap overflow-hidden ${
+                      isActive ? 'text-black' : 'text-[#00ff41]'
+                    }`}
+                  >
+                    {testimonial.author}
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </motion.button>
+          );
+        })}
       </div>
     </div>
   );
