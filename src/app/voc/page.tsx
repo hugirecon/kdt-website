@@ -220,18 +220,18 @@ export default function VOCPage() {
           color="#00ff41"
           horizontalBeamOffset={0.08}
           verticalBeamOffset={-0.05}
-          horizontalSizing={1.0}
+          horizontalSizing={1.2}
           verticalSizing={2.2}
-          wispDensity={0.8}
-          wispSpeed={10}
-          wispIntensity={3}
-          flowSpeed={0.25}
-          flowStrength={0.35}
-          fogIntensity={0.75}
-          fogScale={0.35}
-          fogFallSpeed={0.4}
-          decay={1.4}
-          falloffStart={1.5}
+          wispDensity={0.7}
+          wispSpeed={8}
+          wispIntensity={2.5}
+          flowSpeed={0.2}
+          flowStrength={0.3}
+          fogIntensity={0.9}
+          fogScale={0.45}
+          fogFallSpeed={0.35}
+          decay={1.6}
+          falloffStart={1.6}
           mouseTiltStrength={0.01}
           mouseSmoothTime={0.0}
         />
@@ -239,8 +239,8 @@ export default function VOCPage() {
       
       {/* Mobile: Simplified static glow (LaserFlow is heavy on mobile) */}
       <div className="fixed inset-0 pointer-events-none z-0 md:hidden">
-        <div className="absolute top-0 right-0 w-[150vw] h-[80vh] bg-gradient-radial from-[#00ff41]/25 via-[#00ff41]/10 to-transparent rounded-full blur-[120px] -translate-y-1/4 translate-x-1/4" />
-        <div className="absolute top-[25%] left-1/2 w-[3px] h-[50vh] bg-gradient-to-b from-[#00ff41] via-[#00ff41]/40 to-transparent blur-[3px] -translate-x-1/2" />
+        <div className="absolute top-0 left-1/2 w-[200vw] h-[90vh] bg-gradient-radial from-[#00ff41]/30 via-[#00ff41]/15 to-transparent rounded-full blur-[150px] -translate-y-1/3 -translate-x-1/2" />
+        <div className="absolute top-[20%] left-1/2 w-[4px] h-[55vh] bg-gradient-to-b from-[#00ff41] via-[#00ff41]/50 to-transparent blur-[4px] -translate-x-1/2" />
       </div>
       
       {/* Atmospheric fog effects (green tones) - more diffuse like huly */}
