@@ -6,6 +6,7 @@ import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from
 import dynamic from "next/dynamic";
 import Nav from "@/components/Nav";
 import EncryptButton from "@/components/EncryptButton";
+import QuoteTestimonial from "@/components/QuoteTestimonial";
 
 const LaserFlow = dynamic(() => import("@/components/LaserFlow"), { ssr: false });
 
@@ -148,129 +149,33 @@ function GlitchImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
-// Quote Testimonial Component - Exact Framer style
-const testimonials = [
+// KDT Testimonials data for the Framer Quote Testimonial component
+const kdtTestimonials = [
   {
     quote: "Matt and his team offer outstanding service and only employ the best people. If you're looking to hire a company that is made up of genuinely good guys, KDT is unmatched.",
     author: "John Lambert",
-    role: "Google Review"
+    role: "Google Review",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
   },
   {
     quote: "Excellent service and top-notch professionalism! The team is knowledgeable, reliable, and goes above and beyond to ensure safety and peace of mind.",
     author: "Cameron Polley",
-    role: "Google Review"
+    role: "Google Review",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop"
   },
   {
     quote: "Highly recommend Knight Division Tactical for all your security needs. They are extremely professional and their attention to detail is second to none.",
     author: "Doug Bennett",
-    role: "Google Review"
+    role: "Google Review",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop"
   },
   {
     quote: "A veteran-owned company that truly lives by their values. The level of professionalism and capability is unmatched in the industry.",
     author: "Robert Hayes",
-    role: "Google Review"
+    role: "Google Review",
+    avatar: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&h=400&fit=crop"
   }
 ];
-
-function QuoteTestimonial() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  
-  return (
-    <div className="relative py-12">
-      {/* Quote content */}
-      <div className="text-center max-w-4xl mx-auto px-8 relative">
-        {/* Quotation marks - subtle, positioned inline */}
-        <div className="flex items-start justify-center gap-4">
-          <span className="text-[#00ff41]/20 text-6xl md:text-8xl font-serif leading-none select-none mt-2">"</span>
-          
-          <div className="flex-1">
-            {/* Main quote with blur transition */}
-            <AnimatePresence mode="wait">
-              <motion.p
-                key={activeIndex}
-                initial={{ opacity: 0, filter: 'blur(4px)', scale: 0.98 }}
-                animate={{ opacity: 1, filter: 'blur(0px)', scale: 1 }}
-                exit={{ opacity: 0, filter: 'blur(4px)', scale: 0.98 }}
-                transition={{ duration: 0.4, ease: 'easeOut' }}
-                className="text-xl md:text-3xl lg:text-4xl font-light text-white leading-relaxed"
-              >
-                {testimonials[activeIndex].quote}
-              </motion.p>
-            </AnimatePresence>
-          </div>
-          
-          <span className="text-[#00ff41]/20 text-6xl md:text-8xl font-serif leading-none select-none mt-2">"</span>
-        </div>
-        
-        {/* Role caption */}
-        <AnimatePresence mode="wait">
-          <motion.p
-            key={`role-${activeIndex}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, delay: 0.1 }}
-            className="mt-8 text-xs tracking-[0.15em] text-gray-500 uppercase"
-          >
-            {testimonials[activeIndex].role}
-          </motion.p>
-        </AnimatePresence>
-      </div>
-      
-      {/* Avatar pills navigation - expand on hover to reveal name */}
-      <div className="flex justify-center items-center gap-2 mt-10">
-        {testimonials.map((testimonial, idx) => {
-          const isActive = activeIndex === idx;
-          const isHovered = hoveredIndex === idx;
-          const showName = isActive || isHovered;
-          
-          return (
-            <motion.button
-              key={idx}
-              onClick={() => setActiveIndex(idx)}
-              onMouseEnter={() => setHoveredIndex(idx)}
-              onMouseLeave={() => setHoveredIndex(null)}
-              animate={{
-                width: showName ? 'auto' : 40,
-                backgroundColor: isActive ? '#00ff41' : 'rgba(0, 255, 65, 0.15)',
-              }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
-              className={`h-10 rounded-full flex items-center gap-2 overflow-hidden ${
-                showName ? 'px-4' : 'px-0 justify-center'
-              }`}
-              style={{ minWidth: 40 }}
-            >
-              {/* Avatar circle */}
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold flex-shrink-0 ${
-                isActive ? 'bg-black/20 text-black' : 'bg-[#00ff41]/30 text-[#00ff41]'
-              }`}>
-                {testimonial.author.split(' ').map(n => n[0]).join('')}
-              </div>
-              
-              {/* Name - shown on hover/active */}
-              <AnimatePresence>
-                {showName && (
-                  <motion.span
-                    initial={{ opacity: 0, width: 0 }}
-                    animate={{ opacity: 1, width: 'auto' }}
-                    exit={{ opacity: 0, width: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className={`text-sm font-medium whitespace-nowrap overflow-hidden ${
-                      isActive ? 'text-black' : 'text-[#00ff41]'
-                    }`}
-                  >
-                    {testimonial.author}
-                  </motion.span>
-                )}
-              </AnimatePresence>
-            </motion.button>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
 
 // Shader Lines Background
 function ShaderLines() {
@@ -490,7 +395,7 @@ export default function VOCPage() {
         </div>
       </section>
 
-      {/* Testimonials - Framer Quote Testimonial style */}
+      {/* Testimonials - Exact Framer Quote Testimonial component */}
       <section className="py-24 bg-[#030503] relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
@@ -505,8 +410,27 @@ export default function VOCPage() {
             </h2>
           </div>
           
-          {/* Quote Testimonial Component */}
-          <QuoteTestimonial />
+          {/* Exact Framer Quote Testimonial Component */}
+          <QuoteTestimonial 
+            testimonials={kdtTestimonials}
+            quoteFont={{
+              fontSize: "28px",
+              fontWeight: 300,
+              lineHeight: 1.4
+            }}
+            quoteColor="#ffffff"
+            backgroundColor="transparent"
+            activeColor="#00ff41"
+            hoverColor="rgba(0, 255, 65, 0.1)"
+            roleColor="#6b7280"
+            showQuotationMarks={true}
+            quoteMarkColor="#00ff41"
+            quoteMarkSize={72}
+            quotationMarkOpacity={0.15}
+            animationDuration={0.4}
+            gap={40}
+            avatarSize={32}
+          />
         </div>
       </section>
 
