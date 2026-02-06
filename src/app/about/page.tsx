@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Nav from "@/components/Nav";
+import TabsFAQ from "@/components/TabsFAQ";
 
 // ============ HERO (DARK) ============
 function Hero() {
@@ -375,6 +376,12 @@ export default function AboutPage() {
       <Features />
       <Global />
       <Leadership />
+      
+      {/* FAQ Section */}
+      <section className="py-24 px-6 bg-[#0a0a0a] border-t border-white/5">
+        <TabsFAQ />
+      </section>
+      
       <CTA />
       <Footer />
     </main>
