@@ -220,18 +220,18 @@ export default function VOCPage() {
           color="#00ff41"
           horizontalBeamOffset={0.08}
           verticalBeamOffset={-0.05}
-          horizontalSizing={1.2}
+          horizontalSizing={1.15}
           verticalSizing={2.2}
-          wispDensity={0.7}
-          wispSpeed={8}
-          wispIntensity={2.5}
-          flowSpeed={0.2}
-          flowStrength={0.3}
-          fogIntensity={0.9}
-          fogScale={0.45}
-          fogFallSpeed={0.35}
-          decay={1.6}
-          falloffStart={1.6}
+          wispDensity={0.75}
+          wispSpeed={9}
+          wispIntensity={2.8}
+          flowSpeed={0.22}
+          flowStrength={0.32}
+          fogIntensity={0.82}
+          fogScale={0.4}
+          fogFallSpeed={0.38}
+          decay={1.5}
+          falloffStart={1.55}
           mouseTiltStrength={0.01}
           mouseSmoothTime={0.0}
         />
@@ -290,7 +290,7 @@ export default function VOCPage() {
       </section>
 
       {/* Features */}
-      <section className="px-6 py-20 relative z-10">
+      <section className="px-6 py-20 relative z-10 bg-[#050a05]/80 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center" style={{ marginBottom: '35px' }}>
             <span className="text-[#00ff41]">What You Get</span>
