@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
@@ -26,6 +26,56 @@ function useIsMobile() {
     return () => window.removeEventListener("resize", check);
   }, []);
   return isMobile;
+}
+
+// Create a global mobile state that can be accessed without hooks in section components
+let globalIsMobile = true; // Default true for SSR
+
+// Mobile-aware motion div - skips scroll animations on mobile for smoother scrolling
+function MobileMotion({ 
+  children, 
+  className,
+  initial,
+  whileInView,
+  animate,
+  viewport,
+  transition,
+  ...rest
+}: {
+  children: React.ReactNode;
+  className?: string;
+  initial?: any;
+  whileInView?: any;
+  animate?: any;
+  viewport?: any;
+  transition?: any;
+  [key: string]: any;
+}) {
+  const isMobile = useIsMobile();
+  
+  // Update global state
+  useEffect(() => {
+    globalIsMobile = isMobile;
+  }, [isMobile]);
+  
+  if (isMobile) {
+    // On mobile, just render a div with no animations
+    return <div className={className} {...rest}>{children}</div>;
+  }
+  
+  return (
+    <motion.div
+      className={className}
+      initial={initial}
+      whileInView={whileInView}
+      animate={animate}
+      viewport={viewport}
+      transition={transition}
+      {...rest}
+    >
+      {children}
+    </motion.div>
+  );
 }
 
 // ============ HERO ============
@@ -181,7 +231,7 @@ function Features() {
   return (
     <section className="relative py-24">
       <div className="max-w-[1200px] mx-auto px-6">
-        <motion.div 
+        <MobileMotion 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -193,7 +243,7 @@ function Features() {
           <p className="text-[18px] text-gray-400" style={{ maxWidth: "42rem", marginLeft: "auto", marginRight: "auto" }}>
             Technology-enabled security with the highest caliber of personnel.
           </p>
-        </motion.div>
+        </MobileMotion>
         
         <BentoGrid>
           {/* Large card */}
@@ -286,7 +336,7 @@ function GlobalOperations() {
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left - Globe */}
-          <motion.div
+          <MobileMotion
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -294,10 +344,10 @@ function GlobalOperations() {
             className="order-2 lg:order-1"
           >
             <Globe className="w-full max-w-[500px] mx-auto" />
-          </motion.div>
+          </MobileMotion>
           
           {/* Right - Text */}
-          <motion.div
+          <MobileMotion
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -338,7 +388,7 @@ function GlobalOperations() {
                 <div className="text-[14px] text-gray-500">Countries Accessible</div>
               </div>
             </div>
-          </motion.div>
+          </MobileMotion>
         </div>
       </div>
     </section>
@@ -359,7 +409,7 @@ function Services() {
   return (
     <section className="relative py-24">
       <div className="max-w-[1200px] mx-auto px-6">
-        <motion.div 
+        <MobileMotion 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -371,11 +421,11 @@ function Services() {
           <p className="text-[18px] text-gray-400" style={{ maxWidth: "42rem", marginLeft: "auto", marginRight: "auto" }}>
             Comprehensive security solutions tailored to your needs.
           </p>
-        </motion.div>
+        </MobileMotion>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {services.map((service, i) => (
-            <motion.div
+            <MobileMotion
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -386,7 +436,7 @@ function Services() {
                 <h3 className="text-[17px] font-semibold text-white mb-2">{service.title}</h3>
                 <p className="text-[14px] text-gray-400">{service.desc}</p>
               </GlowCard>
-            </motion.div>
+            </MobileMotion>
           ))}
         </div>
       </div>
@@ -409,7 +459,7 @@ function CTA() {
       </div>
       
       <div className="relative z-10 max-w-[600px] mx-auto text-center px-6">
-        <motion.div
+        <MobileMotion
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -437,7 +487,7 @@ function CTA() {
               View Careers
             </Link>
           </div>
-        </motion.div>
+        </MobileMotion>
       </div>
     </section>
   );

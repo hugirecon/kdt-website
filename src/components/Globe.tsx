@@ -6,18 +6,6 @@ import dynamic from "next/dynamic";
 // Dynamically import react-globe.gl to avoid SSR issues
 const GlobeGL = dynamic(() => import("react-globe.gl"), { ssr: false });
 
-// Mobile detection hook
-function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(true);
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-  return isMobile;
-}
-
 interface Location {
   lat: number;
   lng: number;
@@ -65,28 +53,11 @@ export default function Globe({
   autoRotate = true,
   className = "",
 }: GlobeProps) {
-  const isMobile = useIsMobile();
   const globeRef = useRef<any>(null);
   const [isClient, setIsClient] = useState(false);
   const [dimensions, setDimensions] = useState({ width: 600, height: 600 });
   const [countries, setCountries] = useState<any>({ features: [] });
   const containerRef = useRef<HTMLDivElement>(null);
-
-  // Return simple placeholder on mobile (3D globe is too heavy)
-  if (isMobile) {
-    return (
-      <div className={`relative aspect-square ${className}`}>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-48 h-48 rounded-full bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] border border-[#f97316]/20 flex items-center justify-center">
-            <div className="text-center">
-              <div className="w-3 h-3 rounded-full bg-[#f97316] animate-pulse mx-auto mb-2" />
-              <span className="text-[12px] text-gray-500">Global Operations</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   useEffect(() => {
     setIsClient(true);
