@@ -204,53 +204,9 @@ export default function VOCPage() {
       <Nav />
       <ShaderLines />
       
-      {/* LASER FLOW - Soft atmospheric glow centered like huly.io's nebula */}
-      {/* Desktop: Ethereal diffuse quality - softer, more misty than direct beam */}
-      <div 
-        className="fixed top-0 left-1/2 w-[100vw] h-[150vh] pointer-events-none z-0 hidden md:block"
-        style={{ 
-          transform: 'translateX(-50%) translateY(-18%)',
-        }}
-      >
-        <LaserFlow 
-          color="#00ff41"
-          horizontalBeamOffset={0.0}
-          verticalBeamOffset={-0.12}
-          horizontalSizing={1.6}
-          verticalSizing={2.6}
-          wispDensity={0.15}
-          wispSpeed={2.5}
-          wispIntensity={0.4}
-          flowSpeed={0.08}
-          flowStrength={0.15}
-          fogIntensity={0.9}
-          fogScale={0.38}
-          fogFallSpeed={0.12}
-          decay={2.8}
-          falloffStart={2.4}
-          mouseTiltStrength={0.002}
-          mouseSmoothTime={0.0}
-        />
-      </div>
-      
-      {/* Mobile: Simplified diffuse glow (LaserFlow is heavy on mobile) */}
+      {/* Mobile: Simplified glow (LaserFlow is heavy on mobile) */}
       <div className="fixed inset-0 pointer-events-none z-0 md:hidden">
         <div className="absolute top-[-15%] left-1/2 w-[200vw] h-[80vh] bg-gradient-radial from-[#00ff41]/15 via-[#00ff41]/6 to-transparent rounded-full blur-[200px] -translate-x-1/2" />
-        <div className="absolute top-[12%] left-1/2 w-[150vw] h-[50vh] bg-[#00ff41]/8 rounded-full blur-[180px] -translate-x-1/2" />
-      </div>
-      
-      {/* Atmospheric fog effects - soft, layered mist like huly.io */}
-      <div className="fixed inset-0 pointer-events-none z-0 hidden md:block">
-        {/* Primary central nebula - very soft and diffuse */}
-        <div className="absolute top-[-15%] left-1/2 -translate-x-1/2 w-[1600px] h-[1400px] bg-[#00ff41]/10 rounded-full blur-[400px]" />
-        {/* Secondary layer - offset for depth */}
-        <div className="absolute top-[5%] left-[38%] w-[1000px] h-[1000px] bg-[#00ff41]/7 rounded-full blur-[350px]" />
-        {/* Tertiary subtle atmosphere - cooler tint for depth */}
-        <div className="absolute top-[18%] left-[55%] w-[800px] h-[800px] bg-emerald-500/5 rounded-full blur-[300px]" />
-        {/* Lower ambient glow - very subtle */}
-        <div className="absolute top-[40%] left-1/2 -translate-x-1/2 w-[1200px] h-[700px] bg-[#00ff41]/6 rounded-full blur-[350px]" />
-        {/* Edge vignette for depth */}
-        <div className="absolute top-[25%] left-[20%] w-[600px] h-[600px] bg-emerald-400/4 rounded-full blur-[280px]" />
       </div>
       
       {/* Hero Section - Split layout like huly.io: text left, visual right */}
@@ -279,17 +235,38 @@ export default function VOCPage() {
               <EncryptButton />
             </motion.div>
             
-            {/* Right - Visual anchor (like huly's product screenshot) */}
+            {/* Right - Visual anchor with LaserFlow pouring over it */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative"
             >
-              {/* Softer glow behind image - subtle halo effect */}
-              <div className="absolute inset-0 bg-[#00ff41]/12 rounded-2xl blur-[80px] scale-125" />
-              <div className="absolute inset-0 bg-emerald-500/8 rounded-2xl blur-[120px] scale-150" />
-              <div className="relative">
+              {/* LaserFlow container - positioned to pour over the image */}
+              <div className="absolute inset-0 -top-[100%] -bottom-[50%] -left-[25%] -right-[25%] pointer-events-none z-10 hidden md:block">
+                <LaserFlow 
+                  color="#00ff41"
+                  horizontalBeamOffset={0.0}
+                  verticalBeamOffset={-0.15}
+                  horizontalSizing={0.6}
+                  verticalSizing={1.8}
+                  wispDensity={0.8}
+                  wispSpeed={8}
+                  wispIntensity={3}
+                  flowSpeed={0.2}
+                  flowStrength={0.3}
+                  fogIntensity={0.7}
+                  fogScale={0.4}
+                  fogFallSpeed={0.25}
+                  decay={1.4}
+                  falloffStart={1.5}
+                  mouseTiltStrength={0.005}
+                  mouseSmoothTime={0.0}
+                />
+              </div>
+              
+              {/* The image the laser pours over */}
+              <div className="relative z-0">
                 <GlitchImage 
                   src="/images/voc-operator.jpg" 
                   alt="VOC Operator"
