@@ -203,38 +203,60 @@ export default function VOCPage() {
         <div className="absolute top-[-15%] left-1/2 w-[200vw] h-[80vh] bg-gradient-radial from-[#00ff41]/15 via-[#00ff41]/6 to-transparent rounded-full blur-[200px] -translate-x-1/2" />
       </div>
       
-      {/* Hero Section - Split layout: text LEFT, laser+image RIGHT (like huly.io) */}
-      <section className="relative min-h-screen">
-        <div className="max-w-7xl mx-auto px-6 pt-24 lg:pt-32">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-            {/* LEFT - Text Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-left pt-8 lg:pt-16 lg:sticky lg:top-32"
-            >
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8">
-                <span className="text-white">Join the </span>
-                <span className="text-[#00ff41] text-glow">VOC</span>
-              </h1>
-              <p className="text-xl text-gray-400 mb-6">
-                The Virtual Operations Command — a pre-cursor to a major new technology.
-              </p>
-              <p className="text-lg text-gray-500 mb-12">
-                What we're launching now will focus on you, the Contractor. Right now it's a server. 
-                Later it will evolve. Your place in it will remain.
-              </p>
-              
-              <EncryptButton />
-            </motion.div>
+      {/* Hero Section - huly.io style: text LEFT, large laser RIGHT with operator image */}
+      <section className="relative min-h-[120vh] lg:min-h-[140vh] overflow-hidden">
+        {/* Laser video background - spans right side of screen */}
+        <div className="absolute top-0 right-0 w-[70%] lg:w-[60%] h-full overflow-hidden">
+          <video
+            className="absolute w-full h-full object-cover mix-blend-lighten"
+            style={{ objectPosition: 'center top' }}
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src="/videos/hero/hero.mp4" type="video/mp4" />
+            <source src="/videos/hero/hero.webm" type="video/webm" />
+          </video>
+        </div>
+        
+        {/* Text content - LEFT side */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-24 lg:pt-40">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-lg"
+          >
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8">
+              <span className="text-white">Join the </span>
+              <span className="text-[#00ff41] text-glow">VOC</span>
+            </h1>
+            <p className="text-xl text-gray-400 mb-6">
+              The Virtual Operations Command — a pre-cursor to a major new technology.
+            </p>
+            <p className="text-lg text-gray-500 mb-12">
+              What we're launching now will focus on you, the Contractor. Right now it's a server. 
+              Later it will evolve. Your place in it will remain.
+            </p>
             
-            {/* RIGHT - Laser effect with operator image below */}
-            <div className="relative">
-              <HulyHero />
-            </div>
+            <EncryptButton />
+          </motion.div>
+        </div>
+        
+        {/* Operator image - positioned where laser lands, RIGHT side */}
+        <div className="absolute top-[50vh] lg:top-[55vh] right-0 w-[65%] lg:w-[55%] z-10 pr-4 lg:pr-8">
+          <div className="relative rounded-t-xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10 border-b-0">
+            <img
+              src="/images/operations.jpg"
+              alt="KDT Operator"
+              className="w-full h-auto"
+            />
           </div>
         </div>
+        
+        {/* Bottom fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#050a05] to-transparent z-20 pointer-events-none" />
       </section>
 
       {/* Features */}
