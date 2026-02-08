@@ -205,7 +205,10 @@ export default function VOCPage() {
       
       {/* Hero Section - huly.io style: text LEFT, large laser RIGHT with operator image */}
       <section className="relative min-h-[120vh] lg:min-h-[140vh] overflow-hidden">
-        {/* Laser video background - spans right side of screen */}
+        {/* Dark background for laser video (needed for mix-blend-lighten) */}
+        <div className="absolute top-0 right-0 w-[70%] lg:w-[60%] h-full bg-black" />
+        
+        {/* Laser video - spans right side of screen */}
         <div className="absolute top-0 right-0 w-[70%] lg:w-[60%] h-full overflow-hidden">
           <video
             className="absolute w-full h-full object-cover mix-blend-lighten"
