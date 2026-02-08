@@ -203,39 +203,39 @@ export default function VOCPage() {
         <div className="absolute top-[-15%] left-1/2 w-[200vw] h-[80vh] bg-gradient-radial from-[#00ff41]/15 via-[#00ff41]/6 to-transparent rounded-full blur-[200px] -translate-x-1/2" />
       </div>
       
-      {/* Hero Section - Split layout like huly.io: text left, visual right */}
-      <section className="relative min-h-screen px-6 flex items-center" style={{ paddingTop: '6rem', paddingBottom: '4rem' }}>
-        <div className="max-w-7xl mx-auto relative z-10 w-full">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            {/* Left - Text Content */}
+      {/* Hero Section - Full width laser effect with operator image */}
+      <section className="relative">
+        {/* Laser + Operator Image Hero */}
+        <HulyHero />
+        
+        {/* Text Content - Overlaid on top of the hero */}
+        <div className="absolute top-0 left-0 right-0 z-20 pt-24 md:pt-32 lg:pt-40 px-6">
+          <div className="max-w-4xl mx-auto text-center">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-left"
+              initial={{ opacity: 0, y: -30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
             >
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8">
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
                 <span className="text-white">Join the </span>
                 <span className="text-[#00ff41] text-glow">VOC</span>
               </h1>
-              <p className="text-xl text-gray-400 mb-6">
+              <p className="text-xl md:text-2xl text-gray-300 mb-4 max-w-2xl mx-auto">
                 The Virtual Operations Command — a pre-cursor to a major new technology.
               </p>
-              <p className="text-lg text-gray-500 mb-12">
+              <p className="text-lg text-gray-500 mb-8 max-w-xl mx-auto">
                 What we're launching now will focus on you, the Contractor. Right now it's a server. 
                 Later it will evolve. Your place in it will remain.
               </p>
               
               <EncryptButton />
             </motion.div>
-            
-            {/* Right - Huly Hero with laser effect */}
-            <div className="hidden md:block relative">
-              <HulyHero />
-            </div>
           </div>
         </div>
       </section>
+      
+      {/* Spacer to account for the large hero */}
+      <div className="h-[20vh]" />
 
       {/* Features */}
       <section className="px-6 py-20 relative z-10 bg-[#050a05]/80 backdrop-blur-sm">
