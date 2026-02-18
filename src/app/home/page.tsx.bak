@@ -343,7 +343,7 @@ function GlobalOperations() {
             transition={{ duration: 0.8 }}
             className="order-2 lg:order-1"
           >
-            {/* <Globe className="w-full max-w-[500px] mx-auto" /> */}
+            <Globe className="w-full max-w-[500px] mx-auto" />
           </MobileMotion>
           
           {/* Right - Text */}
