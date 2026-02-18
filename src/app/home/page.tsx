@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
@@ -15,68 +14,6 @@ const ParticleBackground = dynamic(() => import("@/components/ParticleBackground
 const Shadertoy = dynamic(() => import("@/components/Shadertoy"), { ssr: false });
 const Globe = dynamic(() => import("@/components/Globe"), { ssr: false });
 const MetallicDotGrid = dynamic(() => import("@/components/MetallicDotGrid"), { ssr: false });
-
-// Hook for mobile detection
-function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(true); // Default true to prevent heavy render on SSR
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-  return isMobile;
-}
-
-// Create a global mobile state that can be accessed without hooks in section components
-let globalIsMobile = true; // Default true for SSR
-
-// Mobile-aware motion div - skips scroll animations on mobile for smoother scrolling
-function MobileMotion({ 
-  children, 
-  className,
-  initial,
-  whileInView,
-  animate,
-  viewport,
-  transition,
-  ...rest
-}: {
-  children: React.ReactNode;
-  className?: string;
-  initial?: any;
-  whileInView?: any;
-  animate?: any;
-  viewport?: any;
-  transition?: any;
-  [key: string]: any;
-}) {
-  const isMobile = useIsMobile();
-  
-  // Update global state
-  useEffect(() => {
-    globalIsMobile = isMobile;
-  }, [isMobile]);
-  
-  if (isMobile) {
-    // On mobile, just render a div with no animations
-    return <div className={className} {...rest}>{children}</div>;
-  }
-  
-  return (
-    <motion.div
-      className={className}
-      initial={initial}
-      whileInView={whileInView}
-      animate={animate}
-      viewport={viewport}
-      transition={transition}
-      {...rest}
-    >
-      {children}
-    </motion.div>
-  );
-}
 
 // ============ HERO ============
 function Hero() {
@@ -231,7 +168,7 @@ function Features() {
   return (
     <section className="relative py-24">
       <div className="max-w-[1200px] mx-auto px-6">
-        <MobileMotion 
+        <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -243,7 +180,7 @@ function Features() {
           <p className="text-[18px] text-gray-400" style={{ maxWidth: "42rem", marginLeft: "auto", marginRight: "auto" }}>
             Technology-enabled security with the highest caliber of personnel.
           </p>
-        </MobileMotion>
+        </motion.div>
         
         <BentoGrid>
           {/* Large card */}
@@ -335,22 +272,19 @@ function GlobalOperations() {
       
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left - Globe placeholder (temporarily disabled) */}
-          <div className="order-2 lg:order-1 flex items-center justify-center min-h-[300px] lg:min-h-[400px]">
-            <div className="w-full max-w-[400px] aspect-square rounded-full bg-gradient-to-br from-[#f97316]/10 via-[#f97316]/5 to-transparent border border-white/5 flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#f97316]/20 flex items-center justify-center">
-                  <svg className="w-8 h-8 text-[#f97316]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <p className="text-gray-500 text-sm">Global Network</p>
-              </div>
-            </div>
-          </div>
+          {/* Left - Globe */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="order-2 lg:order-1"
+          >
+            <Globe className="w-full max-w-[500px] mx-auto" />
+          </motion.div>
           
           {/* Right - Text */}
-          <MobileMotion
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -391,7 +325,7 @@ function GlobalOperations() {
                 <div className="text-[14px] text-gray-500">Countries Accessible</div>
               </div>
             </div>
-          </MobileMotion>
+          </motion.div>
         </div>
       </div>
     </section>
@@ -412,7 +346,7 @@ function Services() {
   return (
     <section className="relative py-24">
       <div className="max-w-[1200px] mx-auto px-6">
-        <MobileMotion 
+        <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -424,11 +358,11 @@ function Services() {
           <p className="text-[18px] text-gray-400" style={{ maxWidth: "42rem", marginLeft: "auto", marginRight: "auto" }}>
             Comprehensive security solutions tailored to your needs.
           </p>
-        </MobileMotion>
+        </motion.div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {services.map((service, i) => (
-            <MobileMotion
+            <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -439,7 +373,7 @@ function Services() {
                 <h3 className="text-[17px] font-semibold text-white mb-2">{service.title}</h3>
                 <p className="text-[14px] text-gray-400">{service.desc}</p>
               </GlowCard>
-            </MobileMotion>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -462,7 +396,7 @@ function CTA() {
       </div>
       
       <div className="relative z-10 max-w-[600px] mx-auto text-center px-6">
-        <MobileMotion
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -490,7 +424,7 @@ function CTA() {
               View Careers
             </Link>
           </div>
-        </MobileMotion>
+        </motion.div>
       </div>
     </section>
   );
@@ -558,22 +492,18 @@ function Footer() {
 
 // ============ PAGE ============
 export default function HomePage() {
-  const isMobile = useIsMobile();
-  
   return (
     <main className="min-h-screen bg-[#050510] text-white relative">
-      {/* Metallic Dot Grid Background - Desktop only (heavy on mobile) */}
-      {!isMobile && (
-        <div className="fixed inset-0 z-0">
-          <MetallicDotGrid 
-            dotSize={10}
-            gap={36}
-            baseColor="#3a3a3a"
-            activeColor="#f97316"
-            proximity={130}
-          />
-        </div>
-      )}
+      {/* Metallic Dot Grid Background */}
+      <div className="fixed inset-0 z-0">
+        <MetallicDotGrid 
+          dotSize={10}
+          gap={36}
+          baseColor="#3a3a3a"
+          activeColor="#f97316"
+          proximity={130}
+        />
+      </div>
       <Nav />
       <Hero />
       <Clients />
