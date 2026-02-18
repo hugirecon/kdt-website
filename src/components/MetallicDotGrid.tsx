@@ -32,9 +32,6 @@ export default function MetallicDotGrid({
   className = "",
 }: MetallicDotGridProps) {
   const isMobile = useIsMobile();
-  
-  // Return nothing on mobile (canvas animation is too heavy)
-  if (isMobile) return null;
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const dotsRef = useRef<{ cx: number; cy: number; pressed: number }[]>([]);
@@ -229,6 +226,9 @@ export default function MetallicDotGrid({
       containerRef.current?.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
+
+  // Skip rendering on mobile (canvas animation is too heavy)
+  if (isMobile) return null;
 
   return (
     <div
