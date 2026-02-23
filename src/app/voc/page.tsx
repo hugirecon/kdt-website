@@ -183,7 +183,7 @@ export default function VOCPage() {
       {/* BeamGridBackground - full page animated grid background */}
       <div className="fixed inset-0 z-0 hidden md:block">
         <BeamGridBackground 
-          gridSize={50}
+          gridSize={15}
           gridColor="#0a150a"
           darkGridColor="#0a150a"
           beamColor="rgba(0, 255, 65, 0.8)"
