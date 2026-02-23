@@ -230,7 +230,7 @@ export default function VOCPage() {
           <div 
             className="absolute flex items-center justify-center"
             style={{
-              top: '55%',
+              top: '60%',
               left: '50%',
               transform: 'translateX(-50%)',
               width: '86%',
