@@ -207,7 +207,7 @@ export default function VOCPage() {
       {/* Hero Section */}
       <section className="relative min-h-[120vh] lg:min-h-[140vh] overflow-hidden">
         {/* LaserFlow animation with attached box */}
-        <div className="absolute top-0 right-0 w-[70%] lg:w-[60%] h-full overflow-hidden">
+        <div className="absolute top-20 right-0 w-[70%] lg:w-[60%] h-full overflow-hidden">
           <LaserFlow
             color="#00ff41"
             horizontalBeamOffset={0.0}
