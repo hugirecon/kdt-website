@@ -204,11 +204,8 @@ export default function VOCPage() {
         <div className="absolute top-[-15%] left-1/2 w-[200vw] h-[80vh] bg-gradient-radial from-[#00ff41]/15 via-[#00ff41]/6 to-transparent rounded-full blur-[200px] -translate-x-1/2" />
       </div>
       
-      {/* Hero Section - huly.io style: text LEFT, large laser RIGHT with operator image */}
+      {/* Hero Section */}
       <section className="relative min-h-[120vh] lg:min-h-[140vh] overflow-hidden">
-        {/* Dark background for laser video (needed for mix-blend-lighten) */}
-        <div className="absolute top-0 right-0 w-[70%] lg:w-[60%] h-full bg-black" />
-        
         {/* LaserFlow animation - spans right side of screen */}
         <div className="absolute top-0 right-0 w-[70%] lg:w-[60%] h-full overflow-hidden">
           <LaserFlow
@@ -253,17 +250,6 @@ export default function VOCPage() {
             
             <EncryptButton />
           </motion.div>
-        </div>
-        
-        {/* Operator image - positioned where laser lands, RIGHT side */}
-        <div className="absolute top-[50vh] lg:top-[55vh] right-0 w-[65%] lg:w-[55%] z-10 pr-4 lg:pr-8">
-          <div className="relative rounded-t-xl overflow-hidden shadow-2xl shadow-black/50 border border-white/10 border-b-0">
-            <img
-              src="/images/operations.jpg"
-              alt="KDT Operator"
-              className="w-full h-auto"
-            />
-          </div>
         </div>
         
         {/* Bottom fade */}
