@@ -10,6 +10,7 @@ import QuoteTestimonial from "@/components/QuoteTestimonial";
 import HulyHero from "@/components/HulyHero";
 
 const BeamGridBackground = dynamic(() => import("@/components/BeamGridBackground"), { ssr: false });
+const LaserFlow = dynamic(() => import("@/components/LaserFlow"), { ssr: false });
 
 // Magnetic Scramble Button Component
 function MagneticScrambleButton({ children, href }: { children: string; href: string }) {
@@ -208,19 +209,26 @@ export default function VOCPage() {
         {/* Dark background for laser video (needed for mix-blend-lighten) */}
         <div className="absolute top-0 right-0 w-[70%] lg:w-[60%] h-full bg-black" />
         
-        {/* Laser video - spans right side of screen */}
+        {/* LaserFlow animation - spans right side of screen */}
         <div className="absolute top-0 right-0 w-[70%] lg:w-[60%] h-full overflow-hidden">
-          <video
-            className="absolute w-full h-full object-cover mix-blend-lighten"
-            style={{ objectPosition: 'center top' }}
-            autoPlay
-            loop
-            muted
-            playsInline
-          >
-            <source src="/videos/hero/hero.mp4" type="video/mp4" />
-            <source src="/videos/hero/hero.webm" type="video/webm" />
-          </video>
+          <LaserFlow
+            color="#00ff41"
+            horizontalBeamOffset={0.0}
+            verticalBeamOffset={-0.1}
+            horizontalSizing={0.6}
+            verticalSizing={2.5}
+            wispDensity={1.2}
+            wispSpeed={12}
+            wispIntensity={4}
+            flowSpeed={0.3}
+            flowStrength={0.3}
+            fogIntensity={0.5}
+            fogScale={0.35}
+            fogFallSpeed={0.5}
+            decay={1.2}
+            falloffStart={1.3}
+            className="w-full h-full"
+          />
         </div>
         
         {/* Text content - LEFT side */}

@@ -1,7 +1,28 @@
-"use client";
-
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+
+type Props = {
+  className?: string;
+  style?: React.CSSProperties;
+  wispDensity?: number;
+  dpr?: number;
+  mouseSmoothTime?: number;
+  mouseTiltStrength?: number;
+  horizontalBeamOffset?: number;
+  verticalBeamOffset?: number;
+  flowSpeed?: number;
+  verticalSizing?: number;
+  horizontalSizing?: number;
+  fogIntensity?: number;
+  fogScale?: number;
+  wispSpeed?: number;
+  wispIntensity?: number;
+  flowStrength?: number;
+  decay?: number;
+  falloffStart?: number;
+  fogFallSpeed?: number;
+  color?: string;
+};
 
 const VERT = `
 precision highp float;
@@ -239,30 +260,7 @@ void main(){
 }
 `;
 
-interface LaserFlowProps {
-  className?: string;
-  style?: React.CSSProperties;
-  wispDensity?: number;
-  dpr?: number;
-  mouseSmoothTime?: number;
-  mouseTiltStrength?: number;
-  horizontalBeamOffset?: number;
-  verticalBeamOffset?: number;
-  flowSpeed?: number;
-  verticalSizing?: number;
-  horizontalSizing?: number;
-  fogIntensity?: number;
-  fogScale?: number;
-  wispSpeed?: number;
-  wispIntensity?: number;
-  flowStrength?: number;
-  decay?: number;
-  falloffStart?: number;
-  fogFallSpeed?: number;
-  color?: string;
-}
-
-export const LaserFlow = ({
+export const LaserFlow: React.FC<Props> = ({
   className,
   style,
   wispDensity = 1,
@@ -283,20 +281,20 @@ export const LaserFlow = ({
   falloffStart = 1.2,
   fogFallSpeed = 0.6,
   color = '#FF79C6'
-}: LaserFlowProps) => {
-  const mountRef = useRef<HTMLDivElement>(null);
+}) => {
+  const mountRef = useRef<HTMLDivElement | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
-  const uniformsRef = useRef<Record<string, { value: unknown }> | null>(null);
+  const uniformsRef = useRef<any>(null);
   const hasFadedRef = useRef(false);
   const rectRef = useRef<DOMRect | null>(null);
-  const baseDprRef = useRef(1);
-  const currentDprRef = useRef(1);
+  const baseDprRef = useRef<number>(1);
+  const currentDprRef = useRef<number>(1);
   const lastSizeRef = useRef({ width: 0, height: 0, dpr: 0 });
   const fpsSamplesRef = useRef<number[]>([]);
-  const lastFpsCheckRef = useRef(performance.now());
-  const emaDtRef = useRef(16.7);
-  const pausedRef = useRef(false);
-  const inViewRef = useRef(true);
+  const lastFpsCheckRef = useRef<number>(performance.now());
+  const emaDtRef = useRef<number>(16.7);
+  const pausedRef = useRef<boolean>(false);
+  const inViewRef = useRef<boolean>(true);
 
   const hexToRGB = (hex: string) => {
     let c = hex.trim();
@@ -311,18 +309,17 @@ export const LaserFlow = ({
   };
 
   useEffect(() => {
-    const mount = mountRef.current;
-    if (!mount) return;
-
+    const mount = mountRef.current!;
     const renderer = new THREE.WebGLRenderer({
       antialias: false,
-      alpha: true,
+      alpha: false,
       depth: false,
       stencil: false,
       powerPreference: 'high-performance',
       premultipliedAlpha: false,
       preserveDrawingBuffer: false,
       failIfMajorPerformanceCaveat: false,
+      logarithmicDepthBuffer: false
     });
     rendererRef.current = renderer;
 
@@ -330,7 +327,9 @@ export const LaserFlow = ({
     currentDprRef.current = baseDprRef.current;
 
     renderer.setPixelRatio(currentDprRef.current);
-    renderer.setClearColor(0x000000, 0);
+    renderer.shadowMap.enabled = false;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.setClearColor(0x000000, 1);
     const canvas = renderer.domElement;
     canvas.style.width = '100%';
     canvas.style.height = '100%';
@@ -343,7 +342,7 @@ export const LaserFlow = ({
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array([-1, -1, 0, 3, -1, 0, -1, 3, 0]), 3));
 
-    const uniforms: Record<string, { value: unknown }> = {
+    const uniforms = {
       iTime: { value: 0 },
       iResolution: { value: new THREE.Vector3(1, 1, 1) },
       iMouse: { value: new THREE.Vector4(0, 0, 0, 0) },
@@ -373,10 +372,10 @@ export const LaserFlow = ({
       vertexShader: VERT,
       fragmentShader: FRAG,
       uniforms,
-      transparent: true,
+      transparent: false,
       depthTest: false,
       depthWrite: false,
-      blending: THREE.AdditiveBlending
+      blending: THREE.NormalBlending
     });
 
     const mesh = new THREE.Mesh(geometry, material);
@@ -405,7 +404,7 @@ export const LaserFlow = ({
       lastSizeRef.current = { width: w, height: h, dpr: pr };
       renderer.setPixelRatio(pr);
       renderer.setSize(w, h, false);
-      (uniforms.iResolution.value as THREE.Vector3).set(w * pr, h * pr, pr);
+      uniforms.iResolution.value.set(w * pr, h * pr, pr);
       rectRef.current = canvas.getBoundingClientRect();
 
       if (!pausedRef.current) {
@@ -445,12 +444,12 @@ export const LaserFlow = ({
       const hb = rect.height * ratio;
       mouseTarget.set(x * ratio, hb - y * ratio);
     };
-    const onMove = (ev: PointerEvent) => updateMouse(ev.clientX, ev.clientY);
+    const onMove = (ev: PointerEvent | MouseEvent) => updateMouse(ev.clientX, ev.clientY);
     const onLeave = () => mouseTarget.set(0, 0);
-    canvas.addEventListener('pointermove', onMove, { passive: true });
-    canvas.addEventListener('pointerdown', onMove, { passive: true });
-    canvas.addEventListener('pointerenter', onMove, { passive: true });
-    canvas.addEventListener('pointerleave', onLeave, { passive: true });
+    canvas.addEventListener('pointermove', onMove as any, { passive: true });
+    canvas.addEventListener('pointerdown', onMove as any, { passive: true });
+    canvas.addEventListener('pointerenter', onMove as any, { passive: true });
+    canvas.addEventListener('pointerleave', onLeave as any, { passive: true });
 
     const onCtxLost = (e: Event) => {
       e.preventDefault();
@@ -518,8 +517,8 @@ export const LaserFlow = ({
       uniforms.iTime.value = t;
 
       const cdt = Math.min(0.033, Math.max(0.001, dt));
-      uniforms.uFlowTime.value = (uniforms.uFlowTime.value as number) + cdt;
-      uniforms.uFogTime.value = (uniforms.uFogTime.value as number) + cdt;
+      (uniforms.uFlowTime.value as number) += cdt;
+      (uniforms.uFogTime.value as number) += cdt;
 
       if (!hasFadedRef.current) {
         const fadeDur = 1.0;
@@ -531,7 +530,7 @@ export const LaserFlow = ({
       const tau = Math.max(1e-3, mouseSmoothTime);
       const alpha = 1 - Math.exp(-cdt / tau);
       mouseSmooth.lerp(mouseTarget, alpha);
-      (uniforms.iMouse.value as THREE.Vector4).set(mouseSmooth.x, mouseSmooth.y, 0, 0);
+      uniforms.iMouse.value.set(mouseSmooth.x, mouseSmooth.y, 0, 0);
 
       renderer.render(scene, camera);
 
@@ -545,10 +544,10 @@ export const LaserFlow = ({
       ro.disconnect();
       io.disconnect();
       document.removeEventListener('visibilitychange', onVis);
-      canvas.removeEventListener('pointermove', onMove);
-      canvas.removeEventListener('pointerdown', onMove);
-      canvas.removeEventListener('pointerenter', onMove);
-      canvas.removeEventListener('pointerleave', onLeave);
+      canvas.removeEventListener('pointermove', onMove as any);
+      canvas.removeEventListener('pointerdown', onMove as any);
+      canvas.removeEventListener('pointerenter', onMove as any);
+      canvas.removeEventListener('pointerleave', onLeave as any);
       canvas.removeEventListener('webglcontextlost', onCtxLost);
       canvas.removeEventListener('webglcontextrestored', onCtxRestored);
       geometry.dispose();
@@ -580,7 +579,7 @@ export const LaserFlow = ({
     uniforms.uFogFallSpeed.value = fogFallSpeed;
 
     const { r, g, b } = hexToRGB(color || '#FFFFFF');
-    (uniforms.uColor.value as THREE.Vector3).set(r, g, b);
+    uniforms.uColor.value.set(r, g, b);
   }, [
     wispDensity,
     mouseTiltStrength,
@@ -600,18 +599,7 @@ export const LaserFlow = ({
     color
   ]);
 
-  return (
-    <div 
-      ref={mountRef} 
-      className={`laser-flow-container ${className || ''}`} 
-      style={{ 
-        width: '100%', 
-        height: '100%', 
-        position: 'relative',
-        ...style 
-      }} 
-    />
-  );
+  return <div ref={mountRef} className={`w-full h-full relative ${className || ''}`} style={style} />;
 };
 
 export default LaserFlow;
