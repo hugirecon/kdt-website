@@ -206,7 +206,7 @@ export default function VOCPage() {
       
       {/* Hero Section */}
       <section className="relative min-h-[120vh] lg:min-h-[140vh] overflow-hidden">
-        {/* LaserFlow animation - spans right side of screen */}
+        {/* LaserFlow animation with attached box */}
         <div className="absolute top-0 right-0 w-[70%] lg:w-[60%] h-full overflow-hidden">
           <LaserFlow
             color="#00ff41"
@@ -226,6 +226,23 @@ export default function VOCPage() {
             falloffStart={1.3}
             className="w-full h-full"
           />
+          {/* Box where laser lands */}
+          <div 
+            className="absolute flex items-center justify-center"
+            style={{
+              top: '50%',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: '86%',
+              height: '55%',
+              backgroundColor: '#050a05',
+              borderRadius: '20px',
+              border: '2px solid #00ff41',
+              zIndex: 6,
+            }}
+          >
+            {/* Content goes here */}
+          </div>
         </div>
         
         {/* Text content - LEFT side */}
