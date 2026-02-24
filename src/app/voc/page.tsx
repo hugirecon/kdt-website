@@ -188,8 +188,8 @@ export default function VOCPage() {
           darkGridColor="#0a150a"
           beamColor="rgba(0, 255, 65, 0.8)"
           darkBeamColor="rgba(0, 255, 65, 0.8)"
-          beamCount={10}
-          extraBeamCount={4}
+          beamCount={5}
+          extraBeamCount={3}
           beamThickness={2}
           beamGlow={true}
           glowIntensity={40}
