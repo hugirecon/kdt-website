@@ -192,7 +192,7 @@ const BeamGridBackground: React.FC<BeamGridBackgroundProps> = ({
         // Only draw if within canvas bounds
         if (cellX >= 0 && cellX < rect.width && cellY >= 0 && cellY < rect.height) {
           ctx.strokeStyle = activeBeamColor;
-          ctx.lineWidth = beamThickness * 2;
+          ctx.lineWidth = beamThickness;
           ctx.shadowBlur = glowIntensity;
           ctx.shadowColor = activeBeamColor;
           ctx.beginPath();
