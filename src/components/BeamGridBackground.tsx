@@ -178,66 +178,24 @@ const BeamGridBackground: React.FC<BeamGridBackgroundProps> = ({
       // Reset shadow before drawing the interactive highlight
       ctx.shadowBlur = 0;
 
-      // --- Multi-level Interactive highlight near mouse ---
+      // --- Single cell highlight under mouse ---
       if (interactive && !idle) {
         const targetX = mouseRef.current.x;
         const targetY = mouseRef.current.y;
-        // Center grid coordinates
-        const centerGx = Math.floor(targetX / gridSize) * gridSize;
-        const centerGy = Math.floor(targetY / gridSize) * gridSize;
+        // Get the single cell under cursor
+        const cellX = Math.floor(targetX / gridSize) * gridSize;
+        const cellY = Math.floor(targetY / gridSize) * gridSize;
 
-        // Define the three levels of highlight
-        const highlights = [
-          {
-            // Primary: Center cell
-            x: centerGx,
-            y: centerGy,
-            radius: 0,
-            lineWidth: beamThickness * 3,
-            glowFactor: 3,
-          },
-          {
-            // Mild: 1-cell ring around the center
-            x: centerGx,
-            y: centerGy,
-            radius: 1,
-            lineWidth: beamThickness * 1.5,
-            glowFactor: 1.5,
-          },
-          {
-            // More Mild: 2-cell ring (5x5 area)
-            x: centerGx,
-            y: centerGy,
-            radius: 2,
-            lineWidth: beamThickness * 0.75,
-            glowFactor: 0.75,
-          },
-        ];
-
-        highlights.forEach(({ x, y, radius, lineWidth, glowFactor }) => {
+        // Only draw if within canvas bounds
+        if (cellX >= 0 && cellX < rect.width && cellY >= 0 && cellY < rect.height) {
           ctx.strokeStyle = activeBeamColor;
-          ctx.lineWidth = lineWidth;
-          ctx.shadowBlur = glowIntensity * glowFactor;
+          ctx.lineWidth = beamThickness * 2;
+          ctx.shadowBlur = glowIntensity;
           ctx.shadowColor = activeBeamColor;
-
-          for (let dx = -radius; dx <= radius; dx++) {
-            for (let dy = -radius; dy <= radius; dy++) {
-              // Skip inner rings that are drawn with a higher intensity later
-              if (radius === 1 && Math.abs(dx) <= 0 && Math.abs(dy) <= 0) continue;
-              if (radius === 2 && Math.abs(dx) <= 1 && Math.abs(dy) <= 1) continue;
-
-              const cellX = x + dx * gridSize;
-              const cellY = y + dy * gridSize;
-
-              // Only draw if within canvas bounds
-              if (cellX >= 0 && cellX < rect.width && cellY >= 0 && cellY < rect.height) {
-                ctx.beginPath();
-                ctx.rect(cellX, cellY, gridSize, gridSize);
-                ctx.stroke();
-              }
-            }
-          }
-        });
+          ctx.beginPath();
+          ctx.rect(cellX, cellY, gridSize, gridSize);
+          ctx.stroke();
+        }
       }
 
       requestAnimationFrame(draw);
