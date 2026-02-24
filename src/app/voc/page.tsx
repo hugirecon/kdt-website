@@ -192,7 +192,7 @@ export default function VOCPage() {
           extraBeamCount={0}
           beamThickness={2}
           beamGlow={true}
-          glowIntensity={40}
+          glowIntensity={5}
           beamSpeed={0.08}
           showFade={true}
           fadeIntensity={30}
