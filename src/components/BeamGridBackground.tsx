@@ -115,6 +115,9 @@ const BeamGridBackground: React.FC<BeamGridBackgroundProps> = ({
     const draw = () => {
       ctx.clearRect(0, 0, rect.width, rect.height);
 
+      // Reset shadow at start of each frame
+      ctx.shadowBlur = 0;
+
       const lineColor = isDarkMode ? darkGridColor : gridColor;
       const activeBeamColor = isDarkMode ? darkBeamColor : beamColor;
 
