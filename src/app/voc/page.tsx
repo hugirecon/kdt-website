@@ -210,6 +210,7 @@ export default function VOCPage() {
         <div className="absolute top-[85px] right-0 w-[70%] lg:w-[60%] h-full overflow-hidden">
           <LaserFlow
             color="#00ff41"
+            mouseTiltStrength={-0.01}
             horizontalBeamOffset={0.0}
             verticalBeamOffset={-0.1}
             horizontalSizing={0.6}
