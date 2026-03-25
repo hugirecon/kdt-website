@@ -98,6 +98,7 @@ const NAV_ITEMS: NavItemWithDropdown[] = [
   },
   { label: "Training", href: "/training" },
   { label: "VOC", href: "/voc" },
+  { label: "Store", href: "/store" },
 ];
 
 interface NavProps {
