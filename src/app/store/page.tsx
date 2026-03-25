@@ -7,6 +7,7 @@ import Nav from "@/components/Nav";
 
 // ============ TYPES ============
 interface Product {
+  slug: string;
   title: string;
   description: string;
   price: string;
@@ -28,6 +29,7 @@ const CATEGORIES = [
 // ============ PRODUCTS ============
 const PRODUCTS: Product[] = [
   {
+    slug: "kdt-roman-eagle-patch",
     title: "KDT Roman Eagle Patch",
     description: "Limited edition embroidered velcro-backed morale patch featuring the KDT Roman Eagle crest. Hook-and-loop compatible with all standard plate carriers and gear.",
     price: "$11.50",
@@ -37,6 +39,7 @@ const PRODUCTS: Product[] = [
     badges: ["Bestseller"],
   },
   {
+    slug: "kdt-training-t-shirt",
     title: "KDT Training T-Shirt",
     description: "Premium black cotton tee with subdued KDT insignia. Moisture-wicking fabric built for range days and PT sessions. Runs true to size.",
     price: "$35",
@@ -49,6 +52,7 @@ const PRODUCTS: Product[] = [
     ),
   },
   {
+    slug: "kdt-tactical-cap",
     title: "KDT Tactical Cap",
     description: "Fitted tactical cap in matte black with embroidered KDT logo. Low-profile design with adjustable strap. One size fits most.",
     price: "$28",
@@ -61,6 +65,7 @@ const PRODUCTS: Product[] = [
     ),
   },
   {
+    slug: "kdt-hoodie",
     title: "KDT Hoodie",
     description: "Heavyweight black hoodie with kangaroo pocket and embroidered KDT branding. Double-lined hood, ribbed cuffs. Built for cold range mornings.",
     price: "$65",
@@ -73,6 +78,7 @@ const PRODUCTS: Product[] = [
     ),
   },
   {
+    slug: "kdt-challenge-coin",
     title: "KDT Challenge Coin",
     description: "Limited edition die-cast challenge coin with antique brass finish. KDT crest on front, unit motto on reverse. Collector's item.",
     price: "$20",
@@ -85,6 +91,7 @@ const PRODUCTS: Product[] = [
     ),
   },
   {
+    slug: "kdt-range-bag",
     title: "KDT Range Bag",
     description: "Tactical range bag with MOLLE webbing, padded compartments, and heavy-duty zippers. Fits handguns, mags, eyes, ears, and more.",
     price: "$85",
@@ -144,7 +151,7 @@ function CategoryFilter({ active, onChange }: { active: string; onChange: (id: s
 // ============ PRODUCT CARD ============
 function ProductCard({ product }: { product: Product }) {
   return (
-    <div className="group p-0 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:border-[#f97316]/40 hover:shadow-[0_0_30px_rgba(249,115,22,0.08)] transition-all duration-300 backdrop-blur-sm overflow-hidden">
+    <Link href={`/store/${product.slug}`} className="group p-0 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:border-[#f97316]/40 hover:shadow-[0_0_30px_rgba(249,115,22,0.08)] transition-all duration-300 backdrop-blur-sm overflow-hidden block">
       {/* Image or Icon Placeholder */}
       <div className="relative w-full aspect-square bg-white/[0.02] overflow-hidden">
         {product.image ? (
@@ -196,12 +203,12 @@ function ProductCard({ product }: { product: Product }) {
         
         <div className="flex items-center text-[13px] font-semibold text-gray-500 border border-white/10 rounded-lg px-4 py-2.5 justify-center group-hover:border-[#f97316]/30 group-hover:text-[#f97316]/70 transition-all duration-300">
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
-          <span>Coming Soon</span>
+          <span>View Details</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
