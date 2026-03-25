@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Providers from "@/components/Providers";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -80,7 +81,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased text-white min-h-screen`}
         style={{ backgroundColor: '#030305' }}
       >
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
