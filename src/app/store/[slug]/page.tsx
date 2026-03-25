@@ -1,12 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import Nav from "@/components/Nav";
+import {
+  getProductByHandle,
+  getProductPrice,
+  getProductCategory,
+  getProductTag,
+  type MedusaProduct,
+} from "@/lib/store-data";
 
-// ============ PRODUCT DATA ============
+// ============ PRODUCT DATA (FALLBACK) ============
 interface ProductData {
   slug: string;
   title: string;
@@ -19,7 +26,7 @@ interface ProductData {
   images: string[];
 }
 
-const PRODUCTS: Record<string, ProductData> = {
+const FALLBACK_PRODUCTS: Record<string, ProductData> = {
   "kdt-roman-eagle-patch": {
     slug: "kdt-roman-eagle-patch",
     title: "KDT Roman Eagle Patch",
@@ -127,6 +134,26 @@ const PRODUCTS: Record<string, ProductData> = {
   },
 };
 
+// ============ MAP MEDUSA PRODUCT TO LOCAL FORMAT ============
+function mapMedusaToProductData(mp: MedusaProduct): ProductData {
+  const price = getProductPrice(mp);
+  return {
+    slug: mp.handle,
+    title: mp.title,
+    price: price || "TBD",
+    category: getProductCategory(mp),
+    tag: getProductTag(mp),
+    badges: mp.metadata?.badges
+      ? (mp.metadata.badges as string[])
+      : [],
+    description: mp.description || "",
+    details: mp.metadata?.details
+      ? (mp.metadata.details as string[])
+      : [],
+    images: mp.images?.map((img) => img.url) ?? (mp.thumbnail ? [mp.thumbnail] : []),
+  };
+}
+
 // ============ IMAGE GALLERY ============
 function ImageGallery({ images, title }: { images: string[]; title: string }) {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -144,6 +171,8 @@ function ImageGallery({ images, title }: { images: string[]; title: string }) {
     );
   }
 
+  const isExternal = (url: string) => url.startsWith("http");
+
   return (
     <div className="flex flex-col gap-4">
       {/* Main Image */}
@@ -154,6 +183,7 @@ function ImageGallery({ images, title }: { images: string[]; title: string }) {
           fill
           className="object-cover"
           priority
+          {...(isExternal(images[selectedIndex]) ? { unoptimized: true } : {})}
         />
         {/* Badges overlay */}
         <div className="absolute top-4 left-4 flex gap-2">
@@ -164,28 +194,31 @@ function ImageGallery({ images, title }: { images: string[]; title: string }) {
       </div>
 
       {/* Thumbnail Strip */}
-      <div className="grid grid-cols-8 gap-2">
-        {images.map((img, i) => (
-          <button
-            key={i}
-            onClick={() => setSelectedIndex(i)}
-            className={`
-              relative aspect-square rounded-lg overflow-hidden border-2 transition-all duration-200
-              ${selectedIndex === i
-                ? 'border-[#f97316] opacity-100'
-                : 'border-white/[0.08] opacity-50 hover:opacity-80'
-              }
-            `}
-          >
-            <Image
-              src={img}
-              alt={`${title} thumbnail ${i + 1}`}
-              fill
-              className="object-cover"
-            />
-          </button>
-        ))}
-      </div>
+      {images.length > 1 && (
+        <div className="grid grid-cols-8 gap-2">
+          {images.map((img, i) => (
+            <button
+              key={i}
+              onClick={() => setSelectedIndex(i)}
+              className={`
+                relative aspect-square rounded-lg overflow-hidden border-2 transition-all duration-200
+                ${selectedIndex === i
+                  ? 'border-[#f97316] opacity-100'
+                  : 'border-white/[0.08] opacity-50 hover:opacity-80'
+                }
+              `}
+            >
+              <Image
+                src={img}
+                alt={`${title} thumbnail ${i + 1}`}
+                fill
+                className="object-cover"
+                {...(isExternal(img) ? { unoptimized: true } : {})}
+              />
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -194,11 +227,57 @@ function ImageGallery({ images, title }: { images: string[]; title: string }) {
 export default function ProductPage() {
   const params = useParams();
   const slug = params.slug as string;
-  const product = PRODUCTS[slug];
+  
+  const fallback = FALLBACK_PRODUCTS[slug];
+  const [product, setProduct] = useState<ProductData | null>(fallback || null);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    let cancelled = false;
+    async function fetchProduct() {
+      try {
+        const medusaProduct = await getProductByHandle(slug);
+        if (!cancelled && medusaProduct) {
+          const mapped = mapMedusaToProductData(medusaProduct);
+          // Merge: prefer Medusa data but keep fallback details/images if Medusa has none
+          if (fallback) {
+            if (mapped.details.length === 0) mapped.details = fallback.details;
+            if (mapped.images.length === 0) mapped.images = fallback.images;
+            if (mapped.badges.length === 0) mapped.badges = fallback.badges;
+          }
+          setProduct(mapped);
+        }
+      } catch (err) {
+        console.error("Failed to fetch product from Medusa, using fallback:", err);
+        // Keep fallback — already set as initial state
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
+    fetchProduct();
+    return () => { cancelled = true; };
+  }, [slug]);
+
+  // If no fallback and still loading, show loading state
+  if (loading && !product) {
+    return (
+      <main className="min-h-screen bg-[#030305]">
+        <Nav activePath="/store" />
+        <div className="pt-32 pb-24 px-6 text-center">
+          <div className="inline-block w-8 h-8 border-2 border-[#f97316]/30 border-t-[#f97316] rounded-full animate-spin" />
+          <p className="text-gray-500 text-[14px] mt-4">Loading product...</p>
+        </div>
+      </main>
+    );
+  }
+
+  // No product found at all
   if (!product) {
     notFound();
   }
+
+  // Determine if this product has a live purchase link
+  const hasLivePurchaseLink = product.slug === "kdt-roman-eagle-patch";
 
   return (
     <main className="min-h-screen bg-[#030305]">
@@ -275,7 +354,7 @@ export default function ProductPage() {
               )}
 
               {/* Buy / Coming Soon Button */}
-              {product.slug === "kdt-roman-eagle-patch" ? (
+              {hasLivePurchaseLink ? (
                 <a
                   href="https://knightdivisiontactical.com/shop/ols/products/kdt-roman-eagle-patch"
                   target="_blank"

@@ -1,9 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Nav from "@/components/Nav";
+import {
+  getProducts,
+  getProductPrice,
+  getProductCategory,
+  getProductTag,
+  type MedusaProduct,
+} from "@/lib/store-data";
 
 // ============ TYPES ============
 interface Product {
@@ -26,8 +33,8 @@ const CATEGORIES = [
   { id: "collectibles", label: "Collectibles" },
 ];
 
-// ============ PRODUCTS ============
-const PRODUCTS: Product[] = [
+// ============ FALLBACK PRODUCTS (hardcoded) ============
+const FALLBACK_PRODUCTS: Product[] = [
   {
     slug: "kdt-roman-eagle-patch",
     title: "KDT Roman Eagle Patch",
@@ -105,6 +112,23 @@ const PRODUCTS: Product[] = [
   },
 ];
 
+// ============ MAP MEDUSA PRODUCT TO LOCAL FORMAT ============
+function mapMedusaProduct(mp: MedusaProduct): Product {
+  const price = getProductPrice(mp);
+  return {
+    slug: mp.handle,
+    title: mp.title,
+    description: mp.description || "",
+    price: price || "TBD",
+    category: getProductCategory(mp),
+    tag: getProductTag(mp),
+    image: mp.thumbnail || mp.images?.[0]?.url || undefined,
+    badges: mp.metadata?.badges
+      ? (mp.metadata.badges as string[])
+      : undefined,
+  };
+}
+
 // ============ HERO (DARK) ============
 function Hero() {
   return (
@@ -160,11 +184,16 @@ function ProductCard({ product }: { product: Product }) {
             alt={product.title}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-500"
+            {...(product.image.startsWith("http") ? { unoptimized: true } : {})}
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-20 h-20 text-white/10 group-hover:text-[#f97316]/20 transition-colors duration-300">
-              {product.icon}
+              {product.icon || (
+                <svg className="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+              )}
             </div>
           </div>
         )}
@@ -215,24 +244,50 @@ function ProductCard({ product }: { product: Product }) {
 // ============ PRODUCT GRID ============
 function ProductGrid() {
   const [activeCategory, setActiveCategory] = useState("all");
+  const [products, setProducts] = useState<Product[]>(FALLBACK_PRODUCTS);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+    async function fetchProducts() {
+      try {
+        const medusaProducts = await getProducts();
+        if (!cancelled && medusaProducts.length > 0) {
+          setProducts(medusaProducts.map(mapMedusaProduct));
+        }
+      } catch (err) {
+        console.error("Failed to fetch products from Medusa, using fallback:", err);
+        // Keep fallback products — already set as initial state
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
+    fetchProducts();
+    return () => { cancelled = true; };
+  }, []);
   
   const filtered = activeCategory === "all"
-    ? PRODUCTS
-    : PRODUCTS.filter((p) => p.category === activeCategory);
+    ? products
+    : products.filter((p) => p.category === activeCategory);
 
   return (
     <section className="py-24 px-6 bg-[#030305]">
       <div className="max-w-[1200px] mx-auto">
         <CategoryFilter active={activeCategory} onChange={setActiveCategory} />
         
-        {filtered.length === 0 ? (
+        {loading ? (
+          <div className="text-center py-20">
+            <div className="inline-block w-8 h-8 border-2 border-[#f97316]/30 border-t-[#f97316] rounded-full animate-spin" />
+            <p className="text-gray-500 text-[14px] mt-4">Loading products...</p>
+          </div>
+        ) : filtered.length === 0 ? (
           <div className="text-center py-20">
             <p className="text-gray-500 text-[16px]">No products in this category yet. Check back soon.</p>
           </div>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filtered.map((product, i) => (
-              <ProductCard key={i} product={product} />
+              <ProductCard key={product.slug || i} product={product} />
             ))}
           </div>
         )}
