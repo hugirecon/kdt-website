@@ -2,6 +2,19 @@ const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "http://localh
 const PUBLISHABLE_KEY = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || ""
 const REGION_ID = "reg_01KMHD7MMJHAHGSHKE21D6YSB5"
 
+/**
+ * Rewrite image URLs from localhost:9000 to the configured backend URL
+ * (Cloudflare tunnel). Medusa stores absolute URLs in the DB, so images
+ * come back as http://localhost:9000/static/... which won't work from
+ * the public Vercel deployment.
+ */
+function rewriteImageUrl(url: string): string {
+  if (url.startsWith("http://localhost:9000")) {
+    return url.replace("http://localhost:9000", BACKEND_URL)
+  }
+  return url
+}
+
 export interface MedusaProduct {
   id: string
   title: string
@@ -49,12 +62,20 @@ async function medusaFetch<T>(path: string, params: Record<string, string> = {})
   }
 }
 
+function rewriteProductImages(product: MedusaProduct): MedusaProduct {
+  return {
+    ...product,
+    thumbnail: product.thumbnail ? rewriteImageUrl(product.thumbnail) : null,
+    images: product.images?.map((img) => ({ ...img, url: rewriteImageUrl(img.url) })) ?? [],
+  }
+}
+
 export async function getProducts(): Promise<MedusaProduct[]> {
   const data = await medusaFetch<{ products: MedusaProduct[] }>("/store/products", {
     fields: "*variants,*variants.calculated_price",
     region_id: REGION_ID,
   })
-  return data?.products ?? []
+  return (data?.products ?? []).map(rewriteProductImages)
 }
 
 export async function getProductByHandle(handle: string): Promise<MedusaProduct | null> {
@@ -63,7 +84,8 @@ export async function getProductByHandle(handle: string): Promise<MedusaProduct 
     fields: "*variants,*variants.calculated_price",
     region_id: REGION_ID,
   })
-  return data?.products?.[0] ?? null
+  const product = data?.products?.[0] ?? null
+  return product ? rewriteProductImages(product) : null
 }
 
 export async function getCategories(): Promise<MedusaCategory[]> {
