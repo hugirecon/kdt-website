@@ -2,6 +2,8 @@
 
 import { createContext, useContext, useState, useEffect, useCallback, type ReactNode } from "react";
 
+import { DISCORD_PROFILE_KEY, type DiscordUser } from "./discord-oauth";
+
 const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "http://localhost:9000";
 const PUBLISHABLE_KEY = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || "";
 const TOKEN_KEY = "kdt_auth_token";
@@ -21,6 +23,8 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<void>;
   register: (email: string, password: string, firstName: string, lastName: string) => Promise<void>;
   logout: () => void;
+  discordProfile: DiscordUser | null;
+  setDiscordProfile: (profile: DiscordUser | null) => void;
 }
 
 const AuthContext = createContext<AuthContextType>({
@@ -31,6 +35,8 @@ const AuthContext = createContext<AuthContextType>({
   login: async () => {},
   register: async () => {},
   logout: () => {},
+  discordProfile: null,
+  setDiscordProfile: () => {},
 });
 
 export function useAuth() {
@@ -78,13 +84,33 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [token, setToken] = useState<string | null>(null);
   const [customer, setCustomer] = useState<Customer | null>(null);
   const [loading, setLoading] = useState(true);
+  const [discordProfile, setDiscordProfileState] = useState<DiscordUser | null>(null);
 
   const isLoggedIn = !!token && !!customer;
 
-  // Load token + customer on mount
+  const setDiscordProfile = useCallback((profile: DiscordUser | null) => {
+    setDiscordProfileState(profile);
+    if (profile) {
+      localStorage.setItem(DISCORD_PROFILE_KEY, JSON.stringify(profile));
+    } else {
+      localStorage.removeItem(DISCORD_PROFILE_KEY);
+    }
+  }, []);
+
+  // Load token + customer + discord profile on mount
   useEffect(() => {
     async function init() {
       try {
+        // Load Discord profile
+        const storedDiscord = localStorage.getItem(DISCORD_PROFILE_KEY);
+        if (storedDiscord) {
+          try {
+            setDiscordProfileState(JSON.parse(storedDiscord));
+          } catch {
+            localStorage.removeItem(DISCORD_PROFILE_KEY);
+          }
+        }
+
         const stored = localStorage.getItem(TOKEN_KEY);
         if (stored) {
           const c = await fetchCustomer(stored);
@@ -144,12 +170,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const logout = useCallback(() => {
     localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(DISCORD_PROFILE_KEY);
     setToken(null);
     setCustomer(null);
+    setDiscordProfileState(null);
   }, []);
 
   return (
-    <AuthContext.Provider value={{ token, customer, isLoggedIn, loading, login, register, logout }}>
+    <AuthContext.Provider value={{ token, customer, isLoggedIn, loading, login, register, logout, discordProfile, setDiscordProfile }}>
       {children}
     </AuthContext.Provider>
   );
