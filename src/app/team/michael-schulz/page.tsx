@@ -70,8 +70,9 @@ function ProfileHero() {
           {/* Left - Avatar & Quick Info */}
           <div className="lg:w-80 flex-shrink-0">
             {/* Avatar */}
-            <div className="w-48 h-48 rounded-2xl bg-gradient-to-br from-[#f97316]/20 via-[#f97316]/10 to-transparent flex items-center justify-center mb-6 border border-[#f97316]/20">
-              <span className="text-[#f97316] font-bold text-6xl">MS</span>
+            <div className="w-48 h-48 rounded-2xl overflow-hidden mb-6 border border-[#f97316]/20">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/team/michael-schulz.png" alt="Michael Schulz" className="w-full h-full object-cover" />
             </div>
             
             {/* Role Badge */}

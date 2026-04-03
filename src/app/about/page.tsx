@@ -263,12 +263,14 @@ function Leadership() {
       role: "CEO",
       title: "Chief Executive Officer, Head of SPEAR Branch",
       href: "/team/michael-schulz",
+      image: "/images/team/michael-schulz.png",
     },
     {
       name: "Matthew McCalla",
       role: "COO",
       title: "Chief Operating Officer, Head of PSC Branch",
       href: "/team/matthew-mccalla",
+      image: "/images/team/matthew-mccalla.jpg",
     },
   ];
 
@@ -292,11 +294,18 @@ function Leadership() {
               className="group p-6 rounded-xl bg-white/[0.02] border border-white/5 hover:border-[#f97316]/30 hover:bg-white/[0.04] transition-all"
             >
               <div className="flex items-center gap-4 mb-3">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#f97316]/20 to-transparent flex items-center justify-center">
-                  <span className="text-[#f97316] font-bold text-lg">
-                    {leader.name.split(' ').map(n => n[0]).join('')}
-                  </span>
-                </div>
+                {leader.image ? (
+                  <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={leader.image} alt={leader.name} className="w-full h-full object-cover" />
+                  </div>
+                ) : (
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#f97316]/20 to-transparent flex items-center justify-center flex-shrink-0">
+                    <span className="text-[#f97316] font-bold text-lg">
+                      {leader.name.split(' ').map(n => n[0]).join('')}
+                    </span>
+                  </div>
+                )}
                 <div>
                   <span className="inline-block px-2 py-0.5 rounded bg-[#f97316]/10 text-[#f97316] text-[11px] font-medium mb-1">
                     {leader.role}
