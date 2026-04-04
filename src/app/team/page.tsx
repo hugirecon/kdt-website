@@ -62,6 +62,7 @@ function TeamGrid() {
       title: "Compliance, legal matters, certifications, safety", 
       href: "/team/bogdan-modzolewski", 
       initials: "BM",
+      image: "/images/team/bogdan-modzolewski.jpg",
       badge: "bg-amber-500/10 text-amber-400"
     },
     { 
