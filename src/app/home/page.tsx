@@ -154,7 +154,7 @@ function Stats() {
       <div className="max-w-[1200px] mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <StatCard value="400+" label="KDT Agents" description="Elite operators worldwide" />
-          <StatCard value="99%" label="Mission Success" description="Track record of excellence" />
+          <StatCard value="100%" label="Mission Success" description="Track record of excellence" />
           <StatCard value="24/7" label="Response Ready" description="Global deployment capability" />
           <StatCard value="#1" label="Industry Pay" description="Highest compensation" />
         </div>
