@@ -252,7 +252,7 @@ function Features() {
                 </div>
                 <div>
                   <h3 className="text-[18px] font-semibold text-white mb-2">Crisis Response</h3>
-                  <p className="text-[14px] text-gray-400">24/7 rapid response capability for crisis situations. From natural disasters to hostile environments, we deploy when others can't.</p>
+                  <p className="text-[14px] text-gray-400">24/7 rapid response. We deploy when others can't.</p>
                 </div>
               </div>
             </GlowCard>
