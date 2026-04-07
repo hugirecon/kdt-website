@@ -456,7 +456,7 @@ export default function VOCPage() {
               ))}
             </ul>
             
-            <MagneticScrambleButton href="/subscribe">
+            <MagneticScrambleButton href="/contact">
               JOIN THE VOC
             </MagneticScrambleButton>
           </motion.div>

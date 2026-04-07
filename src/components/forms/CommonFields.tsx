@@ -165,8 +165,7 @@ export default function CommonFields({ formData, onChange }: CommonFieldsProps) 
         accept=".pdf,.doc,.docx"
         required
         onChange={(file) => {
-          // Handle file - in real app, upload to server
-          console.log("File selected:", file?.name);
+          // TODO: implement file upload to server
         }}
       />
 

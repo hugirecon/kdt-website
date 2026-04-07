@@ -507,7 +507,7 @@ function WhosBehindKDT() {
           Our team consists of the highest trained and experienced Private Military Contractors. Our clients receive one-of-one treatment - precision and excellence in mind. We carefully screen and select all KDT Agents to ensure that they meet our high standards of professionalism and virtuosity.
         </p>
         <Link
-          href="/meet-the-team"
+          href="/team"
           className="inline-flex items-center gap-2 px-6 py-3 bg-white/[0.05] border border-white/[0.1] text-white rounded-lg hover:bg-white/[0.1] transition-all"
         >
           Meet The Team
@@ -577,7 +577,7 @@ function Footer() {
           </div>
           <div className="flex items-center gap-6">
             <Link href="/careers" className="text-[14px] text-gray-500 hover:text-white transition-colors">Careers</Link>
-            <Link href="/shop" className="text-[14px] text-gray-500 hover:text-white transition-colors">Shop</Link>
+            <Link href="/store" className="text-[14px] text-gray-500 hover:text-white transition-colors">Store</Link>
           </div>
         </div>
       </div>
