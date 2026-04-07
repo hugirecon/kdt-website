@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { useState } from "react";
 import ApplicationForm from "./ApplicationForm";
 import Nav from "@/components/Nav";
+import PreScreen from "@/components/PreScreen";
 
 // Role definitions with detailed content from live site
 const roles: Record<string, {
@@ -310,6 +312,25 @@ const roles: Record<string, {
 };
 
 // ============ FOOTER ============
+function PreScreenGate({ slug, roleTitle, formSections }: { slug: string; roleTitle: string; formSections: ("military" | "technical" | "sales" | "medical")[] }) {
+  const [passed, setPassed] = useState(false);
+
+  return (
+    <>
+      <PreScreen roleSlug={slug} onPass={() => setPassed(true)} />
+      {passed && (
+        <div className="mt-12">
+          <div className="text-center mb-12">
+            <h2 className="text-[32px] font-bold text-white mb-3">Apply Now</h2>
+            <p className="text-gray-400">Complete the form below to begin your journey with KDT.</p>
+          </div>
+          <ApplicationForm role={roleTitle} formSections={formSections} />
+        </div>
+      )}
+    </>
+  );
+}
+
 function Footer() {
   return (
     <footer className="py-8 px-6 bg-[#0a0a0a] border-t border-white/5">
@@ -411,7 +432,7 @@ export default function RolePage() {
         </div>
       </section>
       
-      {/* Application Form */}
+      {/* Pre-Screen & Application Form */}
       <section className="py-16 px-6 bg-[#050510] relative overflow-hidden">
         {/* Background elements */}
         <div className="absolute inset-0 opacity-[0.02]" style={{
@@ -421,11 +442,7 @@ export default function RolePage() {
         <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-[#f97316]/5 rounded-full blur-[150px]" />
         
         <div className="max-w-[800px] mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-[32px] font-bold text-white mb-3">Apply Now</h2>
-            <p className="text-gray-400">Complete the form below to begin your journey with KDT.</p>
-          </div>
-          <ApplicationForm role={role.title} formSections={role.formSections} />
+          <PreScreenGate slug={roleSlug} roleTitle={role.title} formSections={role.formSections} />
         </div>
       </section>
       
