@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Providers from "@/components/Providers";
+import { JsonLd } from "@/components/JsonLd";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -81,6 +82,48 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased text-white min-h-screen`}
         style={{ backgroundColor: '#030305' }}
       >
+        <JsonLd data={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Knight Division Tactical",
+          "legalName": "Knight Division Tactical LLC",
+          "url": "https://knightdivisiontactical.com",
+          "logo": "https://knightdivisiontactical.com/logo.png",
+          "description": "Knight Division Tactical provides Tier 1 private military, executive protection, crisis response, and defense contracting services worldwide.",
+          "foundingLocation": {
+            "@type": "Place",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Sheridan",
+              "addressRegion": "WY",
+              "addressCountry": "US"
+            }
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "contact@knightdivisiontactical.com",
+            "contactType": "customer service"
+          },
+          "sameAs": [
+            "https://www.facebook.com/138690455996141",
+            "https://www.instagram.com/knightdivisiontactical/",
+            "https://www.linkedin.com/company/knight-division-tactical",
+            "https://www.x.com/KDT_Security",
+            "https://www.youtube.com/channel/UC12fOGZ9Mb9zTgAR5EgwrGA"
+          ],
+          "founder": [
+            {
+              "@type": "Person",
+              "name": "Michael Schulz",
+              "jobTitle": "Chief Executive Officer"
+            },
+            {
+              "@type": "Person",
+              "name": "Matthew McCalla",
+              "jobTitle": "Chief Operating Officer"
+            }
+          ]
+        }} />
         <Providers>{children}</Providers>
       </body>
     </html>

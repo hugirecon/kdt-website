@@ -61,7 +61,7 @@ function PhotoGallery() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img 
                 src={`/images/tactical-${num}.jpg`} 
-                alt={`KDT Operations ${num}`}
+                alt={`Knight Division Tactical field operations and tactical security personnel — image ${num}`}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />

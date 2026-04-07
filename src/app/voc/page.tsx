@@ -140,7 +140,7 @@ function GlitchImage({ src, alt }: { src: string; alt: string }) {
             }}
             transition={{ duration: 0.2, repeat: Infinity }}
           >
-            <img src={src} alt="" className="w-full h-auto translate-x-2" />
+            <img src={src} alt="KDT Voice of Command interface display" className="w-full h-auto translate-x-2" />
           </motion.div>
         </>
       )}
