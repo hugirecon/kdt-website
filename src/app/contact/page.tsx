@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 
@@ -25,6 +26,32 @@ function Hero() {
 
 // ============ CONTACT FORM (WHITE) ============
 function ContactForm() {
+  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", subject: "Hire KDT Services", message: "" });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    setErrorMsg("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Failed to send message");
+      }
+      setStatus("success");
+      setForm({ firstName: "", lastName: "", email: "", subject: "Hire KDT Services", message: "" });
+    } catch (err) {
+      setStatus("error");
+      setErrorMsg(err instanceof Error ? err.message : "Something went wrong");
+    }
+  };
+
   return (
     <section className="py-24 px-6 bg-white">
       <div className="max-w-[1200px] mx-auto">
@@ -32,12 +59,27 @@ function ContactForm() {
           {/* Form */}
           <div>
             <h2 className="text-[28px] font-bold text-gray-900 mb-8">Send us a message</h2>
-            <form className="space-y-5">
+
+            {status === "success" && (
+              <div className="mb-6 p-4 rounded-lg bg-green-50 border border-green-200 text-green-800 text-[15px]">
+                Message sent! We&apos;ll be in touch shortly.
+              </div>
+            )}
+            {status === "error" && (
+              <div className="mb-6 p-4 rounded-lg bg-red-50 border border-red-200 text-red-800 text-[15px]">
+                {errorMsg}
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-[14px] font-medium text-gray-700 mb-2">First Name</label>
                   <input 
                     type="text"
+                    required
+                    value={form.firstName}
+                    onChange={(e) => setForm({ ...form, firstName: e.target.value })}
                     className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#f97316] focus:ring-1 focus:ring-[#f97316] outline-none transition-all text-[15px]"
                     placeholder="John"
                   />
@@ -46,6 +88,9 @@ function ContactForm() {
                   <label className="block text-[14px] font-medium text-gray-700 mb-2">Last Name</label>
                   <input 
                     type="text"
+                    required
+                    value={form.lastName}
+                    onChange={(e) => setForm({ ...form, lastName: e.target.value })}
                     className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#f97316] focus:ring-1 focus:ring-[#f97316] outline-none transition-all text-[15px]"
                     placeholder="Smith"
                   />
@@ -56,6 +101,9 @@ function ContactForm() {
                 <label className="block text-[14px] font-medium text-gray-700 mb-2">Email</label>
                 <input 
                   type="email"
+                  required
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#f97316] focus:ring-1 focus:ring-[#f97316] outline-none transition-all text-[15px]"
                   placeholder="john@example.com"
                 />
@@ -63,7 +111,11 @@ function ContactForm() {
               
               <div>
                 <label className="block text-[14px] font-medium text-gray-700 mb-2">Subject</label>
-                <select className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#f97316] focus:ring-1 focus:ring-[#f97316] outline-none transition-all text-[15px] bg-white">
+                <select
+                  value={form.subject}
+                  onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                  className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#f97316] focus:ring-1 focus:ring-[#f97316] outline-none transition-all text-[15px] bg-white"
+                >
                   <option>Hire KDT Services</option>
                   <option>Career Inquiry</option>
                   <option>Training Programs</option>
@@ -76,6 +128,9 @@ function ContactForm() {
                 <label className="block text-[14px] font-medium text-gray-700 mb-2">Message</label>
                 <textarea 
                   rows={5}
+                  required
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#f97316] focus:ring-1 focus:ring-[#f97316] outline-none transition-all resize-none text-[15px]"
                   placeholder="Tell us about your needs..."
                 />
@@ -83,9 +138,10 @@ function ContactForm() {
               
               <button 
                 type="submit"
-                className="w-full py-3.5 bg-[#f97316] text-black text-[15px] font-medium rounded-lg hover:bg-[#f97316]/90 transition-all"
+                disabled={status === "loading"}
+                className="w-full py-3.5 bg-[#f97316] text-black text-[15px] font-medium rounded-lg hover:bg-[#f97316]/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message
+                {status === "loading" ? "Sending..." : "Send Message"}
               </button>
             </form>
           </div>

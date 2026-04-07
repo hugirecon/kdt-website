@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 
@@ -154,6 +155,38 @@ function WhyKDT() {
 
 // ============ REQUEST FORM (WHITE) ============
 function RequestForm() {
+  const [form, setForm] = useState({
+    organization: "", industry: "", jobTitle: "", email: "",
+    phone: "", extension: "", address: "", threatLevel: "", details: "",
+  });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    setErrorMsg("");
+    try {
+      const res = await fetch("/api/hire", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Failed to send request");
+      }
+      setStatus("success");
+      setForm({ organization: "", industry: "", jobTitle: "", email: "", phone: "", extension: "", address: "", threatLevel: "", details: "" });
+    } catch (err) {
+      setStatus("error");
+      setErrorMsg(err instanceof Error ? err.message : "Something went wrong");
+    }
+  };
+
+  const set = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
+    setForm({ ...form, [field]: e.target.value });
+
   return (
     <section className="py-24 px-6 bg-white">
       <div className="max-w-[1200px] mx-auto">
@@ -181,12 +214,25 @@ function RequestForm() {
           </div>
           
           <div>
-            <form className="space-y-5">
+            {status === "success" && (
+              <div className="mb-6 p-4 rounded-lg bg-green-50 border border-green-200 text-green-800 text-[15px]">
+                Quote request submitted! Our team will review and get back to you.
+              </div>
+            )}
+            {status === "error" && (
+              <div className="mb-6 p-4 rounded-lg bg-red-50 border border-red-200 text-red-800 text-[15px]">
+                {errorMsg}
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <label className="block text-[14px] font-medium text-gray-700 mb-2">Business/Enterprise/Agency Name *</label>
                 <input 
                   type="text"
                   required
+                  value={form.organization}
+                  onChange={set("organization")}
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#f97316] focus:ring-1 focus:ring-[#f97316] outline-none transition-all text-[15px]"
                   placeholder="Organization name"
                 />
@@ -195,7 +241,7 @@ function RequestForm() {
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-[14px] font-medium text-gray-700 mb-2">Industry *</label>
-                  <select required className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#f97316] focus:ring-1 focus:ring-[#f97316] outline-none transition-all text-[15px] bg-white">
+                  <select required value={form.industry} onChange={set("industry")} className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#f97316] focus:ring-1 focus:ring-[#f97316] outline-none transition-all text-[15px] bg-white">
                     <option value="">Select industry...</option>
                     <option>Government / Public Sector</option>
                     <option>Defense / Military</option>
@@ -215,6 +261,8 @@ function RequestForm() {
                   <input 
                     type="text"
                     required
+                    value={form.jobTitle}
+                    onChange={set("jobTitle")}
                     className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#f97316] focus:ring-1 focus:ring-[#f97316] outline-none transition-all text-[15px]"
                     placeholder="Your title"
                   />
@@ -226,6 +274,8 @@ function RequestForm() {
                 <input 
                   type="email"
                   required
+                  value={form.email}
+                  onChange={set("email")}
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#f97316] focus:ring-1 focus:ring-[#f97316] outline-none transition-all text-[15px]"
                   placeholder="john@example.com"
                 />
@@ -237,6 +287,8 @@ function RequestForm() {
                   <input 
                     type="tel"
                     required
+                    value={form.phone}
+                    onChange={set("phone")}
                     className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#f97316] focus:ring-1 focus:ring-[#f97316] outline-none transition-all text-[15px]"
                     placeholder="+1 (555) 000-0000"
                   />
@@ -245,6 +297,8 @@ function RequestForm() {
                   <label className="block text-[14px] font-medium text-gray-700 mb-2">Extension</label>
                   <input 
                     type="text"
+                    value={form.extension}
+                    onChange={set("extension")}
                     className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#f97316] focus:ring-1 focus:ring-[#f97316] outline-none transition-all text-[15px]"
                     placeholder="Optional"
                   />
@@ -256,6 +310,8 @@ function RequestForm() {
                 <input 
                   type="text"
                   required
+                  value={form.address}
+                  onChange={set("address")}
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#f97316] focus:ring-1 focus:ring-[#f97316] outline-none transition-all text-[15px]"
                   placeholder="Full address"
                 />
@@ -263,7 +319,7 @@ function RequestForm() {
               
               <div>
                 <label className="block text-[14px] font-medium text-gray-700 mb-2">Threat Level *</label>
-                <select required className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#f97316] focus:ring-1 focus:ring-[#f97316] outline-none transition-all text-[15px] bg-white">
+                <select required value={form.threatLevel} onChange={set("threatLevel")} className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#f97316] focus:ring-1 focus:ring-[#f97316] outline-none transition-all text-[15px] bg-white">
                   <option value="">Select threat level...</option>
                   <option>Low - General security presence</option>
                   <option>Medium - Elevated security concerns</option>
@@ -276,6 +332,8 @@ function RequestForm() {
                 <label className="block text-[14px] font-medium text-gray-700 mb-2">Additional Details</label>
                 <textarea 
                   rows={4}
+                  value={form.details}
+                  onChange={set("details")}
                   className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-[#f97316] focus:ring-1 focus:ring-[#f97316] outline-none transition-all resize-none text-[15px]"
                   placeholder="Tell us about your security requirements..."
                 />
@@ -283,9 +341,10 @@ function RequestForm() {
               
               <button 
                 type="submit"
-                className="w-full py-3.5 bg-[#f97316] text-black text-[15px] font-medium rounded-lg hover:bg-[#f97316]/90 transition-all"
+                disabled={status === "loading"}
+                className="w-full py-3.5 bg-[#f97316] text-black text-[15px] font-medium rounded-lg hover:bg-[#f97316]/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Request Quote
+                {status === "loading" ? "Submitting..." : "Request Quote"}
               </button>
             </form>
           </div>

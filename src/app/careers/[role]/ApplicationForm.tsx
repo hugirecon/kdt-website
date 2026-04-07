@@ -21,18 +21,29 @@ export default function ApplicationForm({ role, formSections }: ApplicationFormP
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
+  const [submitError, setSubmitError] = useState("");
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError("");
 
-    // TODO: Submit to API
-    console.log("Form submitted:", { role, ...formData });
-    
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setSubmitted(true);
+    try {
+      const res = await fetch("/api/apply", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ role, ...formData }),
+      });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Failed to submit application");
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : "Something went wrong");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -55,6 +66,11 @@ export default function ApplicationForm({ role, formSections }: ApplicationFormP
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
+      {submitError && (
+        <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-[15px]">
+          {submitError}
+        </div>
+      )}
       {/* Common fields for all roles */}
       <CommonFields formData={formData} onChange={handleChange} />
 
