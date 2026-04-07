@@ -669,7 +669,7 @@ export default function Nav(_props: NavProps = {}) {
 
       <nav className="framer-nav">
         {/* Desktop nav - hidden on mobile via CSS */}
-        {NAV_ITEMS.map((item, index) => (
+        {[...NAV_ITEMS, ...(isLoggedIn ? [{ label: "Portal", href: "/portal/dashboard" } as NavItemWithDropdown] : [])].map((item, index) => (
           <div 
             key={item.href}
             className="framer-nav-item"
@@ -834,7 +834,7 @@ export default function Nav(_props: NavProps = {}) {
         </div>
 
         <div className="mobile-nav-links">
-          {NAV_ITEMS.map((item, index) => (
+          {[...NAV_ITEMS, ...(isLoggedIn ? [{ label: "Portal", href: "/portal/dashboard" } as NavItemWithDropdown] : [])].map((item, index) => (
             <div key={item.href}>
               {item.dropdown ? (
                 <>
