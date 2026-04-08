@@ -55,8 +55,8 @@ function PhotoGallery() {
   return (
     <section className="py-8 px-6 bg-[#0a0a0a]">
       <div className="max-w-[1200px] mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[1, 2, 3, 4].map((num) => (
+        <div className="grid grid-cols-3 gap-4">
+          {[1, 2, 4].map((num) => (
             <div key={num} className="aspect-square rounded-xl overflow-hidden relative group">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img 
