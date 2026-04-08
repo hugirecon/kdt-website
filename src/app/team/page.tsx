@@ -57,15 +57,6 @@ function TeamGrid() {
       badge: "bg-purple-500/10 text-purple-400"
     },
     { 
-      name: "Bogdan Modzolewski", 
-      role: "SCS", 
-      title: "Compliance, legal matters, certifications, safety", 
-      href: "/team/bogdan-modzolewski", 
-      initials: "BM",
-      image: "/images/team/bogdan-modzolewski.jpg",
-      badge: "bg-amber-500/10 text-amber-400"
-    },
-    { 
       name: "Santiago Telleria", 
       role: "MC", 
       title: "Personnel integration, support, logistics", 

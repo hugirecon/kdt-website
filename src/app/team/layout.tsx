@@ -45,14 +45,6 @@ const teamMembers = [
   },
   {
     "@type": "Person",
-    "name": "Bogdan Modzolewski",
-    "jobTitle": "Senior Compliance Specialist",
-    "worksFor": { "@type": "Organization", "name": "Knight Division Tactical" },
-    "url": "https://knightdivisiontactical.com/team/bogdan-modzolewski",
-    "image": "https://knightdivisiontactical.com/images/team/bogdan-modzolewski.jpg"
-  },
-  {
-    "@type": "Person",
     "name": "Santiago Telleria",
     "jobTitle": "Mission Coordinator",
     "worksFor": { "@type": "Organization", "name": "Knight Division Tactical" },
