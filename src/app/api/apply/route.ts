@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-const TO_EMAIL = "careers@knightdivisiontactical.com";
-const FROM_EMAIL = "KDT Website <onboarding@resend.dev>";
+// Application submissions will be routed to the Selection Specialist bot API
+// when it comes online. For now, we accept and log the submission.
+// See RECRUITMENT-INTEGRATION.md for the full integration plan.
 
 export async function POST(req: NextRequest) {
   try {
@@ -23,35 +21,14 @@ export async function POST(req: NextRequest) {
       [formData.firstName, formData.lastName].filter(Boolean).join(" ") ||
       "Unknown";
 
-    const isPlaceholder =
-      !process.env.RESEND_API_KEY ||
-      process.env.RESEND_API_KEY === "re_placeholder_key";
+    // TODO: When Selection Specialist bot is online, POST to its API:
+    // const res = await fetch(`${SELECTION_API_URL}/applications`, {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify({ role, ...formData }),
+    // });
 
-    if (isPlaceholder) {
-      console.log("[Application Form] Resend key not configured — logging submission:");
-      console.log({ role, name, ...formData });
-      return NextResponse.json({ success: true, mode: "dev" });
-    }
-
-    // Build a readable HTML table of all fields
-    const rows = Object.entries(formData)
-      .filter(([, v]) => v !== undefined && v !== "")
-      .map(
-        ([key, value]) =>
-          `<tr><td style="padding:4px 12px 4px 0;font-weight:bold;vertical-align:top">${key.replace(/([A-Z])/g, " $1").replace(/^./, (s) => s.toUpperCase())}</td><td style="padding:4px 0">${String(value).replace(/\n/g, "<br />")}</td></tr>`
-      )
-      .join("");
-
-    await resend.emails.send({
-      from: FROM_EMAIL,
-      to: TO_EMAIL,
-      replyTo: formData.email || undefined,
-      subject: `New Application: ${role} — ${name}`,
-      html: `
-        <h2>New Application for ${role}</h2>
-        <table style="border-collapse:collapse">${rows}</table>
-      `,
-    });
+    console.log(`[Application] Received: ${role} — ${name}`);
 
     return NextResponse.json({ success: true });
   } catch (error) {
