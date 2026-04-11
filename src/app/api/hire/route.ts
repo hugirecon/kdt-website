@@ -1,7 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 const TO_EMAIL = "schulz@knightdivisiontactical.com";
 const FROM_EMAIL = "KDT Website <onboarding@resend.dev>";
@@ -9,61 +6,35 @@ const FROM_EMAIL = "KDT Website <onboarding@resend.dev>";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const {
-      organization,
-      industry,
-      jobTitle,
-      email,
-      phone,
-      extension,
-      address,
-      threatLevel,
-      details,
-    } = body;
+    const { organization, contactName, title, email, phone, service, message } = body;
 
-    if (!organization || !email || !phone || !jobTitle) {
-      return NextResponse.json(
-        { error: "Missing required fields" },
-        { status: 400 }
-      );
+    if (!email || !organization) {
+      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    const isPlaceholder =
-      !process.env.RESEND_API_KEY ||
-      process.env.RESEND_API_KEY === "re_placeholder_key";
+    if (process.env.RESEND_API_KEY && process.env.RESEND_API_KEY !== "re_placeholder_key") {
+      const { Resend } = await import("resend");
+      const resend = new Resend(process.env.RESEND_API_KEY);
 
-    if (isPlaceholder) {
-      console.log("[Hire Form] Resend key not configured — logging submission:");
-      console.log(body);
-      return NextResponse.json({ success: true, mode: "dev" });
+      const rows = Object.entries(body)
+        .filter(([, v]) => v !== undefined && v !== "")
+        .map(([key, value]) => `<tr><td style="padding:4px 12px 4px 0;font-weight:bold;vertical-align:top">${key}</td><td style="padding:4px 0">${String(value).replace(/\n/g, "<br />")}</td></tr>`)
+        .join("");
+
+      await resend.emails.send({
+        from: FROM_EMAIL,
+        to: TO_EMAIL,
+        replyTo: email,
+        subject: `New Quote Request from ${organization}`,
+        html: `<h2>New Quote Request</h2><table style="border-collapse:collapse">${rows}</table>`,
+      });
+    } else {
+      console.log("[Hire Form] No Resend key — logging:", body);
     }
-
-    await resend.emails.send({
-      from: FROM_EMAIL,
-      to: TO_EMAIL,
-      replyTo: email,
-      subject: `New Quote Request from ${organization}`,
-      html: `
-        <h2>New Quote Request</h2>
-        <p><strong>Organization:</strong> ${organization}</p>
-        <p><strong>Industry:</strong> ${industry || "N/A"}</p>
-        <p><strong>Job Title:</strong> ${jobTitle}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}${extension ? ` ext. ${extension}` : ""}</p>
-        <p><strong>Address:</strong> ${address || "N/A"}</p>
-        <p><strong>Threat Level:</strong> ${threatLevel || "N/A"}</p>
-        <hr />
-        <p><strong>Additional Details:</strong></p>
-        <p>${details ? details.replace(/\n/g, "<br />") : "None provided"}</p>
-      `,
-    });
 
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("[Hire Form] Error:", error);
-    return NextResponse.json(
-      { error: "Failed to send message" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to submit" }, { status: 500 });
   }
 }
