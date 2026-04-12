@@ -336,7 +336,7 @@ function CTA() {
       <div className="max-w-[600px] mx-auto text-center relative z-10">
         <h2 className="text-[36px] md:text-[44px] font-bold text-white mb-4 leading-tight">
           Join the<br />
-          <span className="text-[#f97316]">Movement</span>
+          <span className="text-[#f97316]">PMC</span>
         </h2>
         <p className="text-[16px] text-gray-400 mb-8">
           Work alongside elite operators and cutting-edge technology.
