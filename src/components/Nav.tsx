@@ -75,7 +75,7 @@ const NAV_ITEMS: NavItemWithDropdown[] = [
     dropdown: [
       { title: "Our Story", description: "Learn how Knight Division Tactical was founded and our journey to becoming an industry leader.", href: "/about#story", image: "/images/tactical-1.jpg" },
       { title: "Leadership", description: "Meet the command team driving KDT's mission and opera\u00ADtional excel\u00ADlence.", href: "/team", image: "/images/tactical-2.jpg" },
-      { title: "Mission", description: "Discover the core values and prin\u00ADciples that guide every\u00ADthing we do.", href: "/about#mission", image: "/images/tactical-3.jpg" },
+      { title: "Mission", description: "Discover the core values and prin\u00ADciples that guide every\u00ADthing we do.", href: "/about#mission", image: "/images/tactical-1.jpg" },
     ]
   },
   { 
@@ -84,7 +84,7 @@ const NAV_ITEMS: NavItemWithDropdown[] = [
     dropdown: [
       { title: "Wildlife Mitigation", description: "Special\u00ADized protec\u00ADtion in remote and hazard\u00ADous environ\u00ADments.", href: "/services/wildlife-mitigation", image: "/images/tactical-1.jpg" },
       { title: "Direct Action", description: "Elite capabil\u00ADities for high-threat environ\u00ADments and contested zones.", href: "/services/direct-action", image: "/images/tactical-2.jpg" },
-      { title: "Counter-Trafficking", description: "Disrupt\u00ADing networks that profit from exploit\u00ADation.", href: "/services/counter-trafficking", image: "/images/tactical-3.jpg" },
+      { title: "Counter-Trafficking", description: "Disrupt\u00ADing networks that profit from exploit\u00ADation.", href: "/services/counter-trafficking", image: "/images/tactical-4.jpg" },
       { title: "Reconnaissance", description: "Full-spectrum intelli\u00ADgence from collec\u00ADtion through dissem\u00ADination.", href: "/services/reconnaissance", image: "/images/tactical-4.jpg" },
       { title: "Maritime", description: "Vessel protec\u00ADtion, anti-piracy, and port security.", href: "/services/maritime-operations", image: "/images/tactical-5.jpg" },
     ]
