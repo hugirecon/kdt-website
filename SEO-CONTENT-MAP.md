@@ -147,3 +147,79 @@ All content should naturally link to existing KDT pages:
 - 10K+ monthly organic visits
 - Top 3 for "private military contractor" and "private security company"
 - Featured in AI answer boxes for PMC/PSC/defense queries
+
+---
+
+## COMPARISON KEYWORDS — Competitor Pages
+
+### PMC Competitors (every major searched PMC company)
+
+| # | Comparison Article | URL | Target Keywords |
+|---|-------------------|-----|-----------------|
+| 1 | KDT vs Academi (Blackwater) | `/blog/kdt-vs-academi-blackwater` | KDT vs Blackwater, Academi vs KDT, Blackwater alternative |
+| 2 | KDT vs Triple Canopy (Constellis) | `/blog/kdt-vs-triple-canopy` | Triple Canopy vs KDT, Constellis alternative |
+| 3 | KDT vs DynCorp | `/blog/kdt-vs-dyncorp` | DynCorp vs KDT, DynCorp alternative |
+| 4 | KDT vs MPRI | `/blog/kdt-vs-mpri` | MPRI vs KDT, military professional resources |
+| 5 | KDT vs Vinnell Corporation | `/blog/kdt-vs-vinnell` | Vinnell vs KDT |
+| 6 | KDT vs Aegis Defence Services | `/blog/kdt-vs-aegis` | Aegis Defence vs KDT |
+| 7 | KDT vs Wagner Group | `/blog/kdt-vs-wagner-group` | Wagner Group vs KDT, Wagner vs American PMC |
+| 8 | KDT vs Executive Outcomes | `/blog/kdt-vs-executive-outcomes` | Executive Outcomes vs KDT |
+| 9 | KDT vs MAG Aerospace | `/blog/kdt-vs-mag-aerospace` | MAG Aerospace vs KDT |
+| 10 | KDT vs Northbridge Services | `/blog/kdt-vs-northbridge` | Northbridge vs KDT |
+
+### PSC Competitors (every major searched security company)
+
+| # | Comparison Article | URL | Target Keywords |
+|---|-------------------|-----|-----------------|
+| 1 | KDT vs G4S (Allied Universal) | `/blog/kdt-vs-g4s` | G4S vs KDT, Allied Universal alternative |
+| 2 | KDT vs Securitas | `/blog/kdt-vs-securitas` | Securitas vs KDT, Securitas alternative |
+| 3 | KDT vs Pinkerton | `/blog/kdt-vs-pinkerton` | Pinkerton vs KDT, Pinkerton alternative |
+| 4 | KDT vs GardaWorld | `/blog/kdt-vs-gardaworld` | GardaWorld vs KDT |
+| 5 | KDT vs Prosegur | `/blog/kdt-vs-prosegur` | Prosegur vs KDT |
+| 6 | KDT vs Control Risks | `/blog/kdt-vs-control-risks` | Control Risks vs KDT |
+| 7 | KDT vs AS Solution | `/blog/kdt-vs-as-solution` | AS Solution vs KDT, executive protection comparison |
+| 8 | KDT vs Gavin de Becker | `/blog/kdt-vs-gavin-de-becker` | Gavin de Becker vs KDT, EP firms comparison |
+| 9 | KDT vs TigerSwan | `/blog/kdt-vs-tigerswan` | TigerSwan vs KDT |
+| 10 | KDT vs Global Guardian | `/blog/kdt-vs-global-guardian` | Global Guardian vs KDT |
+
+### Defense Competitors (major defense contractors people search)
+
+| # | Comparison Article | URL | Target Keywords |
+|---|-------------------|-----|-----------------|
+| 1 | KDT vs Lockheed Martin | `/blog/kdt-vs-lockheed-martin` | small defense contractor vs Lockheed, defense company comparison |
+| 2 | KDT vs Northrop Grumman | `/blog/kdt-vs-northrop-grumman` | Northrop Grumman alternative, defense contractor comparison |
+| 3 | KDT vs General Dynamics | `/blog/kdt-vs-general-dynamics` | General Dynamics vs small defense contractor |
+| 4 | KDT vs Raytheon (RTX) | `/blog/kdt-vs-raytheon` | Raytheon alternative, RTX vs small defense company |
+| 5 | KDT vs BAE Systems | `/blog/kdt-vs-bae-systems` | BAE Systems vs KDT |
+| 6 | KDT vs Booz Allen Hamilton | `/blog/kdt-vs-booz-allen` | Booz Allen vs KDT, defense consulting comparison |
+| 7 | KDT vs Leidos | `/blog/kdt-vs-leidos` | Leidos vs KDT, Leidos alternative |
+| 8 | KDT vs SAIC | `/blog/kdt-vs-saic` | SAIC vs KDT |
+| 9 | KDT vs CACI International | `/blog/kdt-vs-caci` | CACI vs KDT, intelligence contractor comparison |
+| 10 | KDT vs L3Harris | `/blog/kdt-vs-l3harris` | L3Harris vs KDT, defense tech comparison |
+| 11 | KDT vs KBR | `/blog/kdt-vs-kbr` | KBR vs KDT, military logistics comparison |
+| 12 | KDT vs Amentum | `/blog/kdt-vs-amentum` | Amentum vs KDT |
+| 13 | KDT vs Peraton | `/blog/kdt-vs-peraton` | Peraton vs KDT |
+
+### Roundup / Listicle Pages (high-traffic searches)
+
+| # | Title | URL | Target Keywords |
+|---|-------|-----|-----------------|
+| 1 | Top 10 Private Military Companies in 2026 | `/blog/top-pmc-companies-2026` | top PMC companies, best private military companies |
+| 2 | Top 10 Private Security Companies in 2026 | `/blog/top-security-companies-2026` | top security companies, best private security |
+| 3 | Top 10 Defense Contractors Hiring in 2026 | `/blog/top-defense-contractors-2026` | top defense contractors, defense companies hiring |
+| 4 | Best PMC Companies to Work For | `/blog/best-pmc-companies-work-for` | best PMC employers, PMC company reviews |
+| 5 | Highest Paying Private Military Companies | `/blog/highest-paying-pmc-companies` | PMC salary comparison, highest paying PMC |
+
+### Comparison Article Format
+
+Each comparison page should follow this structure:
+1. **Overview** — who both companies are
+2. **Side-by-side table** — services, pay, locations, requirements, technology
+3. **Differentiators** — what makes KDT different (technology, pay, culture)
+4. **Who should choose which** — honest recommendation
+5. **Conclusion** — clear positioning of KDT
+
+**Tone:** Professional, factual, not trash-talking competitors. Let KDT's advantages speak for themselves. Respect the industry.
+
+**Total comparison articles: 38**
+**Total content plan: 3 pillars + 39 clusters + 38 comparisons + 5 roundups = 85 articles**
