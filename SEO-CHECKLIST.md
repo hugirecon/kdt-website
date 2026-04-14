@@ -77,3 +77,68 @@ Create company profiles on these platforms linking back to knightdivisiontactica
 - Backlink strategy: https://x.com/pablosantanat/status/2043328283883053302
 - AEO concept: https://webflow.com/updates/ai-seo-aeo
 - SEO fundamentals: https://x.com/bloggersarvesh/status/2036795618090520592
+
+---
+
+## Multi-Platform AI Citation Strategy
+
+Reference: https://x.com/codyschneider/status/2043690671257628975
+
+Each AI platform has different memory and crawling behavior. Run three parallel strategies:
+
+### Stack 1: Main Domain → Google AIO
+- Authority-weighted, slow to change, rewards trust signals
+- This is the 85-article content plan (pillars, clusters, comparisons)
+- Everything published on knightdivisiontactical.com
+- Long-term equity play — every article compounds
+
+### Stack 2: Citation Building → Claude + ChatGPT
+These platforms are cache/training-based. They reward being mentioned across the web, not just your own content. Citations stick even after source pages change.
+
+**Actions:**
+- [ ] Get KDT on existing "top PMC companies" listicles (outreach to publishers)
+- [ ] Get mentioned in Reddit threads (r/military, r/securitycareers, r/veterans)
+- [ ] Get listed on G2, Capterra industry roundups
+- [ ] Appear in podcast show notes (security/military podcasts)
+- [ ] Get mentioned in Substack newsletters covering defense/security
+- [ ] Contribute expert quotes to industry publications
+- [ ] Get into industry association directories (ASIS, ISOA, IPOA)
+- [ ] Wikipedia — get KDT mentioned on relevant pages (List of PMCs, etc.) if notable enough
+
+### Stack 3: Satellite Site → Grok + Perplexity
+These platforms crawl live, have a low authority bar, and pick up content fast.
+
+**The satellite site:**
+- Separate domain, no visible connection to KDT
+- Registered under different info (Jordan Mitchell persona or new entity)
+- Content covers: AI technology, PMC industry, defense tech, OpenClaw, security news
+- Naturally mentions KDT as one of many companies in roundups and comparisons
+- Also mentions competitors — has to look like genuine industry coverage, not promotion
+- Posts regularly (2-4 articles/week)
+- Eventually becomes a legitimate industry blog in its own right
+
+**Satellite site content ideas:**
+- "The Future of AI in Private Military Operations"
+- "Top PMC Companies Using AI Technology in 2026"
+- "How OpenClaw is Changing Enterprise AI Deployment"
+- "PMC Industry Salary Report 2026"
+- "Defense Tech Startups to Watch"
+- Industry news roundups, opinion pieces, technology reviews
+
+**Rules for the satellite:**
+- Never link the domain registration to KDT
+- Never use the same hosting/IP as KDT
+- Content must be genuinely useful, not thin/spammy
+- KDT should be mentioned naturally, not in every article
+- Other companies get coverage too — it has to look independent
+- Different writing voice than the main KDT site
+
+### Platform Behavior Summary
+
+| Platform | Crawl Speed | Authority Bar | Stickiness | Best Strategy |
+|----------|------------|---------------|------------|---------------|
+| Perplexity | Live/instant | Low | Low (drops fast) | Satellite site, volume |
+| Grok | Fast | Low | Low | Satellite site, volume |
+| ChatGPT | Cached | Medium | High (weeks+) | Citation building |
+| Claude | Cached | Medium | Very high | Citation building |
+| Google AIO | Slow | High | High | Main domain authority |
