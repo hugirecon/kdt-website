@@ -142,3 +142,92 @@ These platforms crawl live, have a low authority bar, and pick up content fast.
 | ChatGPT | Cached | Medium | High (weeks+) | Citation building |
 | Claude | Cached | Medium | Very high | Citation building |
 | Google AIO | Slow | High | High | Main domain authority |
+
+---
+
+## High-DR Backlink Tactics (Detailed)
+
+Reference: https://x.com/roxanalimban/status/2043990047305715808
+
+### 1. Chrome Extension → DR90 Dofollow Backlink
+**How:** Build a simple Chrome extension related to KDT's industry and publish it on the Chrome Web Store. The Chrome Web Store is DR90 and links from extension pages are dofollow.
+
+**Steps:**
+- [ ] Identify a useful tool for the security/defense audience (e.g., NAICS code lookup, threat assessment checklist, security clearance tracker, military acronym decoder)
+- [ ] Build it — grab a boilerplate, add functionality with AI, ~1 hour for first version
+- [ ] Publish on Chrome Web Store with KDT branding and link to knightdivisiontactical.com
+- [ ] Include the website URL in the extension description and homepage field
+
+**Why it works:** Chrome Web Store is DR90, links are dofollow, and the extension itself can drive users to the site. Google indexes extension pages.
+
+### 2. Brownbook.net → DR70 Dofollow Backlink
+**How:** List KDT as a business on brownbook.net. Simple business directory.
+
+**Steps:**
+- [ ] Go to brownbook.net
+- [ ] Create a business listing for Knight Division Tactical
+- [ ] Use the US address (Sheridan, WY or College Station, TX)
+- [ ] Add website URL, description, contact info
+- [ ] Ensure the link is dofollow (verify after submission)
+
+**Why it works:** DR70 dofollow, takes 5 minutes, free.
+
+### 3. Medium Canonical Tag → DR90 Authority Signal
+**How:** Cross-post every blog article from the KDT website to Medium, but set the original KDT URL as the canonical URL. This tells Google that your site is the original source, and Medium's DR94 authority backs it up.
+
+**Steps:**
+- [ ] Create a Medium publication for KDT (or use a personal account)
+- [ ] For each blog article published on knightdivisiontactical.com:
+  - Import it to Medium (Medium has a built-in "Import a story" tool)
+  - Set the canonical URL to the original KDT article URL
+- [ ] Do this every time a new article is published — no exceptions
+- [ ] Links in Medium are nofollow, but the canonical tag passes authority signals
+
+**Why it works:** Prevents duplicate content penalties, tells Google your site is authoritative, and Medium's DR94 reinforces your content. Experts agree the canonical counts as a backlink signal even though the links themselves are nofollow.
+
+### 4. Notion Public Page → DR90 Dofollow Backlink
+**How:** Create a public Notion page with KDT documentation, resources, or guides. Enable search engine indexing. Links from Notion pages are dofollow and Notion is DR90.
+
+**Steps:**
+- [ ] Create a Notion workspace (or use existing)
+- [ ] Build a public page — ideas:
+  - "KDT Contractor Resources & Equipment Checklist"
+  - "KDT Training Program Overview"
+  - "Private Military Contracting FAQ"
+  - "KDT Company Documentation"
+- [ ] Include links back to knightdivisiontactical.com throughout the content
+- [ ] **Critical:** Go to Notion Settings → enable "Search Engine Indexing"
+- [ ] Optionally set up a custom subdomain: kdt.notion.site
+
+**Why it works:** DR90 dofollow backlink, free, takes 30 minutes, and the content itself is useful to potential candidates/clients.
+
+### 5. Reddit → Traffic, Rankings & AI Citations
+**How:** Participate genuinely in relevant subreddits. Reddit posts themselves rank in Google (Reddit is top 500 globally). Links are nofollow but Reddit content feeds into AI training data (Claude, ChatGPT, Perplexity).
+
+**Steps:**
+- [ ] Create a Reddit account (separate from any personal accounts)
+- [ ] Build karma first — help people, answer questions, contribute value
+- [ ] Target subreddits:
+  - r/military
+  - r/veterans
+  - r/securitycareers
+  - r/specialforces
+  - r/army, r/navy, r/USMC
+  - r/contractors (if exists)
+  - r/PrivateMilitary (if exists)
+  - r/AskMilitary
+- [ ] Post genuinely helpful content:
+  - "How to transition from military to PMC" (mention KDT naturally)
+  - Answer questions about PMC pay, training, requirements
+  - Share industry insights
+- [ ] **Do NOT spam.** Reddit users detect and destroy marketers instantly. Help first, share only when relevant and asked.
+- [ ] Link to KDT articles only when they genuinely answer someone's question
+
+**Why it works:** Reddit posts rank in Google for long-tail queries. Reddit content gets scraped into AI training data. Building a reputation on Reddit creates genuine brand awareness with the exact audience KDT wants (veterans, military professionals).
+
+### Backlink Priority Order
+1. **Notion public page** (30 min, DR90, dofollow) — do first
+2. **Chrome extension** (1-2 hours, DR90, dofollow + users) — high value
+3. **Medium cross-posting** (ongoing with content plan, DR94 authority signal)
+4. **Brownbook listing** (5 min, DR70, dofollow)
+5. **Reddit participation** (ongoing, traffic + AI citations)
