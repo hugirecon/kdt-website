@@ -21,6 +21,7 @@ Create company profiles on these platforms linking back to knightdivisiontactica
 | Substack | 93 | Newsletter | 🔲 |
 | Gumroad | 92 | Product listings (training/merch) | 🔲 |
 | Crunchbase | 91 | Company profile | 🔲 |
+| SourceForge | 92 | Software/product listing | 🔲 |
 | G2 | 91 | Service provider listing | 🔲 |
 | Capterra | 91 | Service provider listing | 🔲 |
 
