@@ -223,3 +223,22 @@ Each comparison page should follow this structure:
 
 **Total comparison articles: 38**
 **Total content plan: 3 pillars + 39 clusters + 38 comparisons + 5 roundups = 85 articles**
+
+---
+
+## Content Writing Guidelines
+
+**All blog posts must read like a human wrote them. No AI slop.**
+
+Rules:
+- No em dashes (—)
+- No "It's not X, it's Y" constructions
+- No "In today's rapidly evolving landscape" or similar filler
+- No listicle-style headers like "Here's Why That Matters"
+- No corporate buzzword padding
+- Write like you're explaining something to a colleague, not giving a TED talk
+- Short sentences. Direct language. Say what you mean.
+- Use contractions naturally (don't, won't, can't)
+- Vary sentence length — not every sentence should be the same rhythm
+- Include specific details, numbers, and examples — not vague generalizations
+- If it sounds like ChatGPT wrote it, rewrite it
