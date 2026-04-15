@@ -66,3 +66,24 @@ See `RECRUITMENT-INTEGRATION.md` for full details on:
 - HQ listed as "New York, NY" on about page — should be Sheridan, WY per gov registration
 - "400+ KDT Agents" stat on about page — verify accuracy
 - "Founded and led by Matthew McCalla and Michael Schulz" — McCalla listed first, verify order preference
+
+## Website Bot — AI Visibility Monitoring (Future)
+Reference: https://x.com/deeptechtr/status/2044284236455141756
+
+The website bot should have automated AI citation monitoring:
+1. Regularly query AI systems (ChatGPT, Perplexity, Grok, Claude, Google AIO) with KDT-relevant searches
+2. Check if KDT appears in the AI-generated answers
+3. Track citation frequency over time — are we gaining or losing visibility?
+4. Audit technical GEO signals (robots.txt, llms.txt, structured data, schema markup)
+5. Report results weekly/monthly
+
+Example queries to monitor:
+- "best private military company"
+- "top PMC companies hiring"
+- "private security contractor"
+- "defense contractor for government"
+- "Knight Division Tactical"
+- "PMC training programs"
+- "highest paying PMC"
+
+Open-source tool reference: GEO Optimizer (search GitHub)
