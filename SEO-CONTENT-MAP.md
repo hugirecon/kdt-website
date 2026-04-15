@@ -242,3 +242,27 @@ Rules:
 - Vary sentence length — not every sentence should be the same rhythm
 - Include specific details, numbers, and examples — not vague generalizations
 - If it sounds like ChatGPT wrote it, rewrite it
+
+---
+
+## Industry-Specific Solution Pages (Future — work with Gov AE Reg)
+
+Reference: https://x.com/kaicromwell/status/2044249856781205523
+
+These are commercial landing pages targeting specific industries/use cases that buyers search before hiring. Not blog posts — conversion pages. Backlinks should point directly at these.
+
+**Pages to build:**
+- /solutions/government-contracts — Federal/DoD contracting services
+- /solutions/oil-gas-security — Security for energy sector operations
+- /solutions/corporate-security — Enterprise security solutions
+- /solutions/event-security — Large-scale event security
+- /solutions/maritime-protection — Vessel protection, anti-piracy
+- /solutions/infrastructure-security — Critical infrastructure protection
+- /solutions/disaster-response — Natural disaster & crisis response
+- /solutions/diplomatic-protection — Embassy & diplomatic security
+- /solutions/mining-security — Security for mining operations in hostile regions
+- /solutions/ngo-protection — Security for humanitarian organizations
+
+Each page: specific industry pain points, how KDT solves them, relevant case studies, clear CTA to /hire.
+
+**Coordinate with Gov AE Reg bot** for industry-specific content, contract vehicles, NAICS codes, and capability statements per vertical.
