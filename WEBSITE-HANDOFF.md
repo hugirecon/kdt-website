@@ -87,3 +87,42 @@ Example queries to monitor:
 - "highest paying PMC"
 
 Open-source tool reference: GEO Optimizer (search GitHub)
+
+## Authentik SSO (Public Authentication)
+
+**Purpose:** Single sign-on for all public-facing KDT systems — website, store, VOC, candidate portal.
+**NOT for:** Internal Super App (separate auth entirely).
+
+### Setup
+- Location: `/Users/kdtsuperapp/kdt-website/authentik/`
+- Docker Compose with 4 containers: PostgreSQL, Redis, Authentik Server, Authentik Worker
+- HTTP port: 9080 (avoids conflict with Medusa on 9000)
+- HTTPS port: 9443
+- Admin setup: http://localhost:9080/if/flow/initial-setup/
+- Credentials stored in `authentik/.env`
+
+### Running
+```bash
+cd /Users/kdtsuperapp/kdt-website/authentik
+docker compose up -d     # start
+docker compose down      # stop
+docker compose logs -f   # view logs
+```
+
+### Requires
+- Docker (Colima on macOS): `colima start` before running
+- Colima installed via Homebrew: `brew install colima docker docker-compose`
+
+### Integration Plan
+1. Create an OAuth2/OIDC provider in Authentik for the KDT website
+2. Configure the website to use Authentik for login instead of Medusa auth
+3. Migrate existing Medusa customer accounts to Authentik
+4. Add same OAuth2 provider for VOC, candidate portal when ready
+5. Discord can be added as a federated login source in Authentik
+
+### Moving to Another Machine
+1. Copy the `authentik/` directory (docker-compose.yml, .env, media/, custom-templates/)
+2. Install Docker on the new machine
+3. Run `docker compose up -d`
+4. Update DNS/proxy to point to new machine
+5. Data persists in Docker volumes — export with `docker compose down && docker volume export`
