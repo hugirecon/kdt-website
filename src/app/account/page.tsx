@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 import Nav from "@/components/Nav";
 import { useAuth } from "@/lib/auth-context";
 import { getDiscordAuthUrl } from "@/lib/discord-oauth";
@@ -209,11 +210,22 @@ export default function AccountPage() {
             <div className="flex-1 h-px bg-white/[0.08]" />
           </div>
 
+          {/* KDT SSO (Authentik) */}
+          <button
+            onClick={() => signIn("authentik", { callbackUrl: "/account/dashboard" })}
+            className="w-full flex items-center justify-center gap-3 bg-[#f97316] hover:bg-[#ea580c] text-black font-semibold py-3 rounded transition-colors mb-3"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 7v10l10 5 10-5V7L12 2z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+              <path d="M12 22V12" stroke="currentColor" strokeWidth="2" />
+              <path d="M2 7l10 5 10-5" stroke="currentColor" strokeWidth="2" />
+            </svg>
+            Sign in with KDT Account
+          </button>
+
           {/* Discord OAuth */}
           <button
-            onClick={() => {
-              window.location.href = getDiscordAuthUrl();
-            }}
+            onClick={() => signIn("discord", { callbackUrl: "/account/dashboard" })}
             className="w-full flex items-center justify-center gap-3 bg-[#5865F2] hover:bg-[#4752C4] text-white font-semibold py-3 rounded transition-colors"
           >
             <svg width="20" height="16" viewBox="0 0 71 55" fill="none" xmlns="http://www.w3.org/2000/svg">
