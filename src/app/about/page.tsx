@@ -236,7 +236,7 @@ function Global() {
               <div className="p-5 rounded-xl bg-gray-50 border border-gray-100">
                 <h3 className="text-[16px] font-semibold text-gray-900 mb-1">Headquarters</h3>
                 <p className="text-[15px] text-gray-600">
-                  New York, NY<br />
+                  Sheridan, WY<br />
                   contact@knightdivisiontactical.com
                 </p>
               </div>
