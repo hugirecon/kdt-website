@@ -11,6 +11,7 @@ import {
   getProductTag,
   type MedusaProduct,
 } from "@/lib/store-data";
+import StatusTag from "@/components/StatusTag";
 
 // ============ TYPES ============
 interface Product {
@@ -202,17 +203,15 @@ function ProductCard({ product }: { product: Product }) {
         {product.badges && product.badges.length > 0 && (
           <div className="absolute top-4 right-4 flex flex-col gap-2">
             {product.badges.map((badge) => (
-              <span key={badge} className="text-[11px] font-bold uppercase tracking-wider bg-[#f97316] text-black px-3 py-1 rounded">
-                {badge}
-              </span>
+              <StatusTag key={badge} status={badge} size="sm" />
             ))}
           </div>
         )}
         
         {/* Category Tag */}
-        <span className="absolute top-4 left-4 text-[11px] font-medium uppercase tracking-wider text-[#f97316] bg-[#f97316]/10 backdrop-blur-sm px-3 py-1 rounded border border-[#f97316]/20">
-          {product.tag}
-        </span>
+        <div className="absolute top-4 left-4">
+          <StatusTag status={product.tag === "Limited Edition" ? "limited" : "in_stock"} label={product.tag} size="sm" />
+        </div>
       </div>
       
       {/* Content */}

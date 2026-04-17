@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Nav from "@/components/Nav";
 import { useAuth } from "@/lib/auth-context";
+import StatusTag from "@/components/StatusTag";
+import { OrderProgress } from "@/components/StatusTag";
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "http://localhost:9000";
 const PUBLISHABLE_KEY = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || "";
@@ -89,11 +91,9 @@ export default function OrdersPage() {
                 className="bg-white/[0.03] border border-white/[0.08] rounded-lg p-6"
               >
                 <div className="flex items-center justify-between mb-3">
-                  <div>
+                  <div className="flex items-center gap-3">
                     <span className="text-[#fafaf9] font-medium">Order #{order.display_id}</span>
-                    <span className="ml-3 text-xs px-2 py-0.5 rounded-full bg-white/[0.06] text-[#78716c] uppercase tracking-wider">
-                      {order.status}
-                    </span>
+                    <StatusTag status={order.status} size="sm" />
                   </div>
                   <span className="text-[#fafaf9] font-medium">
                     {(order.total / 100).toLocaleString("en-US", {
@@ -109,6 +109,11 @@ export default function OrdersPage() {
                     day: "numeric",
                   })}
                 </p>
+                {/* Order Progress */}
+                <div className="mt-4 mb-2">
+                  <OrderProgress status={order.status} />
+                </div>
+
                 {order.items && order.items.length > 0 && (
                   <div className="mt-3 pt-3 border-t border-white/[0.05]">
                     {order.items.map((item) => (
