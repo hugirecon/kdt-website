@@ -31,7 +31,7 @@ Create company profiles on these platforms linking back to knightdivisiontactica
 | Quora | 92 | Answer security/PMC questions | 🔲 |
 | Trustpilot | 93 | Business profile + reviews | 🔲 |
 | ProvenExpert | 90 | Business profile | 🔲 |
-| Forbes | 95 | Forbes Councils / contributed articles | 🔲 (aspirational) |
+| Forbes | 95 | Forbes Councils / contributed articles | 🔲 |
 
 **For each profile:**
 - Company name: Knight Division Tactical
@@ -277,7 +277,31 @@ Reference: https://x.com/roxanalimban/status/2043990047305715808
 
 **Why it works:** DR90 backlink, free, takes 10 minutes. Referenced by @RoxanaLimban as one of the easiest high-DR backlinks available.
 
-### 9. Reddit → Traffic, Rankings & AI Citations
+### 9. Forbes → DR95 Authority + Massive Credibility
+**How:** Get KDT featured on Forbes through Forbes Councils (paid membership for executives), contributed articles, or press coverage. Forbes is DR95 and one of the most-cited sources by ChatGPT.
+
+**Paths in:**
+- [ ] **Forbes Councils** — Apply to Forbes Business Council or Forbes Technology Council
+  - Membership is ~$2,500/year
+  - Members can publish articles directly on Forbes.com under their byline
+  - Articles live on forbes.com/councils/ — full DR95 backlink
+  - Michael qualifies as CEO of a defense/tech company
+  - Apply at: councils.forbes.com
+- [ ] **Forbes contributed articles** — Pitch to Forbes contributors who cover defense, security, or tech
+  - Find Forbes contributors covering PMC/defense/security topics
+  - Pitch KDT as a story: AI-powered PMC, tech-forward defense company
+  - Angle: "How AI is Transforming Private Military Operations"
+- [ ] **Forbes press mentions** — Use HARO (Help a Reporter Out) or Connectively
+  - Sign up as a source, respond to journalist queries about security/defense
+  - Even a quote mention on Forbes passes DR95 authority
+- [ ] **Forbes lists** — Work toward inclusion in relevant Forbes lists
+  - "America's Best Startup Employers"
+  - "Forbes Small Giants" (best small companies)
+  - Industry-specific defense/security roundups
+
+**Why it works:** DR95, cited constantly by ChatGPT and Claude, massive brand credibility. A single Forbes article with a KDT link is worth more than 50 low-DR backlinks. Forbes Councils is the most accessible path — pay to play but the ROI on authority is enormous.
+
+### 10. Reddit → Traffic, Rankings & AI Citations
 **How:** Participate genuinely in relevant subreddits. Reddit posts themselves rank in Google (Reddit is top 500 globally). Links are nofollow but Reddit content feeds into AI training data (Claude, ChatGPT, Perplexity).
 
 **Steps:**
@@ -307,7 +331,8 @@ Reference: https://x.com/roxanalimban/status/2043990047305715808
 3. **ProvenExpert profile** (10 min, DR90) — easiest win
 4. **Notion public page** (30 min, DR90, dofollow) — dofollow link
 5. **Chrome extension** (1-2 hours, DR90, dofollow + users) — high value
-6. **Medium cross-posting** (ongoing with content plan, DR94 authority signal)
-7. **Quora answers** (ongoing, DR92 + AI citations + Google rankings)
-8. **Brownbook listing** (5 min, DR70, dofollow)
-9. **Reddit participation** (ongoing, DR95 + traffic + AI citations)
+6. **Forbes Councils application** (Michael applies, ~$2,500/yr, DR95) — highest authority play
+7. **Medium cross-posting** (ongoing with content plan, DR94 authority signal)
+8. **Quora answers** (ongoing, DR92 + AI citations + Google rankings)
+9. **Brownbook listing** (5 min, DR70, dofollow)
+10. **Reddit participation** (ongoing, DR95 + traffic + AI citations)
