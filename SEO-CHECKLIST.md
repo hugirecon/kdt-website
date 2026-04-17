@@ -25,6 +25,13 @@ Create company profiles on these platforms linking back to knightdivisiontactica
 | AlternativeTo | 79 | List as alternative to competitors (Academi, G4S, Triple Canopy, etc. — feeds comparison strategy) | 🔲 |
 | G2 | 91 | Service provider listing | 🔲 |
 | Capterra | 91 | Service provider listing | 🔲 |
+| LinkedIn | 99 | Company page + articles | 🔲 |
+| YouTube | 99 | Channel (already exists) | ✅ |
+| Reddit | 95 | Subreddit participation | 🔲 |
+| Quora | 92 | Answer security/PMC questions | 🔲 |
+| Trustpilot | 93 | Business profile + reviews | 🔲 |
+| ProvenExpert | 90 | Business profile | 🔲 |
+| Forbes | 95 | Forbes Councils / contributed articles | 🔲 (aspirational) |
 
 **For each profile:**
 - Company name: Knight Division Tactical
@@ -106,6 +113,11 @@ These platforms are cache/training-based. They reward being mentioned across the
 - [ ] Contribute expert quotes to industry publications
 - [ ] Get into industry association directories (ASIS, ISOA, IPOA)
 - [ ] Wikipedia — get KDT mentioned on relevant pages (List of PMCs, etc.) if notable enough
+- [ ] LinkedIn articles and company posts mentioning KDT services (DR99)
+- [ ] Quora answers to PMC/security questions with natural KDT mentions (DR92)
+- [ ] Trustpilot business profile with client reviews (DR93)
+- [ ] ProvenExpert business profile (DR90)
+- [ ] YouTube descriptions linking to KDT site on every video (DR99)
 
 ### Stack 3: Satellite Site → Grok + Perplexity
 These platforms crawl live, have a low authority bar, and pick up content fast.
@@ -203,7 +215,69 @@ Reference: https://x.com/roxanalimban/status/2043990047305715808
 
 **Why it works:** DR90 dofollow backlink, free, takes 30 minutes, and the content itself is useful to potential candidates/clients.
 
-### 5. Reddit → Traffic, Rankings & AI Citations
+### 5. LinkedIn → DR99 Company Authority + Articles
+**How:** Create/optimize a LinkedIn company page for KDT. Publish articles and posts directly on LinkedIn. Company pages and articles get indexed by Google and scraped by AI systems. LinkedIn is DR99 — the highest authority platform available for free.
+
+**Steps:**
+- [ ] Create or claim LinkedIn company page for Knight Division Tactical
+- [ ] Complete all fields: logo, banner, description, website URL, industry, size, HQ location
+- [ ] Publish 1-2 LinkedIn articles per month (can be adapted versions of blog posts)
+  - "What Sets Tier 1 PMC Operations Apart"
+  - "The Future of AI in Defense Contracting"
+  - "Why KDT Invests in Operator Training Over Equipment"
+- [ ] Include links back to knightdivisiontactical.com in articles
+- [ ] Encourage team members to list KDT as employer (social proof)
+- [ ] Post company updates: new services, hiring, training events
+
+**Why it works:** DR99 — highest domain rating of any free platform. LinkedIn articles get indexed by Google, cited by ChatGPT/Claude, and show up in professional searches. Company pages rank for branded queries.
+
+### 6. Quora → DR92 Authority + AI Training Data
+**How:** Answer questions on Quora related to PMCs, security, military contracting. Quora answers rank extremely well in Google and get scraped into AI training data.
+
+**Steps:**
+- [ ] Create a Quora account (use professional identity or Jordan Mitchell persona)
+- [ ] Find and answer questions in these topics:
+  - Private Military Companies
+  - Security consulting
+  - Military to civilian transition
+  - Executive protection
+  - Defense contracting
+- [ ] Write genuinely helpful, detailed answers (300-500 words)
+- [ ] Mention KDT naturally when relevant — never force it
+- [ ] Link to KDT articles/services only when they directly answer the question
+- [ ] Target questions like:
+  - "What are the best private military companies to work for?"
+  - "How do I become a private military contractor?"
+  - "What training do PMC operators need?"
+  - "How much do private military contractors make?"
+
+**Why it works:** Quora answers rank on page 1 of Google for long-tail queries. Content feeds into AI training data. DR92 authority. Individual answers can get tens of thousands of views.
+
+### 7. Trustpilot → DR93 Business Profile + Social Proof
+**How:** Claim KDT's business profile on Trustpilot. Even without reviews initially, the profile creates a DR93 backlink and establishes business legitimacy.
+
+**Steps:**
+- [ ] Go to business.trustpilot.com and claim/create KDT business profile
+- [ ] Complete all fields: company name, website, description, logo, category
+- [ ] Set category to "Security Services" or closest match
+- [ ] After onboarding clients, request reviews (even 3-5 reviews with stars builds trust)
+- [ ] Respond professionally to any reviews
+
+**Why it works:** DR93, business profiles get indexed, reviews show in Google search results as rich snippets. Trustpilot is specifically cited by ChatGPT when recommending businesses.
+
+### 8. ProvenExpert → DR90 Free Business Profile
+**How:** Create a business profile on provenexpert.com. Fill in details, push to indexer.
+
+**Steps:**
+- [ ] Go to provenexpert.com
+- [ ] Fill in KDT business details (name, description, services, website URL)
+- [ ] Complete the profile fully (logo, categories, location)
+- [ ] Push the profile URL to Google indexer (Search Console or IndexNow)
+- [ ] Optionally request reviews from clients
+
+**Why it works:** DR90 backlink, free, takes 10 minutes. Referenced by @RoxanaLimban as one of the easiest high-DR backlinks available.
+
+### 9. Reddit → Traffic, Rankings & AI Citations
 **How:** Participate genuinely in relevant subreddits. Reddit posts themselves rank in Google (Reddit is top 500 globally). Links are nofollow but Reddit content feeds into AI training data (Claude, ChatGPT, Perplexity).
 
 **Steps:**
@@ -228,8 +302,12 @@ Reference: https://x.com/roxanalimban/status/2043990047305715808
 **Why it works:** Reddit posts rank in Google for long-tail queries. Reddit content gets scraped into AI training data. Building a reputation on Reddit creates genuine brand awareness with the exact audience KDT wants (veterans, military professionals).
 
 ### Backlink Priority Order
-1. **Notion public page** (30 min, DR90, dofollow) — do first
-2. **Chrome extension** (1-2 hours, DR90, dofollow + users) — high value
-3. **Medium cross-posting** (ongoing with content plan, DR94 authority signal)
-4. **Brownbook listing** (5 min, DR70, dofollow)
-5. **Reddit participation** (ongoing, traffic + AI citations)
+1. **LinkedIn company page** (30 min, DR99) — highest DR, do first
+2. **Trustpilot business profile** (15 min, DR93) — shows in Google rich snippets
+3. **ProvenExpert profile** (10 min, DR90) — easiest win
+4. **Notion public page** (30 min, DR90, dofollow) — dofollow link
+5. **Chrome extension** (1-2 hours, DR90, dofollow + users) — high value
+6. **Medium cross-posting** (ongoing with content plan, DR94 authority signal)
+7. **Quora answers** (ongoing, DR92 + AI citations + Google rankings)
+8. **Brownbook listing** (5 min, DR70, dofollow)
+9. **Reddit participation** (ongoing, DR95 + traffic + AI citations)
