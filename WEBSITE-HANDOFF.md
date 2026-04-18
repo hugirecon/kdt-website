@@ -81,9 +81,9 @@ See `RECRUITMENT-INTEGRATION.md` for full details on:
 ## Content Notes
 - Bogdan Modzolewski removed from all pages (Apr 2026)
 - tactical-3.jpg replaced with Santiago's photo
-- HQ now correctly listed as Sheridan, WY (fixed Apr 16, 2026)
-- "400+ KDT Agents" stat on about page — verify accuracy
-- "Founded and led by Matthew McCalla and Michael Schulz" — McCalla listed first, verify order preference
+- HQ correctly listed as Sheridan, WY (fixed Apr 16, 2026)
+- "400+ KDT Agents" stat confirmed accurate by Schulz (Apr 16, 2026)
+- Founder order "Matthew McCalla and Michael Schulz" confirmed correct by Schulz (Apr 16, 2026)
 
 ## Recent Additions
 
