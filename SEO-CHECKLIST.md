@@ -33,6 +33,22 @@ Create company profiles on these platforms linking back to knightdivisiontactica
 | ProvenExpert | 90 | Business profile | 🔲 |
 | Forbes | 95 | Forbes Councils / contributed articles | 🔲 |
 
+### Additional Free DR 70+ Backlinks (per @AntonioEscudero)
+
+| Platform | DR | Type | Link | Status |
+|----------|-----|------|------|--------|
+| CrunchBase | 91 | Startup/Company directory | Nofollow | 🔲 |
+| DEV Community | 90 | Tech community (publish articles) | Dofollow | 🔲 |
+| Telegra.ph | 88 | Anonymous publishing | Dofollow | 🔲 |
+| HackMD | 83 | Collaborative markdown notes | Dofollow | 🔲 |
+| Brownbook | 79 | General business directory | Dofollow | 🔲 |
+| Hackaday.io | 79 | Hardware/project community | Dofollow | 🔲 |
+| StackShare | 79 | Software/tech-stack directory | Nofollow | 🔲 |
+| Rentry.co | 78 | Markdown pastebin | Dofollow | 🔲 |
+| SaaSHub | 77 | Software directory | Nofollow | 🔲 |
+| Callupcontact | 76 | Global business directory | Dofollow | 🔲 |
+| Dibiz | 73 | Digital business card | Dofollow | 🔲 |
+
 **For each profile:**
 - Company name: Knight Division Tactical
 - Description: Consistent across all platforms
