@@ -82,6 +82,30 @@ Create company profiles on these platforms linking back to knightdivisiontactica
 - [ ] Consistent NAP (Name, Address, Phone) across all listings
 - [ ] HQ: Sheridan, WY | Office: College Station, TX
 
+### Local/Geo-Relevant Backlinks (high Google authority signal)
+Per @quickindexapp: Local geo-relevant backlinks outrank random high-DR guest posts. Google values geographic relevance heavily.
+
+**Sheridan, WY (HQ):**
+- [ ] Sheridan County Chamber of Commerce membership + listing
+- [ ] Wyoming Business Council listing
+- [ ] Wyoming Small Business Development Center listing
+- [ ] Sheridan Press local news coverage / press releases
+- [ ] Local event or charity sponsorship (Sheridan Rodeo, community events)
+- [ ] Visit Sheridan / Sheridan tourism directory
+
+**College Station, TX (Office):**
+- [ ] Bryan-College Station Chamber of Commerce membership + listing
+- [ ] Texas A&M University partnerships or vendor listings (local tech/defense orgs)
+- [ ] The Eagle (local newspaper) press coverage
+- [ ] Brazos Valley Economic Development Corporation listing
+- [ ] Local veteran organization partnerships (College Station VFW, American Legion)
+
+**Industry-relevant local/national:**
+- [ ] ASIS International chapter listings
+- [ ] ISOA (International Stability Operations Association) directory
+- [ ] Wyoming Defense Industry Network
+- [ ] Texas Defense Industry Association
+
 ## 🔲 AEO (Answer Engine Optimization)
 - [x] Schema markup (completed)
 - [x] Meta descriptions as direct answers (completed)
