@@ -33,6 +33,17 @@ Create company profiles on these platforms linking back to knightdivisiontactica
 | ProvenExpert | 90 | Business profile | 🔲 |
 | Forbes | 95 | Forbes Councils / contributed articles | 🔲 |
 
+### Freemium Footer Backlink Strategy (per @illyism re: Mintlify)
+Mintlify reached DR 90 by requiring free/pro users to display "Powered by Mintlify" backlinks in their docs footers. Thousands of embeds = thousands of dofollow backlinks. Only the enterprise tier removes the link.
+
+**Candidates for KDT:**
+- [ ] Chrome extension (already planned) — if it goes viral, includes KDT website link
+- [ ] Free embeddable threat dashboard/widget for other security sites ("Powered by KDT")
+- [ ] Free downloadable resource templates (PDFs with KDT URL embedded)
+- [ ] Any KDT-branded freemium tool for the PMC/security industry
+
+**Not actionable until we build something embeddable. Logged for future.**
+
 ### Additional Free DR 70+ Backlinks (per @AntonioEscudero)
 
 | Platform | DR | Type | Link | Status |
