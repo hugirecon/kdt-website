@@ -279,6 +279,27 @@ The website handles public-facing recruiting but never makes hiring decisions. A
 
 See `RECRUITMENT-INTEGRATION.md` for the full API contract.
 
+## File Upload Security (Magika)
+
+**Status:** Planned for resume upload implementation.
+
+Google's [Magika](https://github.com/google/magika) is an open-source AI-powered file type detection library that identifies true file types in milliseconds, far more accurately than traditional "magic bytes" inspection. Someone renaming `malware.exe` to `resume.pdf` gets caught.
+
+**Use across the website:**
+1. **Application form resume uploads** — verify uploaded file is actually a PDF/DOCX/image before accepting. Reject anything else.
+2. **Candidate portal document uploads** — same validation on any document the candidate uploads (ID, certifications, references).
+3. **Email attachment routing** — if the website ever receives inbound email (via Resend reply-to or dedicated inbox), run Magika on attachments before routing to Selection Specialist bot or human review.
+4. **Contact form file uploads** (if added) — same protection.
+
+**Implementation:**
+- Install `@google/magika` npm package (or equivalent)
+- Run detection in the API route handler before writing the file
+- Compare detected type against accepted whitelist per form (e.g., applications accept PDF/DOCX only)
+- Reject with clear error message if mismatch
+- Log rejections for security monitoring
+
+**Why it matters:** KDT is a high-profile defense target. Unvalidated file uploads are a common attack vector. Magika is free, fast, and stops 99% of disguised-filetype attacks that regular MIME sniffing misses.
+
 ## Future Work
 
 1. **DNS migration to Cloudflare** — needed for stable Medusa + Authentik URLs, Resend domain verification, and production SSO
@@ -288,3 +309,4 @@ See `RECRUITMENT-INTEGRATION.md` for the full API contract.
 5. **Satellite site** — separate property for Grok/Perplexity AI citations
 6. **AI visibility monitoring** — automated citation tracking by website bot
 7. **Real blog content** — 85-article plan from `SEO-CONTENT-MAP.md`
+8. **Magika file validation** — ship with resume upload implementation

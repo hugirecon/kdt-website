@@ -33,17 +33,6 @@ Create company profiles on these platforms linking back to knightdivisiontactica
 | ProvenExpert | 90 | Business profile | 🔲 |
 | Forbes | 95 | Forbes Councils / contributed articles | 🔲 |
 
-### Freemium Footer Backlink Strategy (per @illyism re: Mintlify)
-Mintlify reached DR 90 by requiring free/pro users to display "Powered by Mintlify" backlinks in their docs footers. Thousands of embeds = thousands of dofollow backlinks. Only the enterprise tier removes the link.
-
-**Candidates for KDT:**
-- [ ] Chrome extension (already planned) — if it goes viral, includes KDT website link
-- [ ] Free embeddable threat dashboard/widget for other security sites ("Powered by KDT")
-- [ ] Free downloadable resource templates (PDFs with KDT URL embedded)
-- [ ] Any KDT-branded freemium tool for the PMC/security industry
-
-**Not actionable until we build something embeddable. Logged for future.**
-
 ### Additional Free DR 70+ Backlinks (per @AntonioEscudero)
 
 | Platform | DR | Type | Link | Status |
@@ -214,16 +203,19 @@ These platforms crawl live, have a low authority bar, and pick up content fast.
 
 Reference: https://x.com/roxanalimban/status/2043990047305715808
 
-### 1. Chrome Extension → DR90 Dofollow Backlink
-**How:** Build a simple Chrome extension related to KDT's industry and publish it on the Chrome Web Store. The Chrome Web Store is DR90 and links from extension pages are dofollow.
+### 1. Chrome Extension → DR90 Dofollow Backlink + Mintlify-Style Footer Backlinks
+**How:** Build a simple Chrome extension related to KDT's industry and publish it on the Chrome Web Store. The Chrome Web Store is DR90 and links from extension pages are dofollow. Stack this with the Mintlify freemium footer strategy — every install embeds a visible "Powered by KDT" link in the extension UI so any screenshots, docs, tutorials, and share cards naturally include the KDT brand + URL.
 
 **Steps:**
-- [ ] Identify a useful tool for the security/defense audience (e.g., NAICS code lookup, threat assessment checklist, security clearance tracker, military acronym decoder)
+- [ ] Identify a useful tool for the security/defense audience (e.g., NAICS code lookup, threat assessment checklist, security clearance tracker, military acronym decoder, OSINT URL scanner, CVE lookup for security teams)
 - [ ] Build it — grab a boilerplate, add functionality with AI, ~1 hour for first version
 - [ ] Publish on Chrome Web Store with KDT branding and link to knightdivisiontactical.com
 - [ ] Include the website URL in the extension description and homepage field
+- [ ] **Mintlify-style footer:** Every extension view shows a persistent "Powered by Knight Division Tactical" footer link to knightdivisiontactical.com
+- [ ] Free tier: footer branding required. Paid/Pro tier: ability to remove branding for enterprises who embed the extension in their workflows.
+- [ ] Add share functionality — when users share reports/outputs, they include KDT attribution and link
 
-**Why it works:** Chrome Web Store is DR90, links are dofollow, and the extension itself can drive users to the site. Google indexes extension pages.
+**Why it works:** Chrome Web Store is DR90, links are dofollow, Google indexes extension pages. On top of that, every share/screenshot/tutorial of the extension itself propagates KDT's brand + URL wherever it shows up. Mintlify rode this exact mechanism to DR 90.
 
 ### 2. Brownbook.net → DR70 Dofollow Backlink
 **How:** List KDT as a business on brownbook.net. Simple business directory.

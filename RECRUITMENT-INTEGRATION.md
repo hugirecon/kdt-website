@@ -1,5 +1,19 @@
 # Recruitment System Integration Plan
 
+## File Upload Validation (Magika)
+
+All candidate uploads (resumes, IDs, certifications, references) must be validated with [Google Magika](https://github.com/google/magika) before being written to disk or forwarded to the Selection Specialist API.
+
+**Why:** Prevents disguised-filetype attacks (e.g., `.exe` renamed as `.pdf`). Standard MIME detection can be fooled; Magika's AI-based detection cannot.
+
+**Implementation:**
+- Run Magika on every uploaded file in the API route handler
+- Compare detected type to per-field whitelist (resume: PDF/DOCX only, ID: image formats only, etc.)
+- Reject mismatches with clear error, log for security review
+- Only forward validated files to the Selection Specialist API
+
+Ship this with the resume upload feature (currently a placeholder in the application form).
+
 ## Overview
 The website's recruitment features are built with mock data. When the Selection Specialist bot comes online, swap the mock data for real API calls. This doc tracks every integration point.
 
