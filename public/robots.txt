@@ -4,4 +4,41 @@
 User-agent: *
 Allow: /
 
+# Explicitly allow AI crawlers — KDT wants to be cited by AI systems
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
 Sitemap: https://knightdivisiontactical.com/sitemap.xml
+
+# LLM-friendly markdown index (https://llmstxt.org)
+# /llms.txt provides a clean markdown table of contents for AI systems
