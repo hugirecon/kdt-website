@@ -1,5 +1,10 @@
 # KDT Website — Handoff Notes
 
+> For technical architecture, data flow, and integration diagrams, see `ARCHITECTURE.md`.
+> For SEO/AEO task list and backlink strategy, see `SEO-CHECKLIST.md`.
+> For the 85-article content plan, see `SEO-CONTENT-MAP.md`.
+> For Selection Specialist Bot API contract, see `RECRUITMENT-INTEGRATION.md`.
+
 ## Deployment
 - **Vercel** auto-deploys from `hugirecon/kdt-website` main branch on GitHub
 - **Vercel account:** hugirecon GitHub OAuth
@@ -15,12 +20,25 @@
 
 ### Vercel Environment Variables Needed for Production
 These need to be set in Vercel dashboard → Settings → Environment Variables:
+
+**Commerce / Payments:**
 - `NEXT_PUBLIC_MEDUSA_BACKEND_URL` — Medusa backend URL (Cloudflare tunnel or server)
 - `NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY` — `pk_a9ab3ae330c7e5e4d070a638f510d295c6382c50f0683a70fd17d220963bd50c`
 - `NEXT_PUBLIC_STRIPE_KEY` — `pk_live_51Oyy3eRq2Z1BUtxmIN2SppnjtcXTKBgSaNaGlG4IgxiqIreEZMO20AR23bsCcBXgq0d0wy7vih8io0akOaePxiUC00N8Z5cIkU`
+
+**Auth — Discord OAuth (legacy direct flow):**
 - `NEXT_PUBLIC_DISCORD_CLIENT_ID` — `1486582277231087770`
 - `DISCORD_CLIENT_SECRET` — `IWAke5opQkv_rcl-k1ohF4rgcYTv43vs`
 - `NEXT_PUBLIC_DISCORD_REDIRECT_URI` — update to production URL when domain is set
+
+**Auth — NextAuth + Authentik SSO:**
+- `NEXTAUTH_URL` — `https://kdt-website.vercel.app` (or prod domain)
+- `NEXTAUTH_SECRET` — see `.env.local` (generate with `openssl rand -base64 32` for prod)
+- `AUTHENTIK_ISSUER` — stable public URL for Authentik (pending DNS migration)
+- `AUTHENTIK_CLIENT_ID` — `ZqakNeMKxHX9ZDtZxqp2Wn2GGcuywozEXDPn1Rey`
+- `AUTHENTIK_CLIENT_SECRET` — see `.env.local`
+
+**Email:**
 - `RESEND_API_KEY` — `re_BeEwJeZZ_4JvjhnDKeSgAPcJaZwn99LXw`
 
 ### Medusa Backend
@@ -63,9 +81,33 @@ See `RECRUITMENT-INTEGRATION.md` for full details on:
 ## Content Notes
 - Bogdan Modzolewski removed from all pages (Apr 2026)
 - tactical-3.jpg replaced with Santiago's photo
-- HQ listed as "New York, NY" on about page — should be Sheridan, WY per gov registration
+- HQ now correctly listed as Sheridan, WY (fixed Apr 16, 2026)
 - "400+ KDT Agents" stat on about page — verify accuracy
 - "Founded and led by Matthew McCalla and Michael Schulz" — McCalla listed first, verify order preference
+
+## Recent Additions
+
+### Animated Status Tags (Apr 17, 2026)
+- Component: `src/components/StatusTag.tsx`
+- Premium motion for product badges, order status, cart notifications
+- Pulsing dots, glow effects, staggered entrance animations
+- Used in store product cards and account order history
+- Exports: `StatusTag`, `StatusTransition`, `OrderProgress`, `CartToast`
+
+### LLM-Friendly Layer (Apr 18, 2026)
+Following the [llmstxt.org](https://llmstxt.org) spec:
+
+- **`/llms.txt`** — Dynamic route at `src/app/llms.txt/route.ts`. Clean markdown TOC of all key pages for AI crawlers.
+- **Markdown mirrors** — Static files in `public/markdown/`: `index.md`, `about.md`, `services.md`, `careers.md`, `training.md`, `contact.md`. Served via rewrites in `next.config.ts` as `/about.md`, `/services.md`, etc.
+- **`robots.txt`** — Explicitly whitelists AI crawlers: GPTBot, ChatGPT-User, CCBot, anthropic-ai, Claude-Web, ClaudeBot, PerplexityBot, Google-Extended, Applebot-Extended, Bytespider, cohere-ai.
+
+### Maintenance
+When adding new top-level pages:
+1. Update `src/app/sitemap.ts` with the new URL
+2. Add corresponding markdown mirror in `public/markdown/{page}.md`
+3. Add rewrite rule in `next.config.ts` for `/{page}.md` → `/markdown/{page}.md`
+4. Update `src/app/llms.txt/route.ts` with a link to the new page
+5. Update `/Users/kdtsuperapp/clawd/site-architecture.html` if the architecture diagram changes
 
 ## Website Bot — AI Visibility Monitoring (Future)
 Reference: https://x.com/deeptechtr/status/2044284236455141756
