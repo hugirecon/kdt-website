@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import SmartFormField, { SmartFileField, SmartCheckbox } from "./SmartFormField";
 
 interface CommonFieldsProps {
@@ -7,7 +8,44 @@ interface CommonFieldsProps {
   onChange: (field: string, value: string) => void;
 }
 
+type UploadStatus = "idle" | "uploading" | "success" | "error";
+
 export default function CommonFields({ formData, onChange }: CommonFieldsProps) {
+  const [uploadStatus, setUploadStatus] = useState<UploadStatus>("idle");
+  const [uploadMessage, setUploadMessage] = useState<string>("");
+
+  async function handleResumeUpload(file: File | null) {
+    if (!file) {
+      onChange("resumeToken", "");
+      onChange("resumeFilename", "");
+      setUploadStatus("idle");
+      setUploadMessage("");
+      return;
+    }
+    setUploadStatus("uploading");
+    setUploadMessage("Validating file...");
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      const res = await fetch("/api/upload/resume", { method: "POST", body: fd });
+      const data = await res.json();
+      if (!res.ok) {
+        setUploadStatus("error");
+        setUploadMessage(data.error || "Upload failed");
+        onChange("resumeToken", "");
+        return;
+      }
+      onChange("resumeToken", data.token);
+      onChange("resumeFilename", data.filename);
+      setUploadStatus("success");
+      setUploadMessage(`Accepted (${data.detected.toUpperCase()})`);
+    } catch {
+      setUploadStatus("error");
+      setUploadMessage("Network error. Try again.");
+      onChange("resumeToken", "");
+    }
+  }
+
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-3 mb-8">
@@ -159,15 +197,41 @@ export default function CommonFields({ formData, onChange }: CommonFieldsProps) 
         />
       </div>
 
-      <SmartFileField
-        label="Resume / CV"
-        name="resume"
-        accept=".pdf,.doc,.docx"
-        required
-        onChange={(file) => {
-          // TODO: implement file upload to server
-        }}
-      />
+      <div className="space-y-2">
+        <SmartFileField
+          label="Resume / CV"
+          name="resume"
+          accept=".pdf,.doc,.docx"
+          required
+          onChange={handleResumeUpload}
+        />
+        {uploadStatus !== "idle" && (
+          <div
+            className={`text-[13px] font-medium flex items-center gap-2 ${
+              uploadStatus === "success"
+                ? "text-[#22c55e]"
+                : uploadStatus === "error"
+                  ? "text-red-400"
+                  : "text-gray-400"
+            }`}
+          >
+            {uploadStatus === "uploading" && (
+              <div className="w-3 h-3 border-2 border-[#f97316]/30 border-t-[#f97316] rounded-full animate-spin" />
+            )}
+            {uploadStatus === "success" && (
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+              </svg>
+            )}
+            {uploadStatus === "error" && (
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            )}
+            <span>{uploadMessage}</span>
+          </div>
+        )}
+      </div>
 
       {/* Agreements */}
       <div className="space-y-5 pt-6 mt-6 border-t border-white/10">

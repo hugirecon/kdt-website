@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Nav from "@/components/Nav";
 import { useCart } from "@/lib/cart-context";
+import StatusTag from "@/components/StatusTag";
 import {
   getProductByHandle,
   getProductPrice,
@@ -320,18 +321,31 @@ export default function ProductPage() {
                 </div>
               )}
 
-              {/* Tag */}
-              <span className="text-[12px] font-medium uppercase tracking-wider text-[#f97316] mb-3">
-                {product.tag}
-              </span>
+              {/* Tags & stock badges */}
+              <div className="flex flex-wrap items-center gap-2 mb-4">
+                <StatusTag
+                  status={product.tag === "Limited Edition" ? "limited" : "in_stock"}
+                  label={product.tag}
+                  size="sm"
+                />
+                {product.badges?.map((badge) => (
+                  <StatusTag key={badge} status={badge} size="sm" />
+                ))}
+                {variantId && (
+                  <StatusTag status="in_stock" size="sm" />
+                )}
+              </div>
 
               {/* Title */}
               <h1 className="text-[36px] md:text-[44px] font-bold text-white leading-tight mb-4">
                 {product.title}
               </h1>
 
-              {/* Price */}
-              <div className="text-[32px] font-bold text-[#f97316] mb-6">
+              {/* Price with subtle entrance animation */}
+              <div
+                key={product.price}
+                className="text-[32px] font-bold text-[#f97316] mb-6 animate-price-in"
+              >
                 {product.price}
               </div>
 
@@ -367,7 +381,7 @@ export default function ProductPage() {
                     setAddingToCart(true);
                     setAddedToCart(false);
                     try {
-                      await addToCart(variantId, 1);
+                      await addToCart(variantId, 1, product.title);
                       setAddedToCart(true);
                       setTimeout(() => setAddedToCart(false), 2000);
                     } finally {

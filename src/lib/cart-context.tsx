@@ -34,13 +34,20 @@ interface Cart {
   region: { currency_code: string };
 }
 
+interface ToastEvent {
+  id: number;
+  productName: string;
+}
+
 interface CartContextType {
   cart: Cart | null;
   cartCount: number;
   loading: boolean;
-  addToCart: (variantId: string, quantity?: number) => Promise<void>;
+  addToCart: (variantId: string, quantity?: number, productName?: string) => Promise<void>;
   removeFromCart: (lineItemId: string) => Promise<void>;
   updateQuantity: (lineItemId: string, quantity: number) => Promise<void>;
+  lastAddedToast: ToastEvent | null;
+  dismissToast: () => void;
 }
 
 const CartContext = createContext<CartContextType>({
@@ -50,6 +57,8 @@ const CartContext = createContext<CartContextType>({
   addToCart: async () => {},
   removeFromCart: async () => {},
   updateQuantity: async () => {},
+  lastAddedToast: null,
+  dismissToast: () => {},
 });
 
 export function useCart() {
@@ -94,8 +103,11 @@ async function getCart(cartId: string): Promise<Cart | null> {
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<Cart | null>(null);
   const [loading, setLoading] = useState(true);
+  const [lastAddedToast, setLastAddedToast] = useState<ToastEvent | null>(null);
 
   const cartCount = cart?.items?.reduce((sum, item) => sum + item.quantity, 0) ?? 0;
+
+  const dismissToast = useCallback(() => setLastAddedToast(null), []);
 
   // Initialize cart on mount
   useEffect(() => {
@@ -134,7 +146,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     if (fresh) setCart(fresh);
   }, []);
 
-  const addToCart = useCallback(async (variantId: string, quantity = 1) => {
+  const addToCart = useCallback(async (variantId: string, quantity = 1, productName?: string) => {
     setLoading(true);
     try {
       const cartId = await ensureCart();
@@ -143,6 +155,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
         body: JSON.stringify({ variant_id: variantId, quantity }),
       });
       await refreshCart(cartId);
+      // Fire toast
+      setLastAddedToast({ id: Date.now(), productName: productName || "Item" });
     } catch (err) {
       console.error("Add to cart error:", err);
     } finally {
@@ -182,7 +196,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, [cart, refreshCart]);
 
   return (
-    <CartContext.Provider value={{ cart, cartCount, loading, addToCart, removeFromCart, updateQuantity }}>
+    <CartContext.Provider value={{ cart, cartCount, loading, addToCart, removeFromCart, updateQuantity, lastAddedToast, dismissToast }}>
       {children}
     </CartContext.Provider>
   );
