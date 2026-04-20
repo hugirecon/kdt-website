@@ -78,9 +78,32 @@ Create company profiles on these platforms linking back to knightdivisiontactica
 - [ ] Internal linking strategy — every page links to 2-3 other relevant pages
 
 ## 🔲 Local SEO
-- [ ] Google Business Profile (if applicable)
-- [ ] Consistent NAP (Name, Address, Phone) across all listings
-- [ ] HQ: Sheridan, WY | Office: College Station, TX
+
+### Google Business Profile — DO THIS FIRST (per @jespernissenseo)
+Per SEO expert Jesper Nissen's link-building playbook for new sites: **GBP is the #1 first step**. Google uses GBP as the primary authority/knowledge hub to understand who you are, and it feeds into local rankings, knowledge panel, and AI citations across ChatGPT/Gemini/Perplexity.
+
+**Why it matters more than most backlinks:** GBP is signed-by-Google authority. Every other SEO signal is weighted by whether you have a complete, verified GBP.
+
+**Setup:**
+- [ ] Go to business.google.com → Add your business
+- [ ] Business name: "Knight Division Tactical"
+- [ ] Category: Security service / Security guard service / Defense contractor
+- [ ] Address: Sheridan, WY HQ (can be service-area only if not public-facing)
+- [ ] Phone: KDT direct line
+- [ ] Website: knightdivisiontactical.com
+- [ ] Hours: 24/7 (matches "24/7 Response Ready" stat)
+- [ ] Description: "Tier 1 private military, executive protection, crisis response, and defense contracting services. AI-native operations, industry-leading training."
+- [ ] Add all social media profile URLs: LinkedIn, X, Instagram, YouTube, Facebook
+- [ ] Upload 10+ high-quality photos: logo, team (Michael, McCalla, operators), training, gear, facility
+- [ ] Add services: Executive Protection, Direct Action, Reconnaissance, Maritime Operations, Wildlife Mitigation, Counter-Trafficking, Training (all 4 courses)
+- [ ] **Verify ownership** (Google sends postcard to HQ address OR video verification)
+- [ ] Enable messaging if appropriate
+- [ ] Add posts regularly (announcements, new hires, service launches) — GBP posts get indexed
+
+### Consistent NAP Across Listings
+- [ ] **Name:** Knight Division Tactical (exact, every listing)
+- [ ] **Address:** HQ Sheridan, WY 82801 | Office College Station, TX
+- [ ] **Phone:** (same number everywhere — KDT's primary line)
 
 ### Local/Geo-Relevant Backlinks (high Google authority signal)
 Per @quickindexapp: Local geo-relevant backlinks outrank random high-DR guest posts. Google values geographic relevance heavily.
