@@ -7,6 +7,34 @@ Reference: https://x.com/noelcetaseo/status/2043758649827315848
 
 ---
 
+## CRITICAL: Content Format for AI Citation
+
+**Source: NP Digital, Apr 2026 — AI Citation Frequency by Content Type (1,000 prompts analyzed):**
+
+| Content Type | AI Citation Rate |
+|---|---|
+| **Lists / Listicles** | **48%** ← dominant format |
+| Step-by-step Guides | 17% |
+| Other | 25% |
+| FAQs | 4% |
+| Definitions / Glossaries | 3% |
+| Opinion / Editorial | 3% |
+
+**Lesson:** Structure content for AI extraction. Formats that are easy to extract (numbered/bulleted lists) are cited nearly 5x more than guides by AI systems.
+
+### Content Format Rules for ALL KDT Content
+1. **Every article must include at least one major list/listicle section** — even guide-style articles. Open with a numbered list of key points, add a "quick reference" box, end with a summary list.
+2. **Titles should use list framing where natural:** "15 PMC Companies Hiring in 2026" > "A Guide to PMC Companies"
+3. **Step-by-step guides** are the second best format — use numbered steps explicitly, not prose
+4. **FAQs** should be at the bottom of every pillar page and long article (schema markup already applied)
+5. **Avoid:** long unbroken paragraphs, opinion-heavy editorials, walls of text
+6. **Phase 1:** 85-article breadth blast (current plan — establishes presence)
+7. **Phase 2:** Consolidate around one dominant keyword cluster once Phase 1 is published (per @nathangotch)
+
+---
+
+---
+
 ## PILLAR 1: Private Military Contracting (PMC)
 
 **Target searches:** "private military contractor," "PMC company," "PMC hiring," "how to become a PMC," "PMC training," "PMC salary"
@@ -222,7 +250,29 @@ Each comparison page should follow this structure:
 **Tone:** Professional, factual, not trash-talking competitors. Let KDT's advantages speak for themselves. Respect the industry.
 
 **Total comparison articles: 38**
-**Total content plan: 3 pillars + 39 clusters + 38 comparisons + 5 roundups = 85 articles**
+
+---
+
+## PILLAR 4: Listicles / List Content (NEW — AI Citation Priority)
+
+Based on NP Digital research, lists are cited by AI 48% of the time. We need a dedicated set of list-format articles targeting the exact queries where AI systems surface results.
+
+| # | Title | URL | Target Keywords |
+|---|-------|-----|-----------------|
+| 1 | 10 Best Private Military Companies in 2026 | `/blog/best-pmc-companies` | best PMC companies, top private military companies |
+| 2 | 15 Highest-Paying PMC Jobs in 2026 | `/blog/highest-paying-pmc-jobs` | highest paying PMC jobs, PMC job salaries |
+| 3 | 12 Skills Every Private Military Contractor Needs | `/blog/pmc-required-skills` | PMC skills, what skills do you need to be a PMC |
+| 4 | 8 Types of Private Security Services Explained | `/blog/types-of-private-security` | types of private security, security services list |
+| 5 | 20 Must-Have Items in Every PMC Loadout | `/blog/pmc-loadout-list` | PMC loadout, PMC gear list |
+| 6 | 7 Reasons KDT Operators Earn More Than Any Competitor | `/blog/why-kdt-pays-more` | KDT pay, best paying PMC |
+| 7 | 5 AI Tools Changing Private Military Operations | `/blog/ai-tools-pmc-operations` | AI in PMC, technology in private military |
+| 8 | 10 Countries Where PMCs Operate Most | `/blog/where-pmcs-operate` | where do PMCs work, PMC deployment locations |
+| 9 | 9 Myths About Private Military Companies (Debunked) | `/blog/pmc-myths-debunked` | PMC myths, misconceptions about PMC |
+| 10 | 6 Types of Executive Protection Threats and How Pros Handle Them | `/blog/executive-protection-threats` | executive protection threats, EP security risks |
+
+**Total list articles: 10**
+
+**Total content plan: 3 pillars + 39 clusters + 38 comparisons + 5 roundups + 10 listicles = 95 articles**
 
 ---
 
