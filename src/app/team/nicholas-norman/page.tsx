@@ -24,7 +24,7 @@ function ProfileHero() {
             <div className="w-48 h-48 rounded-2xl overflow-hidden mb-6 border border-[#f97316]/20">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img 
-                src="/images/team/nic-norman.png" 
+                src="/images/team/nic-norman.jpg" 
                 alt="Nicholas Norman"
                 className="w-full h-full object-cover"
               />

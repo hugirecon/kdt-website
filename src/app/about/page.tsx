@@ -263,7 +263,7 @@ function Leadership() {
       role: "CEO",
       title: "Chief Executive Officer, Head of SPEAR Branch",
       href: "/team/michael-schulz",
-      image: "/images/team/michael-schulz.jpg",
+      image: "/images/team/michael-schulz.png",
     },
     {
       name: "Matthew McCalla",

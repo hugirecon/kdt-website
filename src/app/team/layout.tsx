@@ -25,7 +25,7 @@ const teamMembers = [
     "jobTitle": "Chief Executive Officer, Head of SPEAR Branch",
     "worksFor": { "@type": "Organization", "name": "Knight Division Tactical" },
     "url": "https://knightdivisiontactical.com/team/michael-schulz",
-    "image": "https://knightdivisiontactical.com/images/team/michael-schulz.jpg"
+    "image": "https://knightdivisiontactical.com/images/team/michael-schulz.png"
   },
   {
     "@type": "Person",
@@ -41,7 +41,7 @@ const teamMembers = [
     "jobTitle": "Account Executive",
     "worksFor": { "@type": "Organization", "name": "Knight Division Tactical" },
     "url": "https://knightdivisiontactical.com/team/nicholas-norman",
-    "image": "https://knightdivisiontactical.com/images/team/nic-norman.png"
+    "image": "https://knightdivisiontactical.com/images/team/nic-norman.jpg"
   },
   {
     "@type": "Person",
