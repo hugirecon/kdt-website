@@ -32,9 +32,9 @@ function TeamGrid() {
       title: "Chief Executive Officer, Head of SPEAR Branch", 
       href: "/team/michael-schulz", 
       initials: "MS",
-      image: "/images/team/michael-schulz.png",
-      imagePosition: "55% 12%",
-      imageScale: 3.2,
+      image: "/images/team/michael-schulz.jpg",
+      imagePosition: "50% 12%",
+      imageScale: 2.8,
       badge: "bg-[#f97316]/10 text-[#f97316]"
     },
     { 
@@ -56,9 +56,9 @@ function TeamGrid() {
       title: "Sales, outreach, acquisition, account management", 
       href: "/team/nicholas-norman", 
       initials: "NN",
-      image: "/images/team/nic-norman.jpg",
-      imagePosition: "51% 26%",
-      imageScale: 2.8,
+      image: "/images/team/nic-norman.png",
+      imagePosition: "55% 19%",
+      imageScale: 2.4,
       badge: "bg-purple-500/10 text-purple-400"
     },
     { 

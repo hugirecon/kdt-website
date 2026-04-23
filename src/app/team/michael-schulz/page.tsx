@@ -23,7 +23,7 @@ function ProfileHero() {
             {/* Avatar */}
             <div className="w-48 h-48 rounded-2xl overflow-hidden mb-6 border border-[#f97316]/20">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/team/michael-schulz.png" alt="Michael Schulz" className="w-full h-full object-cover" />
+              <img src="/images/team/michael-schulz.jpg" alt="Michael Schulz" className="w-full h-full object-cover" />
             </div>
             
             {/* Role Badge */}
