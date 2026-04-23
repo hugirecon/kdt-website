@@ -33,6 +33,7 @@ function TeamGrid() {
       href: "/team/michael-schulz", 
       initials: "MS",
       image: "/images/team/michael-schulz.png",
+      imagePosition: "50% 26%",
       badge: "bg-[#f97316]/10 text-[#f97316]"
     },
     { 
@@ -42,6 +43,7 @@ function TeamGrid() {
       href: "/team/matthew-mccalla", 
       initials: "MM",
       image: "/images/team/matthew-mccalla.jpg",
+      imagePosition: "50% 38%",
       badge: "bg-[#f97316]/10 text-[#f97316]"
     },
   ];
@@ -54,6 +56,7 @@ function TeamGrid() {
       href: "/team/nicholas-norman", 
       initials: "NN",
       image: "/images/team/nic-norman.jpg",
+      imagePosition: "68% 24%",
       badge: "bg-purple-500/10 text-purple-400"
     },
     { 
@@ -63,6 +66,7 @@ function TeamGrid() {
       href: "/team/santiago-telleria", 
       initials: "ST",
       image: "/images/team/santiago-telleria.jpg",
+      imagePosition: "58% 46%",
       badge: "bg-blue-500/10 text-blue-400"
     },
   ];
@@ -80,10 +84,10 @@ function TeamGrid() {
                 href={member.href}
                 className="flex items-center gap-6 p-6 rounded-xl bg-gray-50 border border-gray-100 hover:border-[#f97316]/30 hover:shadow-lg transition-all group"
               >
-                {member.image ? (
+{member.image ? (
                   <div className="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={member.image} alt={member.name} className="w-full h-full object-cover object-top" style={{ transform: 'scale(2)', transformOrigin: 'top center' }} />
+                    <img src={member.image} alt={member.name} className="w-full h-full object-cover" style={{ objectPosition: member.imagePosition || '50% 20%' }} />
                   </div>
                 ) : (
                   <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#f97316]/20 to-[#f97316]/5 flex items-center justify-center flex-shrink-0">
@@ -117,10 +121,10 @@ function TeamGrid() {
                 href={member.href}
                 className="p-6 rounded-xl bg-gray-50 border border-gray-100 hover:border-[#f97316]/30 hover:shadow-lg transition-all group"
               >
-                {member.image ? (
+{member.image ? (
                   <div className="w-16 h-16 rounded-xl overflow-hidden mb-4">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={member.image} alt={member.name} className="w-full h-full object-cover object-top" style={{ transform: 'scale(2.5)', transformOrigin: 'top center' }} />
+                    <img src={member.image} alt={member.name} className="w-full h-full object-cover" style={{ objectPosition: member.imagePosition || '50% 20%' }} />
                   </div>
                 ) : (
                   <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#f97316]/20 to-[#f97316]/5 flex items-center justify-center mb-4">
